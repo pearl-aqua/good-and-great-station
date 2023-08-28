@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardContent, CardFooter } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -25,22 +18,15 @@ interface Props {
 }
 export default function ApplyPage({ setStep }: Props) {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Button 수정</CardTitle>
-        <CardDescription>아래 버튼을 수정해주세요.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Label>이름 or 닉네임</Label>
-          <Input type="text" placeholder="작성해주세요" />
-        </div>
+    <>
+      <CardContent className="flex flex-col max-w-sm gap-2">
+        <Label>이름(닉네임)</Label>
+        <Input type="text" placeholder="1자 이상 작성해주세요" />
       </CardContent>
-      <CardContent>
-        <Label>입뎍 시기</Label>
-
+      <CardContent className="flex flex-col gap-2">
+        <Label>입덕 시기</Label>
         <Select>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-[180px] text-zinc-600">
             <SelectValue placeholder="선택해주세요" />
           </SelectTrigger>
           <SelectContent>
@@ -54,11 +40,14 @@ export default function ApplyPage({ setStep }: Props) {
           </SelectContent>
         </Select>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="gap-2">
+        <Button variant="outline" onClick={() => setStep(0)}>
+          취소
+        </Button>
         <Button variant="outline" onClick={() => setStep(1)}>
-          next
+          다음
         </Button>
       </CardFooter>
-    </Card>
+    </>
   );
 }

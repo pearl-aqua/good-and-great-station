@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
@@ -17,21 +10,22 @@ interface Props {
 }
 export default function ApplyPage({ setStep }: Props) {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Button 수정</CardTitle>
-        <CardDescription>아래 버튼을 수정해주세요.</CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-wrap gap-2">
-        {motiveData.map(({ label, value }) => (
-          <div key={value} className="flex gap-1.5 leading-none">
-            <Checkbox id={value} />
-            <Label htmlFor={value}>{label}</Label>
-          </div>
-        ))}
+    <>
+      <CardContent className="flex flex-col gap-3">
+        <Label>지원(입덕) 계기를 선택해주세요.(복수 선택 가능)</Label>
+        <div className="flex flex-wrap gap-2.5">
+          {motiveData.map(({ label, value }) => (
+            <div key={value} className="flex gap-1.5 leading-none">
+              <Checkbox id={value} />
+              <Label htmlFor={value} className="text-zinc-600">
+                {label}
+              </Label>
+            </div>
+          ))}
+        </div>
       </CardContent>
-      <CardContent className="grid w-full gap-1.5">
-        <Label htmlFor="message">지원 계기(입덕 계기)를 작성해주세요.</Label>
+      <CardContent className="grid w-full gap-2">
+        <Label htmlFor="message">지원(입덕) 계기를 서술해주세요.</Label>
         <Textarea placeholder="525자 이내로 작성해주세요" id="message" />
       </CardContent>
       <CardFooter className="gap-2">
@@ -42,6 +36,6 @@ export default function ApplyPage({ setStep }: Props) {
           다음
         </Button>
       </CardFooter>
-    </Card>
+    </>
   );
 }

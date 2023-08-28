@@ -1,14 +1,6 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
 import { album1, album1_1, album2 } from "@/constants/index";
 import SelectButton from "../custom/SelectButton";
 
@@ -17,11 +9,10 @@ interface Props {
 }
 export default function ApplyPage({ setStep }: Props) {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Button 수정</CardTitle>
-        <CardDescription>아래 버튼을 수정해주세요.</CardDescription>
-      </CardHeader>
+    <>
+      <CardContent className="flex flex-wrap gap-2">
+        <Label>좋아하는 노래를 선택해주세요.(5곡까지 선택 가능)</Label>
+      </CardContent>
       <CardContent className="flex flex-wrap gap-2">
         {album1.map(({ label, value }) => (
           <SelectButton key={value}>{label}</SelectButton>
@@ -45,6 +36,6 @@ export default function ApplyPage({ setStep }: Props) {
           다음
         </Button>
       </CardFooter>
-    </Card>
+    </>
   );
 }
