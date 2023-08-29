@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import topbar from "../image/topbar-d.jpg";
+import topbar from "../image/topbar-lll.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 

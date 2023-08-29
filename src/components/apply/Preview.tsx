@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { album1_1 } from "@/constants/index";
@@ -17,15 +19,17 @@ import Typo from "../typo/Typo";
 
 export default function Preview() {
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
         <Button variant="outline">다음</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>입사 지원서 미리보기</DialogTitle>
-          <DialogDescription>아래 내용을 확인해 주세요</DialogDescription>
-        </DialogHeader>
+      </AlertDialogTrigger>
+      <AlertDialogContent className="sm:max-w-[425px]">
+        <AlertDialogHeader>
+          <AlertDialogTitle>입사 지원서 미리보기</AlertDialogTitle>
+          <AlertDialogDescription>
+            아래 내용을 확인해 주세요
+          </AlertDialogDescription>
+        </AlertDialogHeader>
         <div className="grid gap-4 py-4">
           <Label htmlFor="mess">이름</Label>
           <Typo.H2>그림일기</Typo.H2>
@@ -47,13 +51,13 @@ export default function Preview() {
             타입 추가 및 변경 사이즈 추가 상태값 추가
           </Typo.BodyText>
         </div>
-        <DialogFooter>
-          <Button variant="outline">돌아가기</Button>
+        <AlertDialogFooter>
+          <AlertDialogCancel>돌아가기</AlertDialogCancel>
           <Link href="/complete">
-            <Button variant="outline">입사 지원하기</Button>
+            <AlertDialogAction>입사 지원하기</AlertDialogAction>
           </Link>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
