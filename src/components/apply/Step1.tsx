@@ -4,11 +4,23 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { motiveData } from "@/constants/index";
+import answerStore from "@/lib/store/answers";
 
 interface Props {
   setStep: (step: number) => void;
 }
 export default function ApplyPage({ setStep }: Props) {
+  const { motiveOption, setMotiveOption, motiveText, setMotiveText } =
+    answerStore();
+
+  const handleOption = (value: string) => {
+    if (motiveOption.includes(value)) {
+      const newOptions = motiveOption.filter((el) => el !== value);
+      setMotiveOption(newOptions);
+    } else {
+      setMotiveOption([...motiveOption, value]);
+    }
+  };
   return (
     <>
       <CardContent className="flex flex-col gap-3">
@@ -16,7 +28,10 @@ export default function ApplyPage({ setStep }: Props) {
         <div className="flex flex-wrap gap-2.5">
           {motiveData.map(({ label, value }) => (
             <div key={value} className="flex gap-1.5 leading-none">
-              <Checkbox id={value} />
+              <Checkbox
+                checked={motiveOption.includes(value)}
+                onCheckedChange={() => handleOption(value)}
+              />
               <Label htmlFor={value} className="text-zinc-600">
                 {label}
               </Label>
@@ -25,8 +40,12 @@ export default function ApplyPage({ setStep }: Props) {
         </div>
       </CardContent>
       <CardContent className="grid w-full gap-2">
-        <Label htmlFor="message">지원(입덕) 계기를 서술해주세요.</Label>
-        <Textarea placeholder="525자 이내로 작성해주세요" id="message" />
+        <Label>지원(입덕) 계기를 서술해주세요.</Label>
+        <Textarea
+          placeholder="525자 이내로 작성해주세요"
+          value={motiveText}
+          onChange={(e) => setMotiveText(e.target.value)}
+        />
       </CardContent>
       <CardFooter className="gap-2">
         <Button variant="outline" onClick={() => setStep(0)}>

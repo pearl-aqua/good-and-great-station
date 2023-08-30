@@ -1,5 +1,5 @@
 export const introData = {
-  title: "Gooo & Greet 컴퍼니에 함께할 신입 사원을 찾습니다",
+  title: "Little&Freaks에서 함께하실 분을 찾습니다",
   list: [
     {
       listTitle: "회사 소개",
@@ -163,141 +163,141 @@ export const motiveData = [
 export const album1 = [
   {
     label: "I Wanna Be",
-    value: "00",
+    value: "01",
   },
   {
     label: "Show Me",
-    value: "00",
+    value: "02",
   },
   {
     label: "센 척 안 해",
-    value: "00",
+    value: "03",
   },
   {
     label: "Good Good",
-    value: "00",
+    value: "04",
   },
   {
     label: "Honest",
-    value: "00",
+    value: "05",
   },
   {
     label: "Forever Yours",
-    value: "00",
+    value: "06",
   },
   {
     label: "Imagine",
-    value: "00",
+    value: "07",
   },
   {
     label: "Chemicals",
-    value: "00",
+    value: "08",
   },
   {
     label: "I Will Fight",
-    value: "00",
+    value: "09",
   },
   {
     label: "Easy To Love",
-    value: "00",
+    value: "10",
   },
   {
     label: "미워",
-    value: "00",
+    value: "11",
   },
   {
     label: "This Life",
-    value: "00",
+    value: "12",
   },
   {
     label: "Cold",
-    value: "00",
+    value: "13",
   },
 ];
 
 export const album1_1 = [
   {
     label: "BAD LOVE",
-    value: "00",
+    value: "101",
   },
   {
     label: "Yellow Tape",
-    value: "00",
+    value: "102",
   },
   {
     label: "Hate that…",
-    value: "00",
+    value: "103",
   },
   {
     label: "Helium",
-    value: "00",
+    value: "104",
   },
   {
     label: "Saturday Night",
-    value: "00",
+    value: "105",
   },
   {
     label: "Eighteen",
-    value: "00",
+    value: "106",
   },
 ];
 
 export const album2 = [
   {
     label: "Killer",
-    value: "00",
+    value: "201",
   },
   {
     label: "Heartless",
-    value: "00",
+    value: "202",
   },
   {
     label: "가솔린",
-    value: "00",
+    value: "203",
   },
   {
     label: "Bound",
-    value: "00",
+    value: "204",
   },
   {
     label: "Villain",
-    value: "00",
+    value: "205",
   },
   {
     label: "Easy",
-    value: "00",
+    value: "206",
   },
   {
     label: "Burn",
-    value: "00",
+    value: "207",
   },
   {
     label: "Guilty Pleasure",
-    value: "00",
+    value: "208",
   },
   {
     label: "G.O.A.T",
-    value: "00",
+    value: "209",
   },
   {
     label: "I Can’t Sleep",
-    value: "00",
+    value: "210",
   },
   {
     label: "Ain’t Gonna Dance",
-    value: "00",
+    value: "211",
   },
   {
     label: "Another Life",
-    value: "00",
+    value: "212",
   },
   {
     label: "Delight",
-    value: "00",
+    value: "213",
   },
   {
     label: "Proud",
-    value: "00",
+    value: "214",
   },
 ];
 

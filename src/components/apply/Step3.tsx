@@ -1,28 +1,33 @@
 import { CardContent, CardFooter } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { hahaData } from "@/constants/index";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Slider } from "@/components/ui/slider";
 import Preview from "./Preview";
+import answerStore from "@/lib/store/answers";
 
 interface Props {
   setStep: (step: number) => void;
 }
 export default function ApplyPage({ setStep }: Props) {
+  const { myText, setMyText, character, setCharacter } = answerStore();
+
   return (
     <>
       <CardContent className="grid w-full gap-3">
         <Label htmlFor="mess">
           자신의 장점을 작성해주세요.(기범사랑을 표현해주세요)
         </Label>
-        <Textarea placeholder="525자 이내로 작성해주세요" id="message" />
+        <Textarea
+          placeholder="525자 이내로 작성해주세요"
+          value={myText}
+          onChange={(e) => setMyText(e.target.value)}
+        />
       </CardContent>
       <CardContent className="flex flex-col gap-4">
         <Label htmlFor="mess">기범이는 무엇일까요?</Label>
-        <RadioGroup>
+        <RadioGroup onValueChange={setCharacter} defaultValue={character}>
           {hahaData.map(({ label, value }) => (
             <div key={value} className="flex gap-1.5 leading-none">
               <RadioGroupItem id={value} value={value} />
