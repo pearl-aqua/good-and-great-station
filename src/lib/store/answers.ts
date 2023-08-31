@@ -1,11 +1,11 @@
-import { hahaData, motiveData, yearData } from "@/constants/index";
 import { create } from "zustand";
+import { hahaData, motiveData, yearData } from "@/constants/index";
 
 interface StateType {
   name: string;
   setName: (name: string) => void;
   year: string;
-  yearLabel: () => string;
+  yearLabel: () => string | undefined;
   setYear: (year: string) => void;
   motiveOption: string[];
   motiveOptionLabel: () => string;
@@ -23,12 +23,18 @@ interface StateType {
   setCharacter: (character: string) => void;
 }
 
-const findLabel = (selectedValue, list) => {
+const findLabel = (
+  selectedValue: string,
+  list: { value: string; label: string }[]
+) => {
   const findList = list.find(({ value }) => value === selectedValue);
-  return findList?.label;
+  return findList?.label || "";
 };
 
-const filterLabel = (selectedValue, list) => {
+const filterLabel = (
+  selectedValue: string[],
+  list: { value: string; label: string }[]
+) => {
   const findList = list.filter(({ value }) => selectedValue.includes(value));
   return findList.map(({ label }) => label).join(", ");
 };

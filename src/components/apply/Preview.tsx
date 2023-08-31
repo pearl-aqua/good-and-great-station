@@ -4,20 +4,29 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Label } from "@/components/ui/label";
-import { album1_1 } from "@/constants/index";
 import Link from "next/link";
 import SelectButton from "../custom/SelectButton";
 import Typo from "../typo/Typo";
 import answerStore from "@/lib/store/answers";
 
-export default function Preview() {
+const typeLabel = {
+  apply: {
+    trigger: "지원서 미리보기",
+    action: "입사 지원하기",
+  },
+  complete: {
+    trigger: "나의 지원서 보기",
+    action: "이미지 다운 받기",
+  },
+};
+
+export default function Preview({ type }) {
   const {
     name,
     yearLabel,
@@ -31,7 +40,12 @@ export default function Preview() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">다음</Button>
+        <Button
+          variant="outline"
+          className={`${type !== "apply" ? "w-1/2" : ""} font-bold"`}
+        >
+          {typeLabel[type].trigger}
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="sm:max-w-[425px]">
         <AlertDialogHeader>
@@ -77,12 +91,12 @@ export default function Preview() {
             <Typo.BodyText>{myText}</Typo.BodyText>
           </div>
         </div>
-        <AlertDialogFooter>
+        <div className="flex items-center justify-end gap-2">
           <AlertDialogCancel>돌아가기</AlertDialogCancel>
           <Link href="/complete">
-            <AlertDialogAction>입사 지원하기</AlertDialogAction>
+            <AlertDialogAction>{typeLabel[type].action}</AlertDialogAction>
           </Link>
-        </AlertDialogFooter>
+        </div>
       </AlertDialogContent>
     </AlertDialog>
   );

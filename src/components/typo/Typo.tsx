@@ -11,7 +11,7 @@ function H2({ children }: TypoProps) {
 }
 
 function Title({ children }: TypoProps) {
-  return <div className="text-4xl font-bold">{children}</div>;
+  return <div className="text-3xl font-bold">{children}</div>;
 }
 
 function BodyText({ children }: TypoProps) {

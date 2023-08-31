@@ -36,11 +36,11 @@ export default function ApplyPage({ setStep }: Props) {
           ))}
         </RadioGroup>
       </CardContent>
-      <CardFooter className="gap-2">
+      <CardFooter className="justify-between">
         <Button variant="outline" onClick={() => setStep(2)}>
           이전
         </Button>
-        <Preview />
+        <Preview type="apply" />
       </CardFooter>
     </>
   );

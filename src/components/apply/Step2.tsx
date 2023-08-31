@@ -63,7 +63,7 @@ export default function ApplyPage({ setStep }: Props) {
           </SelectButton>
         ))}
       </CardContent>
-      <CardFooter className="gap-2">
+      <CardFooter className="justify-between">
         <Button variant="outline" onClick={() => setStep(1)}>
           이전
         </Button>

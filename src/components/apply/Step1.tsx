@@ -47,7 +47,7 @@ export default function ApplyPage({ setStep }: Props) {
           onChange={(e) => setMotiveText(e.target.value)}
         />
       </CardContent>
-      <CardFooter className="gap-2">
+      <CardFooter className="justify-between">
         <Button variant="outline" onClick={() => setStep(0)}>
           이전
         </Button>
