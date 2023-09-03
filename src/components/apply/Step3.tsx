@@ -6,7 +6,7 @@ import { hahaData } from "@/constants/index";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Preview from "./Preview";
 import answerStore from "@/lib/store/answers";
-
+import Typo from "../typo/Typo";
 interface Props {
   setStep: (step: number) => void;
 }
@@ -19,11 +19,21 @@ export default function ApplyPage({ setStep }: Props) {
         <Label htmlFor="mess">
           자신의 장점을 작성해주세요.(기범사랑을 표현해주세요)
         </Label>
-        <Textarea
-          placeholder="525자 이내로 작성해주세요"
-          value={myText}
-          onChange={(e) => setMyText(e.target.value)}
-        />
+        <div>
+          <Textarea
+            className="h-[120px]"
+            placeholder="129자 이내로 작성해주세요"
+            value={myText}
+            onChange={(e) => setMyText(e.target.value)}
+          />
+          <div
+            className={`w-full flex justify-end ${
+              myText.length >= 120 ? "text-red-500" : ""
+            }`}
+          >
+            <Typo.Label>{myText.length}/120</Typo.Label>
+          </div>
+        </div>
       </CardContent>
       <CardContent className="flex flex-col gap-4">
         <Label htmlFor="mess">기범이는 무엇일까요?</Label>

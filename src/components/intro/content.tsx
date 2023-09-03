@@ -8,16 +8,14 @@ import userStore from "@/lib/store/user";
 import Preview from "../apply/Preview";
 
 export default function IntroContent() {
-  // const { isLogin, applyNumber } = userStore();
-  const isLogin = true;
-  const applyNumber = false;
+  const { isLogin, applyNumber } = userStore();
   const router = useRouter();
 
   const handleButtonClick = () => {
     if (isLogin) {
       router.push("/apply");
     } else {
-      router.push("/apply"); //TODO
+      router.push("/login");
     }
   };
 

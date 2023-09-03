@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import googleLogo from "@/image/google-logo.svg";
+import { popupLogin } from "@/firebase/login";
 
 const descData = [
   "- 이메일 정보는 회원 관리를 위해서만 사용되며 그 외의 용도로 사용되지 않습니다.",
@@ -18,8 +19,10 @@ const descData = [
 ];
 
 export default function LoginPage() {
-  const handleClickLogin = () => {
-    console.log("loginn");
+  const handleClickLogin = async () => {
+    const { id, email } = await popupLogin();
+    console.log(id, email);
+    // const userInfoResult = await getUserInfo({ id, email });
   };
   return (
     <Card>

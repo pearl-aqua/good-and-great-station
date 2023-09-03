@@ -18,8 +18,20 @@ function BodyText({ children }: TypoProps) {
   return <div className="text-md">{children}</div>;
 }
 
+function DecsText({ children }: TypoProps) {
+  return <div className="text-sm">{children}</div>;
+}
+
 function ListText({ children }: TypoProps) {
   return <li className="text-md mb-1">{children}</li>;
+}
+
+function TitleLabel({ children }: TypoProps) {
+  return <div className="text-lg font-bold mb-2 text-zinc-600">{children}</div>;
+}
+
+function Label({ children }: TypoProps) {
+  return <div className="text-sm">{children}</div>;
 }
 
 function Typo() {
@@ -30,6 +42,9 @@ Typo.H1 = H1;
 Typo.H2 = H2;
 Typo.Title = Title;
 Typo.BodyText = BodyText;
+Typo.DecsText = DecsText;
 Typo.ListText = ListText;
+Typo.Label = Label;
+Typo.TitleLabel = TitleLabel;
 
 export default Typo;

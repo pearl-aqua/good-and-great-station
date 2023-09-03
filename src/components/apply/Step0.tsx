@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { yearData } from "@/constants/index";
 import answerStore from "@/lib/store/answers";
+import Typo from "../typo/Typo";
 
 interface Props {
   setStep: (step: number) => void;
@@ -24,10 +25,17 @@ export default function ApplyPage({ setStep }: Props) {
         <Label>이름(닉네임)</Label>
         <Input
           type="text"
-          placeholder="1자 이상 작성해주세요"
+          placeholder="1자-8자로 작성해주세요"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <div
+          className={`w-full flex justify-end ${
+            name.length > 8 ? "text-red-500" : ""
+          }`}
+        >
+          <Typo.Label>{name.length}/8</Typo.Label>
+        </div>
       </CardContent>
       <CardContent className="flex flex-col gap-2">
         <Label>입덕 시기</Label>
