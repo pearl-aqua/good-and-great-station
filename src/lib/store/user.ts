@@ -1,15 +1,15 @@
 import { create } from "zustand";
 
 interface StateType {
-  isLogin: boolean;
-  setIsLogin: (isLogin: boolean) => void;
-  applyNumber: number | null;
-  setApplyNumber: (applyNumber: number) => void;
+  userId: string | null;
+  setUserId: (userId: string) => void;
+  applyNumber: string | null;
+  setApplyNumber: (applyNumber: string) => void;
 }
 
 const userStore = create<StateType>((set, get) => ({
-  isLogin: false,
-  setIsLogin: (isLogin) => set({ isLogin }),
+  userId: null,
+  setUserId: (userId) => set({ userId }),
   applyNumber: null,
   setApplyNumber: (applyNumber) => set({ applyNumber }),
 }));

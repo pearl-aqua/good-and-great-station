@@ -7,7 +7,7 @@ interface Props {
 export default function SelectButton({ onClick, isSelected, children }: Props) {
   return (
     <div
-      className={`flex justify-center items-center rounded-xl border px-3 py-0.5 text-sm cursor-pointer 
+      className={`flex justify-center items-center rounded-xl border px-3 py-1 text-sm cursor-pointer 
       ${
         isSelected
           ? "bg-zinc-400 text-white"

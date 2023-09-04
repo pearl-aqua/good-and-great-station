@@ -4,7 +4,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { app } from "./index";
+import { app, store } from "./index";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
 export const auth = getAuth(app);

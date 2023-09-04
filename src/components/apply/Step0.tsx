@@ -1,4 +1,4 @@
-import { CardContent, CardFooter } from "@/components/ui/card";
+import { CardContent, CardFooter, CardDescription } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -19,23 +19,29 @@ interface Props {
 }
 export default function ApplyPage({ setStep }: Props) {
   const { name, setName, year, setYear } = answerStore();
+  const validName = () => {
+    if (name.length > 8) alert("이름은 8자 이내로 작성해주세요.");
+    else setStep(1);
+  };
   return (
     <>
-      <CardContent className="flex flex-col max-w-sm gap-2">
-        <Label>이름(닉네임)</Label>
+      <CardContent className="flex flex-col max-w-sm gap-1">
+        <div className="flex items-center">
+          <Label className="w-40">이름(닉네임)</Label>
+          <CardDescription
+            className={`w-full flex justify-end ${
+              name.length > 8 ? "text-red-500" : ""
+            }`}
+          >
+            {name.length}/8
+          </CardDescription>
+        </div>
         <Input
           type="text"
           placeholder="1자-8자로 작성해주세요"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <div
-          className={`w-full flex justify-end ${
-            name.length > 8 ? "text-red-500" : ""
-          }`}
-        >
-          <Typo.Label>{name.length}/8</Typo.Label>
-        </div>
       </CardContent>
       <CardContent className="flex flex-col gap-2">
         <Label>입덕 시기</Label>
@@ -61,7 +67,7 @@ export default function ApplyPage({ setStep }: Props) {
         <Button variant="outline" onClick={() => setStep(0)}>
           취소
         </Button>
-        <Button variant="outline" onClick={() => setStep(1)}>
+        <Button variant="outline" onClick={validName}>
           다음
         </Button>
       </CardFooter>

@@ -1,11 +1,10 @@
-import { CardContent, CardFooter } from "@/components/ui/card";
+import { CardContent, CardFooter, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { motiveData } from "@/constants/index";
 import answerStore from "@/lib/store/answers";
-import Typo from "../typo/Typo";
 
 interface Props {
   setStep: (step: number) => void;
@@ -21,6 +20,11 @@ export default function ApplyPage({ setStep }: Props) {
     } else {
       setMotiveOption([...motiveOption, value]);
     }
+  };
+  const validText = () => {
+    if (motiveText.length > 129)
+      alert("지원 계기는은 129자 이내로 작성해주세요.");
+    else setStep(2);
   };
   return (
     <>
@@ -41,26 +45,29 @@ export default function ApplyPage({ setStep }: Props) {
         </div>
       </CardContent>
       <CardContent className="grid w-full gap-2">
-        <Label>지원(입덕) 계기를 서술해주세요.</Label>
+        <div className="flex items-center">
+          <Label className="w-72">지원(입덕) 계기를 서술해주세요.</Label>
+          <CardDescription
+            className={`w-full flex justify-end ${
+              motiveText.length > 129 ? "text-red-500" : ""
+            }`}
+          >
+            {motiveText.length}/129
+          </CardDescription>
+        </div>
+
         <Textarea
           className="h-[120px]"
           placeholder="129자 이내로 작성해주세요"
           value={motiveText}
           onChange={(e) => setMotiveText(e.target.value)}
         />
-        <div
-          className={`w-full flex justify-end ${
-            motiveText.length > 120 ? "text-red-500" : ""
-          }`}
-        >
-          <Typo.Label>{motiveText.length}/120</Typo.Label>
-        </div>
       </CardContent>
       <CardFooter className="justify-between">
         <Button variant="outline" onClick={() => setStep(0)}>
           이전
         </Button>
-        <Button variant="outline" onClick={() => setStep(2)}>
+        <Button variant="outline" onClick={validText}>
           다음
         </Button>
       </CardFooter>

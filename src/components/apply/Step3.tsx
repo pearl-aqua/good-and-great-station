@@ -1,4 +1,4 @@
-import { CardContent, CardFooter } from "@/components/ui/card";
+import { CardContent, CardFooter, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -6,7 +6,7 @@ import { hahaData } from "@/constants/index";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Preview from "./Preview";
 import answerStore from "@/lib/store/answers";
-import Typo from "../typo/Typo";
+
 interface Props {
   setStep: (step: number) => void;
 }
@@ -16,24 +16,25 @@ export default function ApplyPage({ setStep }: Props) {
   return (
     <>
       <CardContent className="grid w-full gap-3">
-        <Label htmlFor="mess">
-          자신의 장점을 작성해주세요.(기범사랑을 표현해주세요)
-        </Label>
-        <div>
-          <Textarea
-            className="h-[120px]"
-            placeholder="129자 이내로 작성해주세요"
-            value={myText}
-            onChange={(e) => setMyText(e.target.value)}
-          />
-          <div
+        <div className="flex items-center">
+          <Label className="w-96">
+            자신의 장점을 작성해주세요.(기범사랑을 표현해주세요)
+          </Label>
+          <CardDescription
             className={`w-full flex justify-end ${
-              myText.length >= 120 ? "text-red-500" : ""
+              myText.length > 129 ? "text-red-500" : ""
             }`}
           >
-            <Typo.Label>{myText.length}/120</Typo.Label>
-          </div>
+            {myText.length}/129
+          </CardDescription>
         </div>
+
+        <Textarea
+          className="h-[120px]"
+          placeholder="129자 이내로 작성해주세요"
+          value={myText}
+          onChange={(e) => setMyText(e.target.value)}
+        />
       </CardContent>
       <CardContent className="flex flex-col gap-4">
         <Label htmlFor="mess">기범이는 무엇일까요?</Label>

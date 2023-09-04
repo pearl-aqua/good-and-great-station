@@ -10,7 +10,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import googleLogo from "@/image/google-logo.svg";
-import { popupLogin } from "@/firebase/login";
+import { getUserInfo, popupLogin } from "@/firebase/login";
+import { useRouter } from "next/navigation";
+import userStore from "@/lib/store/user";
 
 const descData = [
   "- 이메일 정보는 회원 관리를 위해서만 사용되며 그 외의 용도로 사용되지 않습니다.",
@@ -19,10 +21,24 @@ const descData = [
 ];
 
 export default function LoginPage() {
+  const { setApplyNumber, setUserId } = userStore();
+  const router = useRouter();
+
   const handleClickLogin = async () => {
     const { id, email } = await popupLogin();
-    console.log(id, email);
-    // const userInfoResult = await getUserInfo({ id, email });
+    setUserId(id);
+
+    const userInfoResult = await getUserInfo({ id, email });
+
+    const { applyNumber } = userInfoResult;
+
+    if (applyNumber) {
+      setApplyNumber(applyNumber);
+      router.push("/");
+    } else {
+      router.push("/apply");
+    }
+    console.log(userInfoResult, "us");
   };
   return (
     <Card>
