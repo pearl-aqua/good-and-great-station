@@ -42,8 +42,6 @@ export const getUserInfo = async ({ id, email }) => {
     const userData = {
       id,
       email,
-      questionId: [],
-      optionsId: [],
     };
     await setDoc(doc(store, "g_user", id), userData);
     return userData;

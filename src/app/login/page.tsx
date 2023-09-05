@@ -13,6 +13,8 @@ import googleLogo from "@/image/google-logo.svg";
 import { getUserInfo, popupLogin } from "@/firebase/login";
 import { useRouter } from "next/navigation";
 import userStore from "@/lib/store/user";
+import { getApplyInfo } from "@/firebase/apply";
+import answerStore from "@/lib/store/answers";
 
 const descData = [
   "- 이메일 정보는 회원 관리를 위해서만 사용되며 그 외의 용도로 사용되지 않습니다.",
@@ -22,15 +24,22 @@ const descData = [
 
 export default function LoginPage() {
   const { setApplyNumber, setUserId } = userStore();
+  const { setInfo } = answerStore();
   const router = useRouter();
 
   const handleClickLogin = async () => {
-    const { id, email } = await popupLogin();
-    setUserId(id);
+    const result = await popupLogin();
+    setUserId(result.id);
 
-    const userInfoResult = await getUserInfo({ id, email });
+    const userInfoResult = await getUserInfo({
+      id: result.id,
+      email: result.email,
+    });
 
     const { applyNumber } = userInfoResult;
+    const applyInfoResult = await getApplyInfo({ applyNumber });
+
+    setInfo(applyInfoResult);
 
     if (applyNumber) {
       setApplyNumber(applyNumber);
@@ -43,7 +52,7 @@ export default function LoginPage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Login</CardTitle>
+        {/* <CardTitle>Login</CardTitle> */}
         <CardDescription>
           중복 지원을 방지하기 위해 구글 로그인을 사용하고 있습니다.
         </CardDescription>

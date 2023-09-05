@@ -21,6 +21,7 @@ interface StateType {
   character: string;
   characterLabel: () => string;
   setCharacter: (character: string) => void;
+  setInfo: (state: StateType) => void;
 }
 
 const findLabel = (
@@ -59,6 +60,7 @@ const answerStore = create<StateType>((set, get) => ({
   character: "",
   characterLabel: () => findLabel(get().character, hahaData),
   setCharacter: (character) => set({ character }),
+  setInfo: (state) => set(state),
 }));
 
 export default answerStore;
