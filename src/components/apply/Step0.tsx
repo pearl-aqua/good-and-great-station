@@ -12,17 +12,27 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { yearData } from "@/constants/index";
 import answerStore from "@/lib/store/answers";
-import Typo from "../typo/Typo";
+import AlertModal from "../alert/AlertModal";
+import Router from "next/router";
+import { useRouter } from "next/navigation";
 
 interface Props {
   setStep: (step: number) => void;
 }
 export default function ApplyPage({ setStep }: Props) {
-  const { name, setName, year, setYear } = answerStore();
+  const { name, setName, year, setYear, setInfo } = answerStore();
+  const router = useRouter();
+
   const validName = () => {
     if (name.length > 8) alert("이름은 8자 이내로 작성해주세요.");
     else setStep(1);
   };
+
+  const handleCancel = () => {
+    setInfo({}); // Todo
+    router.push("/");
+  };
+
   return (
     <>
       <CardContent className="flex flex-col max-w-sm gap-1">
@@ -64,9 +74,11 @@ export default function ApplyPage({ setStep }: Props) {
         </Select>
       </CardContent>
       <CardFooter className="justify-between">
-        <Button variant="outline" onClick={() => setStep(0)}>
-          취소
-        </Button>
+        <AlertModal
+          text="취소하겠습니까? 입력하신 내용은 모두 사라집니다."
+          trigger="취소"
+          onConfirm={handleCancel}
+        ></AlertModal>
         <Button variant="outline" onClick={validName}>
           다음
         </Button>

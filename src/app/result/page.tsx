@@ -1,6 +1,7 @@
 import ResultContainer from "@/components/complete/ResultContainer";
+import { getResult } from "@/firebase/apply";
 
-export default function ResultPage() {
-  /* @ts-expect-error Server Component */
-  return <ResultContainer />;
+export default async function ResultPage() {
+  const data = await getResult();
+  return <ResultContainer data={data} />;
 }

@@ -16,7 +16,6 @@ import answerStore from "@/lib/store/answers";
 import userStore from "@/lib/store/user";
 import SelectButton from "../custom/SelectButton";
 import Typo from "../typo/Typo";
-import { mockData } from "@/constants/index";
 import { applyData, getYearResult } from "@/firebase/apply";
 
 const typeLabel = {
@@ -32,9 +31,10 @@ const typeLabel = {
 
 interface Props {
   type: "apply" | "complete";
+  onClickSubmit: any;
 }
 
-export default function Preview({ type }: Props) {
+export default function Preview({ type, onClickSubmit }: Props) {
   const {
     name,
     year,
@@ -79,6 +79,7 @@ export default function Preview({ type }: Props) {
     if (element) {
       domtoimage.toJpeg(element, { quality: 0.95 }).then(function (dataUrl) {
         var el = document.createElement("a");
+        console.log(dataUrl, "data");
         el.href = dataUrl;
         el.download = "my-image-name.jpeg"; //다운로드 할 파일명 설정
         el.click();
@@ -97,12 +98,13 @@ export default function Preview({ type }: Props) {
             {typeLabel[type].trigger}
           </Button>
         </AlertDialogTrigger>
-        <AlertDialogContent className="sm:max-w-[425px] gab-2">
-          <div id="capture_area" className="p-8 bg-white">
+        <AlertDialogContent className="sm:max-w-full lg:max-w-[450px] gab-2">
+          <div
+            id="capture_area"
+            className=" px-2 bg-white sm:max-h-screen overflow-auto "
+          >
             <AlertDialogHeader className="mb-2">
-              <AlertDialogTitle>
-                Little&Freaks 입사 지원서 미리보기
-              </AlertDialogTitle>
+              <AlertDialogTitle>Little&Freaks 입사 지원서</AlertDialogTitle>
             </AlertDialogHeader>
             <div className="flex flex-col gap-4">
               <div className="flex justify-between border-b">
@@ -131,7 +133,7 @@ export default function Preview({ type }: Props) {
               <div className="flex flex-col pb-4 border-b gap-2">
                 <Label className="font-bold text-zinc-400">조아하는 노래</Label>
                 <div className="flex flex-wrap w-full gap-1.5">
-                  {songsLabel.map(({ label, value }) => (
+                  {songsLabel().map(({ label, value }) => (
                     <SelectButton key={value}>{label}</SelectButton>
                   ))}
                 </div>
@@ -143,9 +145,12 @@ export default function Preview({ type }: Props) {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-end gap-2">
-            <AlertDialogCancel>돌아가기</AlertDialogCancel>
-            <AlertDialogAction onClick={handleSubmit}>
+          <div className="flex items-center justify-center gap-2">
+            <AlertDialogCancel className="m-0">돌아가기</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={onClickSubmit}
+              // onClick={type === "apply" ? handleSubmit : handleDownload}
+            >
               {typeLabel[type].action}
             </AlertDialogAction>
           </div>

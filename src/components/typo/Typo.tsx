@@ -1,4 +1,5 @@
 interface TypoProps {
+  color?: string;
   children: React.ReactNode;
 }
 
@@ -14,8 +15,8 @@ function Title({ children }: TypoProps) {
   return <div className="text-2xl font-bold">{children}</div>;
 }
 
-function BodyText({ children }: TypoProps) {
-  return <div className="text-md">{children}</div>;
+function BodyText({ color, children }: TypoProps) {
+  return <div className={`text-md ${color}`}>{children}</div>;
 }
 
 function DecsText({ children }: TypoProps) {

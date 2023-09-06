@@ -9,19 +9,19 @@ interface Props {
   setStep: (step: number) => void;
 }
 export default function ApplyPage({ setStep }: Props) {
-  const { songs, setSongs, songsLabel, setSongsLabel } = answerStore();
+  const { songs, setSongs, songsLabel } = answerStore();
 
   const handleClickSong = (value: string, label: string) => {
     if (songs.includes(value)) {
       const newOptions = songs.filter((el) => el !== value);
-      const newSongsLabel = songsLabel.filter(
+      const newSongsLabel = songsLabel().filter(
         ({ value: songValue }) => songValue !== value
       );
       setSongs(newOptions);
-      setSongsLabel(newSongsLabel);
+      // setSongsLabel(newSongsLabel);
     } else if (songs.length < 5) {
       setSongs([...songs, value]);
-      setSongsLabel([...songsLabel, { value, label }]);
+      // setSongsLabel([...songsLabel, { value, label }]);
     }
   };
 

@@ -1,5 +1,12 @@
 import { create } from "zustand";
-import { hahaData, motiveData, yearData } from "@/constants/index";
+import {
+  album1,
+  album1_1,
+  album2,
+  hahaData,
+  motiveData,
+  yearData,
+} from "@/constants/index";
 
 interface StateType {
   name: string;
@@ -14,8 +21,8 @@ interface StateType {
   setMotiveText: (motiveText: string) => void;
   songs: string[];
   setSongs: (songs: string[]) => void;
-  songsLabel: { label: string; value: string }[];
-  setSongsLabel: (songsLabel: { label: string; value: string }[]) => void;
+  songsLabel: () => { label: string; value: string }[];
+  // setSongsLabel: (songsLabel: { label: string; value: string }[]) => void;
   myText: string;
   setMyText: (myText: string) => void;
   character: string;
@@ -40,6 +47,13 @@ const filterLabel = (
   return findList.map(({ label }) => label).join(", ");
 };
 
+const filterOption = (
+  selectedValue: string[],
+  list: { value: string; label: string }[]
+) => {
+  return list.filter(({ value }) => selectedValue.includes(value));
+};
+
 const answerStore = create<StateType>((set, get) => ({
   name: "",
   setName: (name) => set({ name }),
@@ -53,8 +67,9 @@ const answerStore = create<StateType>((set, get) => ({
   setMotiveText: (motiveText) => set({ motiveText }),
   songs: [],
   setSongs: (songs) => set({ songs }),
-  songsLabel: [],
-  setSongsLabel: (songsLabel) => set({ songsLabel }),
+  // songsLabel: [],
+  songsLabel: () =>
+    filterOption(get().songs, [...album1, ...album1_1, ...album2]),
   myText: "",
   setMyText: (myText) => set({ myText }),
   character: "",

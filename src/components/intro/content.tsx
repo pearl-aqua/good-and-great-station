@@ -6,9 +6,36 @@ import Typo from "@/components/typo/Typo";
 import { introData } from "@/constants";
 import userStore from "@/lib/store/user";
 import Preview from "../apply/Preview";
+import { useEffect } from "react";
+import { getApplyInfo } from "@/firebase/apply";
+import { getUserInfo } from "@/firebase/login";
+import answerStore from "@/lib/store/answers";
 
 export default function IntroContent() {
-  const { userId, applyNumber } = userStore();
+  const { userId, applyNumber, setUserId, setApplyNumber } = userStore();
+  const { setInfo } = answerStore();
+
+  const getUserData = async (id: string) => {
+    const userInfoResult = await getUserInfo({
+      id,
+      email: "",
+    });
+
+    const { applyNumber } = userInfoResult;
+    setApplyNumber(applyNumber);
+    const applyInfoResult = await getApplyInfo({ applyNumber });
+
+    setInfo(applyInfoResult);
+  };
+
+  useEffect(() => {
+    const userId = localStorage.getItem("gas_id");
+    if (userId) {
+      setUserId(userId);
+      getUserData(userId);
+    }
+  }, []);
+
   const router = useRouter();
 
   const handleButtonClick = () => {
@@ -32,26 +59,27 @@ export default function IntroContent() {
           </ul>
         </div>
       ))}
-      {applyNumber ? (
-        <div className="flex gap-2">
+
+      <div className="flex gap-2">
+        {!applyNumber ? (
           <Preview type="complete" />
+        ) : (
           <Button
             variant="outline"
-            className="w-1/2 font-bold"
-            onClick={() => router.push("/result")}
+            className="w-1/2"
+            onClick={handleButtonClick}
           >
-            지원 현황 확인하기
+            입사 지원 하기
           </Button>
-        </div>
-      ) : (
+        )}
         <Button
           variant="outline"
-          className="w-full font-bold"
-          onClick={handleButtonClick}
+          className="w-1/2"
+          onClick={() => router.push("/result")}
         >
-          입사 지원 하기
+          지원 현황 확인하기
         </Button>
-      )}
+      </div>
     </div>
   );
 }

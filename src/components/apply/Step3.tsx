@@ -6,22 +6,69 @@ import { hahaData } from "@/constants/index";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Preview from "./Preview";
 import answerStore from "@/lib/store/answers";
+import { applyData, getYearResult } from "@/firebase/apply";
+import userStore from "@/lib/store/user";
+import { useRouter } from "next/navigation";
+import AlertModal from "../alert/AlertModal";
+import { useRef, useState } from "react";
 
 interface Props {
   setStep: (step: number) => void;
 }
 export default function ApplyPage({ setStep }: Props) {
-  const { myText, setMyText, character, setCharacter } = answerStore();
+  const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
+  const {
+    name,
+    year,
+    setCharacter,
+    motiveText,
+    myText,
+    motiveOption,
+    setMyText,
+    songs,
+    songsLabel,
+    character,
+    characterLabel,
+  } = answerStore();
+  const { setApplyNumber, userId } = userStore();
+  const router = useRouter();
+  const handleSubmit = () => {
+    const applyNumber = Date.now().toString();
+    setApplyNumber(applyNumber);
+    applyData({
+      applyNumber,
+      applyData: {
+        name,
+        year,
+        motiveText,
+        myText,
+        motiveOption,
+        songs,
+        character,
+      },
+      userId,
+    });
+
+    getYearResult();
+
+    router.push("/complete");
+  };
+
+  const confirmText = "제출 하시겠습니까? 제출 이후에는 수정이 불가능합니다.";
+
+  const onClickSubmit = () => {
+    setConfirmOpen(true);
+  };
 
   return (
     <>
       <CardContent className="grid w-full gap-3">
-        <div className="flex items-center">
-          <Label className="w-96">
+        <div className="flex items-center w-full justify-between">
+          <Label className="w-66">
             자신의 장점을 작성해주세요.(기범사랑을 표현해주세요)
           </Label>
           <CardDescription
-            className={`w-full flex justify-end ${
+            className={`flex justify-end ${
               myText.length > 129 ? "text-red-500" : ""
             }`}
           >
@@ -30,7 +77,7 @@ export default function ApplyPage({ setStep }: Props) {
         </div>
 
         <Textarea
-          className="h-[120px]"
+          className="w-full h-[132px]"
           placeholder="129자 이내로 작성해주세요"
           value={myText}
           onChange={(e) => setMyText(e.target.value)}
@@ -51,7 +98,13 @@ export default function ApplyPage({ setStep }: Props) {
         <Button variant="outline" onClick={() => setStep(2)}>
           이전
         </Button>
-        <Preview type="apply" />
+        <AlertModal
+          open={confirmOpen}
+          trigger={null}
+          text={confirmText}
+          onConfirm={handleSubmit}
+        />
+        <Preview type="apply" onClickSubmit={onClickSubmit} />
       </CardFooter>
     </>
   );

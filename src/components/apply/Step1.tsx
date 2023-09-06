@@ -45,10 +45,10 @@ export default function ApplyPage({ setStep }: Props) {
         </div>
       </CardContent>
       <CardContent className="grid w-full gap-2">
-        <div className="flex items-center">
-          <Label className="w-72">지원(입덕) 계기를 서술해주세요.</Label>
+        <div className="flex items-center w-full justify-between">
+          <Label className="w-62">지원(입덕) 계기를 서술해주세요.</Label>
           <CardDescription
-            className={`w-full flex justify-end ${
+            className={`flex justify-end ${
               motiveText.length > 129 ? "text-red-500" : ""
             }`}
           >
@@ -57,7 +57,7 @@ export default function ApplyPage({ setStep }: Props) {
         </div>
 
         <Textarea
-          className="h-[120px]"
+          className="w-full h-[132px]"
           placeholder="129자 이내로 작성해주세요"
           value={motiveText}
           onChange={(e) => setMotiveText(e.target.value)}

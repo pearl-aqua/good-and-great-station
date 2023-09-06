@@ -7,7 +7,6 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import googleLogo from "@/image/google-logo.svg";
 import { getUserInfo, popupLogin } from "@/firebase/login";
@@ -28,26 +27,28 @@ export default function LoginPage() {
   const router = useRouter();
 
   const handleClickLogin = async () => {
-    const result = await popupLogin();
-    setUserId(result.id);
+    try {
+      const result = await popupLogin();
+      setUserId(result.id);
+      const userInfoResult = await getUserInfo({
+        id: result.id,
+        email: result.email,
+      });
 
-    const userInfoResult = await getUserInfo({
-      id: result.id,
-      email: result.email,
-    });
+      const { applyNumber } = userInfoResult;
+      const applyInfoResult = await getApplyInfo({ applyNumber });
 
-    const { applyNumber } = userInfoResult;
-    const applyInfoResult = await getApplyInfo({ applyNumber });
+      setInfo(applyInfoResult);
 
-    setInfo(applyInfoResult);
-
-    if (applyNumber) {
-      setApplyNumber(applyNumber);
-      router.push("/");
-    } else {
-      router.push("/apply");
+      if (applyNumber) {
+        setApplyNumber(applyNumber);
+        router.push("/");
+      } else {
+        router.push("/apply");
+      }
+    } catch (error) {
+      console.log(error);
     }
-    console.log(userInfoResult, "us");
   };
   return (
     <Card>

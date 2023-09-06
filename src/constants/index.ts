@@ -347,8 +347,6 @@ export const hahaData = [
   },
 ];
 
-export const mockData = {};
-
 export const resultData = {
   yearCount: [
     {
@@ -417,3 +415,8 @@ export const resultData = {
     },
   ],
 };
+
+export interface ListType {
+  label: string;
+  value: string;
+}

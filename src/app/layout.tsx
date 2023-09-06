@@ -20,9 +20,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Link href="/">
-          <Image src={topbar} alt="top bar" sizes="100vw" />
-        </Link>
+        <div className="w-screen h-20 lg:h-32 relative">
+          <Link href="/">
+            <Image
+              src={topbar}
+              alt="top bar"
+              fill
+              // sizes="100vw"
+              style={{
+                objectFit: "cover", // cover, contain, none
+              }}
+            />
+          </Link>
+        </div>
+
         <div className="container mx-auto py-10 text-zinc-700">{children}</div>
       </body>
     </html>
