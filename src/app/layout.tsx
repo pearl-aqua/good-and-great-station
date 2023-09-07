@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import topbar from "../image/topbar-lll.jpg";
+import topbar from "../image/topbar-lf.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Little&Freaks",
     description: "Little&Freaks",
-    siteName: "Little&Freaks",
+    siteName: "Little&Freaks 입사 지원 시스템",
     images: [
       {
-        url: "",
-        width: 800,
-        height: 600,
+        url: "../image/lf-144.png",
+        width: 144,
+        height: 144,
       },
     ],
     type: "website",
@@ -26,12 +26,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Little&Freaks",
-    description: "Little&Freaks",
+    description: "Little&Freaks 입사 지원 시스템",
     images: [
       {
-        url: "",
-        width: 800,
-        height: 600,
+        url: "../image/lf-144.png",
+        width: 144,
+        height: 144,
       },
     ],
   },
@@ -51,9 +51,8 @@ export default function RootLayout({
               src={topbar}
               alt="top bar"
               fill
-              // sizes="100vw"
               style={{
-                objectFit: "cover", // cover, contain, none
+                objectFit: "cover",
               }}
             />
           </Link>
