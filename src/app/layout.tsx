@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: "Little&Freaks 입사 지원 시스템",
     images: [
       {
-        url: "../image/lf-144.png",
+        url: "https://little-and-freaks.vercel.app/lf-144.png",
         width: 144,
         height: 144,
       },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Little&Freaks 입사 지원 시스템",
     images: [
       {
-        url: "../image/lf-144.png",
+        url: "https://little-and-freaks.vercel.app/lf-144.png",
         width: 144,
         height: 144,
       },
