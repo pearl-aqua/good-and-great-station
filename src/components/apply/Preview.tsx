@@ -1,6 +1,3 @@
-import { useRouter } from "next/navigation";
-import html2canvas from "html2canvas";
-import domtoimage from "dom-to-image";
 import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
@@ -13,10 +10,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Label } from "@/components/ui/label";
 import answerStore from "@/lib/store/answers";
-import userStore from "@/lib/store/user";
 import SelectButton from "../custom/SelectButton";
 import Typo from "../typo/Typo";
-import { applyData, getYearResult } from "@/firebase/apply";
 
 const typeLabel = {
   apply: {
@@ -37,55 +32,13 @@ interface Props {
 export default function Preview({ type, onClickSubmit }: Props) {
   const {
     name,
-    year,
     yearLabel,
     motiveText,
     myText,
-    motiveOption,
     motiveOptionLabel,
-    songs,
     songsLabel,
-    character,
     characterLabel,
   } = answerStore();
-  const { setApplyNumber, userId } = userStore();
-  const router = useRouter();
-
-  const handleSubmit = () => {
-    const applyNumber = Date.now().toString();
-    setApplyNumber(applyNumber);
-    applyData({
-      applyNumber,
-      applyData: {
-        name,
-        year,
-        motiveText,
-        myText,
-        motiveOption,
-        songs,
-        character,
-      },
-      userId,
-    });
-
-    getYearResult();
-
-    router.push("/complete");
-  };
-
-  const handleDownload = () => {
-    const element = document.getElementById("capture_area");
-    console.log(element, "e");
-    if (element) {
-      domtoimage.toJpeg(element, { quality: 0.95 }).then(function (dataUrl) {
-        var el = document.createElement("a");
-        console.log(dataUrl, "data");
-        el.href = dataUrl;
-        el.download = "my-image-name.jpeg"; //다운로드 할 파일명 설정
-        el.click();
-      });
-    }
-  };
 
   return (
     <>
@@ -147,10 +100,7 @@ export default function Preview({ type, onClickSubmit }: Props) {
           </div>
           <div className="flex items-center justify-center gap-2">
             <AlertDialogCancel className="m-0">돌아가기</AlertDialogCancel>
-            <AlertDialogAction
-              onClick={onClickSubmit}
-              // onClick={type === "apply" ? handleSubmit : handleDownload}
-            >
+            <AlertDialogAction onClick={onClickSubmit}>
               {typeLabel[type].action}
             </AlertDialogAction>
           </div>

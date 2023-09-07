@@ -23,13 +23,13 @@ interface StateType {
   songs: string[];
   setSongs: (songs: string[]) => void;
   songsLabel: () => { label: string; value: string }[];
-  // setSongsLabel: (songsLabel: { label: string; value: string }[]) => void;
   myText: string;
   setMyText: (myText: string) => void;
   character: string;
   characterLabel: () => string;
   setCharacter: (character: string) => void;
   setInfo: (state: StateType) => void;
+  destroy: () => void;
 }
 
 const answerStore = create<StateType>((set, get) => ({
@@ -45,7 +45,6 @@ const answerStore = create<StateType>((set, get) => ({
   setMotiveText: (motiveText) => set({ motiveText }),
   songs: [],
   setSongs: (songs) => set({ songs }),
-  // songsLabel: [],
   songsLabel: () =>
     filterOption(get().songs, [...album1, ...album1_1, ...album2]),
   myText: "",
@@ -54,6 +53,16 @@ const answerStore = create<StateType>((set, get) => ({
   characterLabel: () => findLabel(get().character, hahaData),
   setCharacter: (character) => set({ character }),
   setInfo: (state) => set(state),
+  destroy: () =>
+    set({
+      name: "",
+      year: "",
+      motiveText: "",
+      myText: "",
+      motiveOption: [],
+      songs: [],
+      character: "",
+    }),
 }));
 
 export default answerStore;

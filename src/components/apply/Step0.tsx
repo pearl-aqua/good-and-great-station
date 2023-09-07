@@ -20,7 +20,7 @@ interface Props {
   setStep: (step: number) => void;
 }
 export default function ApplyPage({ setStep }: Props) {
-  const { name, setName, year, setYear, setInfo } = answerStore();
+  const { name, setName, year, setYear, destroy } = answerStore();
   const router = useRouter();
 
   const validName = () => {
@@ -29,7 +29,7 @@ export default function ApplyPage({ setStep }: Props) {
   };
 
   const handleCancel = () => {
-    setInfo({}); // Todo
+    destroy();
     router.push("/");
   };
 

@@ -26,12 +26,11 @@ export default function ApplyPage({ setStep }: Props) {
     motiveOption,
     setMyText,
     songs,
-    songsLabel,
     character,
-    characterLabel,
   } = answerStore();
   const { setApplyNumber, userId } = userStore();
   const router = useRouter();
+
   const handleSubmit = () => {
     if (userId) {
       const applyNumber = Date.now().toString();

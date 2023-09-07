@@ -31,11 +31,11 @@ const getConvertData = (
 
 interface Props {
   data: {
-    yearResult;
-    totalResult;
-    motiveResult;
-    songsResult;
-    hahaResult;
+    yearResult: any;
+    totalResult: any;
+    motiveResult: any;
+    songsResult: any;
+    hahaResult: any;
   };
 }
 
