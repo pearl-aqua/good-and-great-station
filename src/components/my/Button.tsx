@@ -18,7 +18,7 @@ export default function MyButton({
     const sendText = `[공유] Good ＆ Great 발매 기념
 
 Little ＆ Freaks 입사 지원서 공유의 건 
-상기 링크로 확인 부탁드리며 많은 관심 부탁드립니다.->
+아래 링크로 확인 부탁드리며 많은 관심 부탁드립니다.
 `;
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURI(

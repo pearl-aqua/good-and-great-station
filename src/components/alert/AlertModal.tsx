@@ -25,7 +25,7 @@ export default function AlertModal({ trigger, text, onConfirm, open }: Props) {
             <Button variant="outline">{trigger}</Button>
           </AlertDialogTrigger>
         )}
-        <AlertDialogContent className="sm:max-w-[425px] gab-2">
+        <AlertDialogContent className="sm:max-w-[325px] lg:max-w-[425px] gab-2">
           <AlertDialogHeader className="mb-2">
             <AlertDialogDescription>{text}</AlertDialogDescription>
           </AlertDialogHeader>

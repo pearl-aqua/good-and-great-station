@@ -51,7 +51,7 @@ export default function Preview({ type, onClickSubmit }: Props) {
             {typeLabel[type].trigger}
           </Button>
         </AlertDialogTrigger>
-        <AlertDialogContent className="sm:max-w-full lg:max-w-[450px] gab-2">
+        <AlertDialogContent className="sm:w-[360px] lg:w-[450px] gab-2">
           <div
             id="capture_area"
             className=" px-2 bg-white sm:max-h-screen overflow-auto "
