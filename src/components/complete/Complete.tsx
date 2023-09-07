@@ -18,7 +18,7 @@ export default function Complete() {
       <CardFooter className="justify-end">
         <Button
           variant="outline"
-          className="w-1/2"
+          className="w-[160px]"
           onClick={() => router.push(`/my-lilfreaks/${applyNumber}`)}
         >
           나의 지원서 보러가기

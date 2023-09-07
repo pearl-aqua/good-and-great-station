@@ -31,7 +31,7 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
     userId,
   } = applyInfoResult;
 
-  const shareUI = `little-and-freaks.vercel.app/${id}`;
+  const shareUI = `little-and-freaks.vercel.app/my-lilfreaks/${id}`;
 
   return (
     <div
