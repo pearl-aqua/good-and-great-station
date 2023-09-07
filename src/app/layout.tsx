@@ -8,8 +8,33 @@ import topbar from "../image/topbar-lll.jpg";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Goo and Gree",
-  description: "Goo and Gree",
+  title: "Little&Freaks",
+  description: "Little&Freaks",
+  openGraph: {
+    title: "Little&Freaks",
+    description: "Little&Freaks",
+    siteName: "Little&Freaks",
+    images: [
+      {
+        url: "",
+        width: 800,
+        height: 600,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Little&Freaks",
+    description: "Little&Freaks",
+    images: [
+      {
+        url: "",
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

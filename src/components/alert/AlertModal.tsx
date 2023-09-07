@@ -5,16 +5,18 @@ import {
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogHeader,
-  AlertDialogTitle,
   AlertDialogTrigger,
   AlertDialogDescription,
 } from "@/components/ui/alert-dialog";
 
 interface Props {
-  type: "apply" | "complete";
+  trigger?: string;
+  text: string;
+  onConfirm?: () => void;
+  open?: boolean;
 }
 
-export default function AlertModal({ trigger, text, onConfirm, open }) {
+export default function AlertModal({ trigger, text, onConfirm, open }: Props) {
   return (
     <>
       <AlertDialog open={open}>

@@ -5,15 +5,11 @@ import { Button } from "@/components/ui/button";
 import Typo from "@/components/typo/Typo";
 import { introData } from "@/constants";
 import userStore from "@/lib/store/user";
-import Preview from "../apply/Preview";
 import { useEffect } from "react";
-import { getApplyInfo } from "@/firebase/apply";
 import { getUserInfo } from "@/firebase/login";
-import answerStore from "@/lib/store/answers";
 
 export default function IntroContent() {
   const { userId, applyNumber, setUserId, setApplyNumber } = userStore();
-  const { setInfo } = answerStore();
 
   const getUserData = async (id: string) => {
     const userInfoResult = await getUserInfo({
@@ -23,9 +19,6 @@ export default function IntroContent() {
 
     const { applyNumber } = userInfoResult;
     setApplyNumber(applyNumber);
-    const applyInfoResult = await getApplyInfo({ applyNumber });
-
-    setInfo(applyInfoResult);
   };
 
   useEffect(() => {
@@ -61,8 +54,14 @@ export default function IntroContent() {
       ))}
 
       <div className="flex gap-2">
-        {!applyNumber ? (
-          <Preview type="complete" />
+        {applyNumber ? (
+          <Button
+            variant="outline"
+            className="w-1/2"
+            onClick={() => router.push(`/my-lilfreaks/${applyNumber}`)}
+          >
+            나의 지원서 보러가기
+          </Button>
         ) : (
           <Button
             variant="outline"

@@ -29,7 +29,17 @@ const getConvertData = (
   });
 };
 
-export default function ResultContainer({ data }) {
+interface Props {
+  data: {
+    yearResult;
+    totalResult;
+    motiveResult;
+    songsResult;
+    hahaResult;
+  };
+}
+
+export default function ResultContainer({ data }: Props) {
   const router = useRouter();
   const { yearResult, totalResult, motiveResult, songsResult, hahaResult } =
     data;

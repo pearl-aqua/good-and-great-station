@@ -22,17 +22,18 @@ const descData = [
 ];
 
 export default function LoginPage() {
-  const { setApplyNumber, setUserId } = userStore();
+  const { setApplyNumber } = userStore();
   const { setInfo } = answerStore();
   const router = useRouter();
 
   const handleClickLogin = async () => {
     try {
-      const result = await popupLogin();
-      setUserId(result.id);
+      const { id, email }: { id: string; email: string | null } =
+        await popupLogin();
+
       const userInfoResult = await getUserInfo({
-        id: result.id,
-        email: result.email,
+        id,
+        email: email || "",
       });
 
       const { applyNumber } = userInfoResult;

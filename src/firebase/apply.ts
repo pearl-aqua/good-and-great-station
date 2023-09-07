@@ -9,13 +9,30 @@ import {
   arrayUnion,
 } from "firebase/firestore";
 import { store } from "./index";
+
 const yearResultRef = doc(store, "g_apply_result", "year");
 const motiveResultRef = doc(store, "g_apply_result", "motive");
 const songsResultRef = doc(store, "g_apply_result", "songs");
 const hahaResultRef = doc(store, "g_apply_result", "haha");
 const totalResultRef = doc(store, "g_apply_result", "total");
 
-export const applyData = async ({ userId, applyData, applyNumber }) => {
+export interface ApplyDataType {
+  name: string;
+  year: string;
+  motiveOption: string[];
+  songs: string[];
+  character: string;
+  motiveText: string;
+  myText: string;
+}
+
+interface Props {
+  userId: string;
+  applyData: ApplyDataType;
+  applyNumber: string;
+}
+
+export const applyData = async ({ userId, applyData, applyNumber }: Props) => {
   const userRef = doc(store, "g_user", userId);
   const applyRef = doc(store, "g_apply", applyNumber);
 
@@ -33,13 +50,13 @@ export const applyData = async ({ userId, applyData, applyNumber }) => {
   await updateDoc(hahaResultRef, {
     [applyData.character]: increment(1),
   });
-  const updateMotiveData = {};
-  applyData.motiveOption.forEach((el) => {
+  const updateMotiveData = {} as any;
+  applyData.motiveOption.forEach((el: any) => {
     updateMotiveData[el] = increment(1);
   });
   await updateDoc(motiveResultRef, updateMotiveData);
-  const updateSongData = {};
-  applyData.songs.forEach((el) => {
+  const updateSongData = {} as any;
+  applyData.songs.forEach((el: any) => {
     updateSongData[el] = increment(1);
   });
   await updateDoc(songsResultRef, updateSongData);
@@ -104,8 +121,12 @@ export const getResult = async () => {
   };
 };
 
-export const getApplyInfo = async ({ applyNumber }) => {
+export const getApplyInfo = async ({
+  applyNumber,
+}: {
+  applyNumber: string;
+}) => {
   const applyRef = doc(store, "g_apply", applyNumber);
   const applyInfoResult = await getDoc(applyRef);
-  return applyInfoResult.data();
+  return applyInfoResult.data() as any;
 };

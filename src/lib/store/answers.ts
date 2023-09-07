@@ -7,6 +7,7 @@ import {
   motiveData,
   yearData,
 } from "@/constants/index";
+import { findLabel, filterLabel, filterOption } from "../convert";
 
 interface StateType {
   name: string;
@@ -30,29 +31,6 @@ interface StateType {
   setCharacter: (character: string) => void;
   setInfo: (state: StateType) => void;
 }
-
-const findLabel = (
-  selectedValue: string,
-  list: { value: string; label: string }[]
-) => {
-  const findList = list.find(({ value }) => value === selectedValue);
-  return findList?.label || "";
-};
-
-const filterLabel = (
-  selectedValue: string[],
-  list: { value: string; label: string }[]
-) => {
-  const findList = list.filter(({ value }) => selectedValue.includes(value));
-  return findList.map(({ label }) => label).join(", ");
-};
-
-const filterOption = (
-  selectedValue: string[],
-  list: { value: string; label: string }[]
-) => {
-  return list.filter(({ value }) => selectedValue.includes(value));
-};
 
 const answerStore = create<StateType>((set, get) => ({
   name: "",

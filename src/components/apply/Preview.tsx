@@ -31,7 +31,7 @@ const typeLabel = {
 
 interface Props {
   type: "apply" | "complete";
-  onClickSubmit: any;
+  onClickSubmit?: () => void;
 }
 
 export default function Preview({ type, onClickSubmit }: Props) {

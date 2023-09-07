@@ -20,6 +20,7 @@ export const popupLogin = () =>
     })
     .catch((error) => {
       alert(error);
+      return { id: "", email: "" };
     });
 
 export const userLogout = () =>
@@ -32,7 +33,13 @@ export const userLogout = () =>
       alert(error);
     });
 
-export const getUserInfo = async ({ id, email }) => {
+export const getUserInfo = async ({
+  id,
+  email,
+}: {
+  id: string;
+  email: string;
+}) => {
   const userRef = doc(store, "g_user", id);
   const userInfo = await getDoc(userRef);
 
@@ -42,6 +49,7 @@ export const getUserInfo = async ({ id, email }) => {
     const userData = {
       id,
       email,
+      applyNumber: "",
     };
     await setDoc(doc(store, "g_user", id), userData);
     return userData;

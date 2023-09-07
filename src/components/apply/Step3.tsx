@@ -33,21 +33,23 @@ export default function ApplyPage({ setStep }: Props) {
   const { setApplyNumber, userId } = userStore();
   const router = useRouter();
   const handleSubmit = () => {
-    const applyNumber = Date.now().toString();
-    setApplyNumber(applyNumber);
-    applyData({
-      applyNumber,
-      applyData: {
-        name,
-        year,
-        motiveText,
-        myText,
-        motiveOption,
-        songs,
-        character,
-      },
-      userId,
-    });
+    if (userId) {
+      const applyNumber = Date.now().toString();
+      setApplyNumber(applyNumber);
+      applyData({
+        applyNumber,
+        applyData: {
+          name,
+          year,
+          motiveText,
+          myText,
+          motiveOption,
+          songs,
+          character,
+        },
+        userId,
+      });
+    }
 
     getYearResult();
 
@@ -100,7 +102,7 @@ export default function ApplyPage({ setStep }: Props) {
         </Button>
         <AlertModal
           open={confirmOpen}
-          trigger={null}
+          trigger={undefined}
           text={confirmText}
           onConfirm={handleSubmit}
         />
