@@ -3,10 +3,16 @@
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 
-const pageUrl = "gas-station-theta.vercel.app";
-
-export default function MyButton() {
+export default function MyButton({
+  url,
+  userId,
+}: {
+  url: string;
+  userId: string;
+}) {
   const router = useRouter();
+
+  const currentUserId = localStorage.getItem("gas_id");
 
   const clickShareButton = () => {
     const sendText = `[공유] Good ＆ Great 발매 기념
@@ -17,7 +23,7 @@ Little ＆ Freaks 입사 지원서 공유의 건
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURI(
         sendText
-      )}&url=${encodeURI(pageUrl)}`
+      )}&url=${encodeURI(url)}`
     );
   };
 
@@ -28,11 +34,13 @@ Little ＆ Freaks 입사 지원서 공유의 건
         className="m-0"
         onClick={() => router.push("/")}
       >
-        돌아가기
+        {currentUserId === userId ? "돌아가기" : "나도 지원하기"}
       </Button>
-      <Button variant="outline" onClick={clickShareButton}>
-        공유하기
-      </Button>
+      {currentUserId === userId && (
+        <Button variant="outline" onClick={clickShareButton}>
+          공유하기
+        </Button>
+      )}
     </div>
   );
 }

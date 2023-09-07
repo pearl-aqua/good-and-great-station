@@ -38,6 +38,7 @@ export default function ApplyPage({ setStep }: Props) {
       applyData({
         applyNumber,
         applyData: {
+          userId,
           name,
           year,
           motiveText,

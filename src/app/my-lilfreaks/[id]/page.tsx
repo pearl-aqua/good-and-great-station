@@ -20,8 +20,18 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
   } = props;
   const applyInfoResult = await getApplyInfo({ applyNumber: id });
 
-  const { name, year, songs, character, motiveOption, myText, motiveText } =
-    applyInfoResult;
+  const {
+    name,
+    year,
+    songs,
+    character,
+    motiveOption,
+    myText,
+    motiveText,
+    userId,
+  } = applyInfoResult;
+
+  const shareUI = `little-and-freaks.vercel.app/${id}`;
 
   return (
     <div
@@ -79,7 +89,7 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
           </div>
         </CardContent>
       </Card>
-      <MyButton />
+      <MyButton url={shareUI} userId={userId} />
     </div>
   );
 }

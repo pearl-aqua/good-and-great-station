@@ -24,6 +24,7 @@ export interface ApplyDataType {
   character: string;
   motiveText: string;
   myText: string;
+  userId?: string;
 }
 
 interface Props {
