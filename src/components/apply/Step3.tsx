@@ -10,7 +10,7 @@ import { applyData, getYearResult } from "@/firebase/apply";
 import userStore from "@/lib/store/user";
 import { useRouter } from "next/navigation";
 import AlertModal from "../alert/AlertModal";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 interface Props {
   setStep: (step: number) => void;
@@ -64,10 +64,21 @@ export default function ApplyPage({ setStep }: Props) {
 
   return (
     <>
+      <CardContent className="flex flex-col gap-4">
+        <Label htmlFor="mess">기범이는 무엇일까요?</Label>
+        <RadioGroup onValueChange={setCharacter} defaultValue={character}>
+          {hahaData.map(({ label, value }) => (
+            <div key={value} className="flex gap-1.5 leading-none">
+              <RadioGroupItem id={value} value={value} />
+              <Label htmlFor={value}>{label}</Label>
+            </div>
+          ))}
+        </RadioGroup>
+      </CardContent>
       <CardContent className="grid w-full gap-3">
         <div className="flex items-center w-full justify-between">
-          <Label className="w-66">
-            자신의 장점을 작성해주세요.(기범사랑을 표현해주세요)
+          <Label className="w-60">
+            자신의 장점을 작성해주세요.(기범사랑을 표현해주세요) (선택사항)
           </Label>
           <CardDescription
             className={`flex justify-end ${
@@ -85,17 +96,7 @@ export default function ApplyPage({ setStep }: Props) {
           onChange={(e) => setMyText(e.target.value)}
         />
       </CardContent>
-      <CardContent className="flex flex-col gap-4">
-        <Label htmlFor="mess">기범이는 무엇일까요?</Label>
-        <RadioGroup onValueChange={setCharacter} defaultValue={character}>
-          {hahaData.map(({ label, value }) => (
-            <div key={value} className="flex gap-1.5 leading-none">
-              <RadioGroupItem id={value} value={value} />
-              <Label htmlFor={value}>{label}</Label>
-            </div>
-          ))}
-        </RadioGroup>
-      </CardContent>
+
       <CardFooter className="justify-between">
         <Button variant="outline" onClick={() => setStep(2)}>
           이전

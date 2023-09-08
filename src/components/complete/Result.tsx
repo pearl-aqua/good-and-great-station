@@ -48,7 +48,7 @@ export default function Result({ data }: Props) {
         {!showMore ? (
           <Button
             className="p-0 "
-            variant="ghost"
+            variant="link"
             onClick={() => setShowMore(true)}
           >
             더보기
@@ -56,7 +56,7 @@ export default function Result({ data }: Props) {
         ) : (
           <Button
             className="p-0 "
-            variant="ghost"
+            variant="link"
             onClick={() => setShowMore(false)}
           >
             덜보기

@@ -10,6 +10,7 @@ import {
   ListType,
 } from "@/constants/index";
 import { useRouter } from "next/navigation";
+import useAuth from "@/hooks/useAuth";
 
 const findLabel = (selectedValue: string, list: ListType[]) => {
   const findList = list.find(({ value }) => value === selectedValue);
@@ -40,6 +41,7 @@ interface Props {
 }
 
 export default function ResultContainer({ data }: Props) {
+  useAuth();
   const router = useRouter();
   const { yearResult, totalResult, motiveResult, songsResult, hahaResult } =
     data;
@@ -75,7 +77,7 @@ export default function ResultContainer({ data }: Props) {
       <Result data={{ title: "입덕 계기", list: convertMotiveData }} />
       <Result data={{ title: "좋아하는 노래", list: convertSongsData }} />
       <Result data={{ title: "기범이는", list: convertHahaData }} />
-      <Button variant="ghost" onClick={() => router.push("/")}>
+      <Button variant="link" onClick={() => router.push("/")}>
         지원 공고 돌아가기
       </Button>
     </div>

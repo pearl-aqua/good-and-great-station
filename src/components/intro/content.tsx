@@ -5,30 +5,12 @@ import { Button } from "@/components/ui/button";
 import Typo from "@/components/typo/Typo";
 import { introData } from "@/constants";
 import userStore from "@/lib/store/user";
-import { useEffect } from "react";
-import { getUserInfo } from "@/firebase/login";
+import useAuth from "@/hooks/useAuth";
 
 export default function IntroContent() {
-  const { userId, applyNumber, setUserId, setApplyNumber } = userStore();
+  const { userId, applyNumber } = userStore();
 
-  const getUserData = async (id: string) => {
-    const userInfoResult = await getUserInfo({
-      id,
-      email: "",
-    });
-
-    const { applyNumber } = userInfoResult;
-    setApplyNumber(applyNumber);
-  };
-
-  useEffect(() => {
-    const userId = localStorage.getItem("gas_id");
-    if (userId) {
-      setUserId(userId);
-      getUserData(userId);
-    }
-  }, []);
-
+  useAuth();
   const router = useRouter();
 
   const handleButtonClick = () => {

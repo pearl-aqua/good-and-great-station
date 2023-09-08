@@ -51,7 +51,7 @@ export default function Preview({ type, onClickSubmit }: Props) {
             {typeLabel[type].trigger}
           </Button>
         </AlertDialogTrigger>
-        <AlertDialogContent className="sm:w-[360px] lg:w-[450px] gab-2">
+        <AlertDialogContent className="w-[360px] gab-2">
           <div
             id="capture_area"
             className=" px-2 bg-white sm:max-h-screen overflow-auto "
@@ -80,7 +80,7 @@ export default function Preview({ type, onClickSubmit }: Props) {
               <div className="flex flex-col pb-4 border-b gap-2">
                 <Label className="font-bold text-zinc-400">입덕 계기</Label>
                 <Typo.BodyText>{motiveOptionLabel()}</Typo.BodyText>
-                <Typo.DecsText>{motiveText}</Typo.DecsText>
+                {motiveText && <Typo.DecsText>{motiveText}</Typo.DecsText>}
               </div>
 
               <div className="flex flex-col pb-4 border-b gap-2">
@@ -92,10 +92,12 @@ export default function Preview({ type, onClickSubmit }: Props) {
                 </div>
               </div>
 
-              <div className="flex flex-col pb-4 border-b gap-2">
-                <Label className="font-bold text-zinc-400">나의 장점</Label>
-                <Typo.DecsText>{myText}</Typo.DecsText>
-              </div>
+              {myText && (
+                <div className="flex flex-col pb-4 border-b gap-2">
+                  <Label className="font-bold text-zinc-400">나의 장점</Label>
+                  <Typo.DecsText>{myText}</Typo.DecsText>
+                </div>
+              )}
             </div>
           </div>
           <div className="flex items-center justify-center gap-2">

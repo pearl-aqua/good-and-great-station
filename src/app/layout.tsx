@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import topbar from "../image/topbar-lf.jpg";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="w-screen h-20 lg:h-32 relative">
+        <div className="w-full h-20 lg:h-32 relative">
           <Link href="/">
             <Image
               src={topbar}
@@ -58,7 +59,10 @@ export default function RootLayout({
           </Link>
         </div>
 
-        <div className="container mx-auto py-10 text-zinc-700">{children}</div>
+        <div className="container mx-auto pt-10 pb-14 text-zinc-600">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
