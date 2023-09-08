@@ -41,12 +41,18 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
       id="capture_area"
       className="sm:max-w-full lg:max-w-[450px] lg:px-2 bg-white sm:max-h-screen overflow-auto "
     >
-      <Card className="p-2">
+      <Card className="px-2">
         <CardHeader className="flex flex-row justify-between items-center mb-2">
           <CardTitle className="text-zinc-500">
             Little&Freaks 입사 지원서
           </CardTitle>
-          <Image src={logo} alt="logo" width={60} height={60} />
+          <Image
+            src={logo}
+            alt="logo"
+            width={60}
+            height={60}
+            placeholder="blur"
+          />
         </CardHeader>
         <CardContent className="sm:max-w-full lg:max-w-[450px] gab-2">
           <div className="flex flex-col gap-4">

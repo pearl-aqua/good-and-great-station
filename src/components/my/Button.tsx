@@ -42,7 +42,7 @@ Little ＆ Freaks 입사 지원서를 작성하였으니 확인 부탁드립니�
     <>
       {localId === userId && (
         <Popover>
-          <PopoverTrigger className="w-full my-4">
+          <PopoverTrigger className="w-full mt-4">
             <div className="flex justify-center items-center w-full border border-zinc-200 p-2 rounded-xl">
               합격 여부 확인
             </div>
@@ -66,7 +66,7 @@ Little ＆ Freaks 입사 지원서를 작성하였으니 확인 부탁드립니�
           </PopoverContent>
         </Popover>
       )}
-      <div className="flex items-center justify-center gap-2 mb-6">
+      <div className="flex items-center justify-center gap-2 mt-4 mb-6">
         <Button
           variant="link"
           className="m-0 text-zinc-400"
