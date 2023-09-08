@@ -22,14 +22,12 @@ export default function MyButton({
   const { localId } = useAuth();
 
   const clickShareButton = () => {
-    const sendText = `[공유] Good ＆ Great 발매 기념
-Little ＆ Freaks 입사 지원서 공유의 건 
+    const sendText = `[공유] Good ＆ Great 발매 기념 입사 지원서 공유의 건 
 
-KEY의 미니앨범 Good ＆ Great 발매를 기념하여
-Little ＆ Freaks 입사 지원서를 작성하였으니 확인 부탁드립니다.
+KEY의 미니앨범 Good ＆ Great 발매를 기념하여 Little ＆ Freaks 입사 지원서를 작성하였으니 확인 부탁드립니다.
 
 아래 링크로 확인 가능하며 Good ＆ Great에 많은 관심과 사랑 부탁드립니다.
-
+#KEY #키 #Good_and_Great
 `;
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURI(
