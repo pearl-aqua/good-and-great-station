@@ -66,7 +66,7 @@ export default function ResultContainer({ data }: Props) {
     songsResult,
     totalResult?.songs
   );
-
+  console.log(totalResult, "to");
   return (
     <div className="flex flex-col items-center w-full gap-4">
       <div className="mb-4">

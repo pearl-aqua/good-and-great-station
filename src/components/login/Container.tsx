@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import userStore from "@/lib/store/user";
 import { getApplyInfo } from "@/firebase/apply";
 import answerStore from "@/lib/store/answers";
+import { useState } from "react";
 
 const descData = [
   "- 이메일 정보는 회원 관리를 위해서만 사용되며 그 외의 용도로 사용되지 않습니다.",
@@ -22,31 +23,19 @@ const descData = [
 ];
 
 export default function LoginContainer() {
+  const [loading, isLoading] = useState<boolean>(false);
   const { setApplyNumber } = userStore();
   const { setInfo } = answerStore();
   const router = useRouter();
 
   const handleClickLogin = async () => {
     try {
-      const { id, email }: { id: string; email: string | null } =
-        await popupLogin();
+      isLoading(true);
 
-      const userInfoResult = await getUserInfo({
-        id,
-        email: email || "",
-      });
+      await popupLogin();
 
-      const { applyNumber } = userInfoResult;
-      const applyInfoResult = await getApplyInfo({ applyNumber });
-
-      setInfo(applyInfoResult);
-
-      if (applyNumber) {
-        setApplyNumber(applyNumber);
-        router.push("/");
-      } else {
-        router.push("/apply");
-      }
+      router.push("/");
+      isLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -68,14 +57,25 @@ export default function LoginContainer() {
           ))}
         </div>
       </CardContent>
+
       <CardFooter>
-        <button
-          className="flex items-center justify-center w-full py-3 rounded-2xl text-stone-700 hover:shadow border border-slate-200"
-          onClick={handleClickLogin}
-        >
-          <Image className="w-6 h-6 mr-3" src={googleLogo} alt="Google Logo" />
-          구글로 로그인하기
-        </button>
+        {loading ? (
+          <>로그인 중</>
+        ) : (
+          <>
+            <button
+              className="flex items-center justify-center w-full py-3 rounded-2xl text-stone-700 hover:shadow border border-slate-200"
+              onClick={handleClickLogin}
+            >
+              <Image
+                className="w-6 h-6 mr-3"
+                src={googleLogo}
+                alt="Google Logo"
+              />
+              구글로 로그인하기
+            </button>
+          </>
+        )}
       </CardFooter>
     </Card>
   );

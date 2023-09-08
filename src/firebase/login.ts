@@ -15,6 +15,7 @@ export const popupLogin = () =>
     .then((result) => {
       const user = result.user;
       window.localStorage.setItem("gas_id", user.uid);
+      window.localStorage.setItem("gas_email", user.email || "");
 
       return { id: user.uid, email: user.email };
     })
