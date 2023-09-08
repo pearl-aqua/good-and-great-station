@@ -47,17 +47,13 @@ KEY의 미니앨범 Good ＆ Great 발매를 기념하여 Little ＆ Freaks 입�
 
           <PopoverContent className="text-center text-zinc-500 pt-5">
             <div className="text-zinc-600">
-              <Typo.H1>합격이세요~!!</Typo.H1>
+              <Typo.H1>합격이세요~~!</Typo.H1>
             </div>
 
             <div className="flex flex-col gap-4 my-3">
               <Typo.DecsText>
-                {`나혼산에서 기범이가 양식조리사
-        필기 합격하고 말했던 톤으로 읽어주세요`}
-              </Typo.DecsText>
-              <Typo.DecsText>
-                {`(저작권 문제가 있을 것 같아 사진이나
-          영사은 가져오지 않았습니다만 다들 아시죠)`}
+                {`나혼산에서 기범이가 양식조리사 필기 
+                합격하고 말했던 톤으로 읽어주시면 됩니다`}
               </Typo.DecsText>
             </div>
           </PopoverContent>
