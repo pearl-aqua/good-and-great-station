@@ -67,7 +67,7 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
                 <Typo.TitleLabel>{findLabel(year, yearData)}</Typo.TitleLabel>
               </div>
 
-              <div className="w-1/4">
+              <div className="w-[68px]">
                 <Label className="font-bold text-zinc-400">기범이는</Label>
                 <Typo.TitleLabel>
                   {findLabel(character, hahaData)}
