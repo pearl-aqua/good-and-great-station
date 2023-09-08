@@ -87,9 +87,24 @@ export default function ResultContainer() {
       <Result data={{ title: "입덕 계기", list: convertMotiveData }} />
       <Result data={{ title: "좋아하는 노래", list: convertSongsData }} />
       <Result data={{ title: "기범이는", list: convertHahaData }} />
-      <Button variant="link" onClick={() => router.push("/")}>
-        지원 공고 돌아가기
-      </Button>
+      <div>
+        <Button
+          className="text-zinc-400"
+          variant="link"
+          onClick={() => router.push("/")}
+        >
+          지원 공고 돌아가기
+        </Button>
+        <Button
+          className="text-zinc-400"
+          variant="link"
+          onClick={() =>
+            window.open("https://gas-station-theta.vercel.app", "_blank")
+          }
+        >
+          2022 결과 보러가기
+        </Button>
+      </div>
     </div>
   );
 }
