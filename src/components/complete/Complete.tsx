@@ -32,11 +32,13 @@ export default function Complete() {
         <CardTitle className="mb-1">지원이 완료되었습니다!</CardTitle>
         <div className="my-2">
           <CardDescription className="mb-1">
-            합격자 발표는 따로 없으며 9/11 KEY의 미니앨범 Good & Great 즐겁게
-            즐겨주세요!
+            합격 여부는 지원서 보기에서 확인 가능합니다.
           </CardDescription>
           <CardDescription>
             지원 내용은 아래에서 확인 가능합니다.
+          </CardDescription>
+          <CardDescription className="mb-1">
+            9/11 KEY의 미니앨범 Good & Great 즐겁게 즐겨주세요!
           </CardDescription>
         </div>
       </CardHeader>

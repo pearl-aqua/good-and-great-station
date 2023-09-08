@@ -71,7 +71,7 @@ export default function ResultContainer({ data }: Props) {
     <div className="flex flex-col items-center w-full gap-4">
       <div className="mb-4">
         <Typo.H2>지원 현황</Typo.H2>
-        <Typo.BodyText color="text-zinc-500">{`총 ${totalResult.year}명 지원`}</Typo.BodyText>
+        <Typo.BodyText color="text-zinc-500">{`총 ${totalResult.total}명 지원`}</Typo.BodyText>
       </div>
       <Result data={{ title: "입덕 시기", list: convertYearData }} />
       <Result data={{ title: "입덕 계기", list: convertMotiveData }} />

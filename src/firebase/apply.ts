@@ -44,6 +44,7 @@ export const applyData = async ({ userId, applyData, applyNumber }: Props) => {
     haha: increment(1),
     songs: increment(applyData.songs.length),
     motive: increment(applyData.motiveOption.length),
+    total: increment(1),
   });
   await updateDoc(yearResultRef, {
     [applyData.year]: increment(1),

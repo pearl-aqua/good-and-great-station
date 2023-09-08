@@ -12,6 +12,8 @@ import { Label } from "@/components/ui/label";
 import answerStore from "@/lib/store/answers";
 import SelectButton from "../custom/SelectButton";
 import Typo from "../typo/Typo";
+import Image from "next/image";
+import logo from "@/image/logo-lf.png";
 
 const typeLabel = {
   apply: {
@@ -56,9 +58,13 @@ export default function Preview({ type, onClickSubmit }: Props) {
             id="capture_area"
             className=" px-2 bg-white sm:max-h-screen overflow-auto "
           >
-            <AlertDialogHeader className="mb-2">
-              <AlertDialogTitle>Little&Freaks 입사 지원서</AlertDialogTitle>
+            <AlertDialogHeader className="flex flex-row justify-between items-center mb-2">
+              <AlertDialogTitle className="text-zinc-500">
+                Little&Freaks 입사 지원서
+              </AlertDialogTitle>
+              <Image src={logo} alt="logo" width={60} height={60} />
             </AlertDialogHeader>
+
             <div className="flex flex-col gap-4">
               <div className="flex justify-between border-b">
                 <div className="w-1/2">

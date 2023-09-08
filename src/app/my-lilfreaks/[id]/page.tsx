@@ -9,10 +9,13 @@ import {
   motiveData,
   yearData,
 } from "@/constants/index";
+
 import { getApplyInfo } from "@/firebase/apply";
 import { filterLabel, filterOption, findLabel } from "@/lib/convert";
 import { Label } from "@/components/ui/label";
 import MyButton from "@/components/my/Button";
+import logo from "@/image/logo-lf.png";
+import Image from "next/image";
 
 export default async function MyApplyPage(props: { params: { id: string } }) {
   const {
@@ -39,8 +42,11 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
       className="sm:max-w-full lg:max-w-[450px] lg:px-2 bg-white sm:max-h-screen overflow-auto "
     >
       <Card className="p-2">
-        <CardHeader className="mb-2">
-          <CardTitle>Little&Freaks 입사 지원서</CardTitle>
+        <CardHeader className="flex flex-row justify-between items-center mb-2">
+          <CardTitle className="text-zinc-500">
+            Little&Freaks 입사 지원서
+          </CardTitle>
+          <Image src={logo} alt="logo" width={60} height={60} />
         </CardHeader>
         <CardContent className="sm:max-w-full lg:max-w-[450px] gab-2">
           <div className="flex flex-col gap-4">
@@ -68,7 +74,7 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
               <Typo.BodyText>
                 {filterLabel(motiveOption, motiveData)}
               </Typo.BodyText>
-              <Typo.DecsText>{motiveText}</Typo.DecsText>
+              {motiveText && <Typo.DecsText>{motiveText}</Typo.DecsText>}
             </div>
 
             <div className="flex flex-col pb-4 border-b gap-2">
@@ -82,10 +88,14 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
               </div>
             </div>
 
-            <div className="flex flex-col pb-4 border-b gap-2">
-              <Label className="font-bold text-zinc-400">나의 기범 사랑</Label>
-              <Typo.DecsText>{myText}</Typo.DecsText>
-            </div>
+            {myText && (
+              <div className="flex flex-col pb-4 border-b gap-2">
+                <Label className="font-bold text-zinc-400">
+                  나의 기범 사랑
+                </Label>
+                <Typo.DecsText>{myText}</Typo.DecsText>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
