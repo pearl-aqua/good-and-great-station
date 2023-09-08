@@ -83,7 +83,7 @@ KEY의 미니앨범 Good ＆ Great 발매를 기념하여 Little ＆ Freaks 입�
             <Button
               variant="link"
               className="text-zinc-400"
-              onClick={userLogout}
+              onClick={() => alert("준비 중입니다")}
             >
               로그아웃
             </Button>

@@ -11,6 +11,8 @@ import {
 } from "@/constants/index";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
+import { useEffect, useState } from "react";
+import { getResult } from "@/firebase/apply";
 
 const findLabel = (selectedValue: string, list: ListType[]) => {
   const findList = list.find(({ value }) => value === selectedValue);
@@ -31,17 +33,23 @@ const getConvertData = (
 };
 
 interface Props {
-  data: {
-    yearResult: any;
-    totalResult: any;
-    motiveResult: any;
-    songsResult: any;
-    hahaResult: any;
-  };
+  yearResult: any;
+  totalResult: any;
+  motiveResult: any;
+  songsResult: any;
+  hahaResult: any;
 }
 
-export default function ResultContainer({ data }: Props) {
+export default function ResultContainer() {
+  const [data, setData] = useState<any>({});
   useAuth();
+  const getData = async () => {
+    const result = await getResult();
+    setData(result);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   const router = useRouter();
   const { yearResult, totalResult, motiveResult, songsResult, hahaResult } =
     data;
@@ -71,7 +79,9 @@ export default function ResultContainer({ data }: Props) {
     <div className="flex flex-col items-center w-full gap-4">
       <div className="mb-4">
         <Typo.H2>지원 현황</Typo.H2>
-        <Typo.BodyText color="text-zinc-500">{`총 ${totalResult.total}명 지원`}</Typo.BodyText>
+        <Typo.BodyText color="text-zinc-500">{`총 ${
+          totalResult?.total || ""
+        }명 지원`}</Typo.BodyText>
       </div>
       <Result data={{ title: "입덕 시기", list: convertYearData }} />
       <Result data={{ title: "입덕 계기", list: convertMotiveData }} />
