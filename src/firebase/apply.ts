@@ -33,6 +33,17 @@ interface Props {
   applyNumber: string;
 }
 
+const sortArr = (data: any) => {
+  const keysArr = Object.keys(data);
+  keysArr.sort((a, b) => data[b] - data[a]);
+
+  const dataArr = keysArr.map((el) => ({
+    label: el,
+    value: data[el],
+  }));
+  return dataArr;
+};
+
 export const applyData = async ({ userId, applyData, applyNumber }: Props) => {
   const userRef = doc(store, "g_user", userId);
   const applyRef = doc(store, "g_apply", applyNumber);
@@ -69,8 +80,7 @@ export const getYearResult = async () => {
   const yearData = yearResult.data();
 
   if (yearData) {
-    const yearArr = Object.entries(yearData);
-    yearArr.sort((a, b) => b[1] - a[1]);
+    const yearArr = sortArr(yearData);
     return yearArr;
   }
 };
@@ -80,8 +90,7 @@ export const getMotiveResult = async () => {
   const motiveData = motiveResult.data();
 
   if (motiveData) {
-    const motiveArr = Object.entries(motiveData);
-    motiveArr.sort((a, b) => b[1] - a[1]);
+    const motiveArr = sortArr(motiveData);
     return motiveArr;
   }
 };
@@ -91,8 +100,7 @@ export const getSongsResult = async () => {
   const songsData = songsResult.data();
 
   if (songsData) {
-    const songsArr = Object.entries(songsData);
-    songsArr.sort((a, b) => b[1] - a[1]);
+    const songsArr = sortArr(songsData);
     return songsArr;
   }
 };
@@ -102,9 +110,8 @@ export const getHahaResult = async () => {
   const hahaData = hahaResult.data();
 
   if (hahaData) {
-    const hahaArr = Object.entries(hahaData);
-    hahaArr.sort((a, b) => b[1] - a[1]);
-    return hahaArr;
+    const sortHaha = sortArr(hahaData);
+    return sortHaha;
   }
 };
 

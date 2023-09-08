@@ -21,13 +21,13 @@ const findLabel = (selectedValue: string, list: ListType[]) => {
 
 const getConvertData = (
   list: ListType[],
-  result: [string, any][] | undefined,
+  result: { label: string; value: number }[] | undefined,
   totalResult: number
 ) => {
   return result?.map((el) => {
     return {
-      label: findLabel(el[0], list),
-      value: `${((+el[1] / +totalResult) * 100).toFixed(1)}%`,
+      label: findLabel(el.label, list),
+      value: `${((+el.value / +totalResult) * 100).toFixed(1)}%`,
     };
   });
 };
