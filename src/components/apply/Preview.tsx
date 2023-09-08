@@ -100,7 +100,9 @@ export default function Preview({ type, onClickSubmit }: Props) {
 
               {myText && (
                 <div className="flex flex-col pb-4 border-b gap-2">
-                  <Label className="font-bold text-zinc-400">나의 장점</Label>
+                  <Label className="font-bold text-zinc-400">
+                    나의 기범 사랑
+                  </Label>
                   <Typo.DecsText>{myText}</Typo.DecsText>
                 </div>
               )}
