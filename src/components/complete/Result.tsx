@@ -47,7 +47,7 @@ export default function Result({ data }: Props) {
       <CardFooter className="flex w-full justify-end">
         {!showMore ? (
           <Button
-            className="p-0 "
+            className="p-0 text-zinc-500"
             variant="link"
             onClick={() => setShowMore(true)}
           >
@@ -55,7 +55,7 @@ export default function Result({ data }: Props) {
           </Button>
         ) : (
           <Button
-            className="p-0 "
+            className="p-0 text-zinc-500"
             variant="link"
             onClick={() => setShowMore(false)}
           >

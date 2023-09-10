@@ -74,10 +74,10 @@ export default function ResultContainer() {
     songsResult,
     totalResult?.songs
   );
-  console.log(totalResult, "to");
+
   return (
     <div className="flex flex-col items-center w-full gap-4">
-      <div className="mb-4">
+      <div className="mb-4 flex flex-col items-center">
         <Typo.H2>지원 현황</Typo.H2>
         <Typo.BodyText color="text-zinc-500">{`총 ${
           totalResult?.total || ""
