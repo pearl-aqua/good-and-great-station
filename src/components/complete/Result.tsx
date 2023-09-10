@@ -12,6 +12,7 @@ import Typo from "../typo/Typo";
 import ResultRow from "../custom/ResultRow";
 import { useState } from "react";
 import { ListType } from "@/constants/index";
+import BeatLoader from "react-spinners/BeatLoader";
 
 interface Props {
   data: {
@@ -31,19 +32,24 @@ export default function Result({ data }: Props) {
       <CardHeader>
         <CardDescription>{title}</CardDescription>
       </CardHeader>
-      <CardContent className="flex justify-between items-end">
-        {list && (
-          <>
+      {list ? (
+        <>
+          <CardContent className="flex justify-between items-end">
             <Typo.Title>{list[0].label}</Typo.Title>
             <Typo.BodyText color="text-zinc-400">{list[0].value}</Typo.BodyText>
-          </>
-        )}
-      </CardContent>
-      <CardContent>
-        {sliceList?.map(({ label, value }) => (
-          <ResultRow key={label} label={label} value={value} />
-        ))}
-      </CardContent>
+          </CardContent>
+          <CardContent>
+            {sliceList?.map(({ label, value }) => (
+              <ResultRow key={label} label={label} value={value} />
+            ))}
+          </CardContent>
+        </>
+      ) : (
+        <div className="w-full h-[184px] flex justify-center items-center">
+          <BeatLoader size={12} color="#a1a1aa" />
+        </div>
+      )}
+
       <CardFooter className="flex w-full justify-end">
         {!showMore ? (
           <Button
