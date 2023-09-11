@@ -16,6 +16,10 @@ const songsResultRef = doc(store, "g_apply_result", "songs");
 const hahaResultRef = doc(store, "g_apply_result", "haha");
 const totalResultRef = doc(store, "g_apply_result", "total");
 
+const ageResultRef = doc(store, "g_apply_result", "age");
+const newSongsResultRef = doc(store, "g_apply_result", "newSongs");
+const mbtiResultRef = doc(store, "g_apply_result", "mbti");
+
 export interface ApplyDataType {
   name: string;
   year: string;
@@ -25,6 +29,12 @@ export interface ApplyDataType {
   motiveText: string;
   myText: string;
   userId?: string;
+}
+
+export interface EmployeeDataType {
+  age?: string;
+  newSongs: string[];
+  mbti?: string[];
 }
 
 interface Props {
@@ -138,4 +148,43 @@ export const getApplyInfo = async ({
   const applyRef = doc(store, "g_apply", applyNumber);
   const applyInfoResult = await getDoc(applyRef);
   return applyInfoResult.data() as any;
+};
+
+export const updateEmployeeData = async ({
+  employeeData,
+  applyNumber,
+}: {
+  employeeData: EmployeeDataType;
+  applyNumber: string;
+}) => {
+  const applyRef = doc(store, "g_apply", applyNumber);
+
+  await setDoc(applyRef, applyData);
+
+  await updateDoc(totalResultRef, {
+    age: increment(1),
+    newSongs: increment(employeeData.newSongs.length),
+    mbti: increment(1),
+    newTotal: increment(1),
+  });
+
+  if (employeeData.age) {
+    await updateDoc(ageResultRef, {
+      [employeeData.age]: increment(1),
+    });
+  }
+
+  const updateNewSongsData = {} as any;
+  employeeData.newSongs.forEach((el: any) => {
+    updateNewSongsData[el] = increment(1);
+  });
+  await updateDoc(newSongsResultRef, updateNewSongsData);
+
+  if (employeeData.mbti) {
+    const updateMbtiData = {} as any;
+    employeeData.mbti.forEach((el: any) => {
+      updateMbtiData[el] = increment(1);
+    });
+    await updateDoc(mbtiResultRef, updateMbtiData);
+  }
 };

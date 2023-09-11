@@ -1,4 +1,4 @@
-import EmployeeContainer from "@/components/employee/Continer";
+import EmployeeContainer from "@/components/employee/CreateContainer";
 import {
   Card,
   CardDescription,
@@ -19,7 +19,7 @@ export default async function EmployeePage(props: { params: { id: string } }) {
         <CardTitle>Little&Freaks 직원 카드</CardTitle>
         <CardDescription>아래 내용을 작성해주세요.</CardDescription>
       </CardHeader>
-      <EmployeeContainer applyInfoResult={applyInfoResult} />
+      <EmployeeContainer applyInfoResult={applyInfoResult} applyNumber={id} />
     </Card>
   );
 }

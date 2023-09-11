@@ -335,76 +335,109 @@ export const hahaData = [
   },
 ];
 
-export const resultData = {
-  yearCount: [
-    {
-      count: 1,
-      value: "15",
-    },
-    {
-      count: 2,
-      value: "14",
-    },
-    {
-      count: 3,
-      value: "13",
-    },
-    {
-      count: 4,
-      value: "12",
-    },
-    {
-      count: 5,
-      value: "11",
-    },
-    {
-      count: 6,
-      value: "10",
-    },
-    {
-      count: 7,
-      value: "09",
-    },
-    {
-      count: 8,
-      value: "08",
-    },
-    {
-      count: 7,
-      value: "07",
-    },
-    {
-      count: 6,
-      value: "06",
-    },
-    {
-      count: 5,
-      value: "05",
-    },
-    {
-      count: 4,
-      value: "04",
-    },
-    {
-      count: 3,
-      value: "03",
-    },
-    {
-      count: 2,
-      value: "02",
-    },
-    {
-      count: 1,
-      value: "01",
-    },
-    {
-      count: 0,
-      value: "00",
-    },
-  ],
-};
-
 export interface ListType {
   label: string;
   value: string;
 }
+
+export const ageData = [
+  {
+    label: "10대 이하",
+    value: "1000",
+  },
+  {
+    label: "10대",
+    value: "1001",
+  },
+  {
+    label: "20대",
+    value: "1002",
+  },
+  {
+    label: "30대",
+    value: "1003",
+  },
+  {
+    label: "40대",
+    value: "1004",
+  },
+  {
+    label: "50대",
+    value: "1005",
+  },
+  {
+    label: "60대 이상",
+    value: "1006",
+  },
+];
+
+export const album2_1 = [
+  {
+    label: "BAD LOVE",
+    value: "301",
+  },
+  {
+    label: "Yellow Tape",
+    value: "302",
+  },
+  {
+    label: "Hate that…",
+    value: "303",
+  },
+  {
+    label: "Helium",
+    value: "304",
+  },
+  {
+    label: "Saturday Night",
+    value: "305",
+  },
+  {
+    label: "Eighteen",
+    value: "306",
+  },
+];
+
+export const mbti_e = [
+  {
+    label: "E",
+    value: "2001",
+  },
+  {
+    label: "I",
+    value: "2002",
+  },
+];
+
+export const mbti_n = [
+  {
+    label: "N",
+    value: "2003",
+  },
+  {
+    label: "S",
+    value: "2004",
+  },
+];
+
+export const mbti_t = [
+  {
+    label: "T",
+    value: "2005",
+  },
+  {
+    label: "F",
+    value: "2006",
+  },
+];
+
+export const mbti_j = [
+  {
+    label: "J",
+    value: "2007",
+  },
+  {
+    label: "P",
+    value: "2008",
+  },
+];
