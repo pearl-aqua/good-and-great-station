@@ -30,9 +30,9 @@ export default function EmployeeCreateContainer({
   applyNumber,
 }: any) {
   const confirmText = "제출 하시겠습니까? 제출 이후에는 수정이 불가능합니다.";
-  const { userId } = userStore();
-
-  const { name } = applyInfoResult;
+  // const { userId } = userStore();
+  const userId = "Pqqu9oQabQdLRHzdT0bWkJOWsII3";
+  // const { name } = applyInfoResult;
 
   const {
     age,
@@ -59,6 +59,7 @@ export default function EmployeeCreateContainer({
   };
 
   const handleSubmit = () => {
+    console.log(userId, "uee");
     if (userId) {
       updateEmployeeData({
         applyNumber,
@@ -76,7 +77,7 @@ export default function EmployeeCreateContainer({
         <div className="flex w-full justify-between border-b">
           <div className="w-1/2">
             <Label className="font-bold text-zinc-400">이름</Label>
-            <Typo.TitleLabel>{name}</Typo.TitleLabel>
+            <Typo.TitleLabel>d</Typo.TitleLabel>
           </div>
 
           {/* <div className="w-1/4">
@@ -129,7 +130,7 @@ export default function EmployeeCreateContainer({
             defaultValue={eOption || undefined}
           >
             <SelectTrigger className="w-[100px] text-zinc-600">
-              <SelectValue placeholder="E" />
+              <SelectValue placeholder="E/I 선택" />
             </SelectTrigger>
             <SelectContent>
               {mbti_e.map(({ label, value }) => (
@@ -144,7 +145,7 @@ export default function EmployeeCreateContainer({
             defaultValue={nOption || undefined}
           >
             <SelectTrigger className="w-[100px] text-zinc-600">
-              <SelectValue placeholder="N" />
+              <SelectValue placeholder="N/S 선택" />
             </SelectTrigger>
             <SelectContent>
               {mbti_n.map(({ label, value }) => (
@@ -159,7 +160,7 @@ export default function EmployeeCreateContainer({
             defaultValue={tOption || undefined}
           >
             <SelectTrigger className="w-[100px] text-zinc-600">
-              <SelectValue placeholder="T" />
+              <SelectValue placeholder="T/P 선택" />
             </SelectTrigger>
             <SelectContent>
               {mbti_t.map(({ label, value }) => (
@@ -174,7 +175,7 @@ export default function EmployeeCreateContainer({
             defaultValue={jOption || undefined}
           >
             <SelectTrigger className="w-[100px] text-zinc-600">
-              <SelectValue placeholder="J" />
+              <SelectValue placeholder="J/F 선택" />
             </SelectTrigger>
             <SelectContent>
               {mbti_j.map(({ label, value }) => (

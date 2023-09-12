@@ -373,27 +373,27 @@ export const ageData = [
 
 export const album2_1 = [
   {
-    label: "BAD LOVE",
+    label: "Good & Great",
     value: "301",
   },
   {
-    label: "Yellow Tape",
+    label: "Can't Say Goodbye",
     value: "302",
   },
   {
-    label: "Hate that…",
+    label: "Intoxicating",
     value: "303",
   },
   {
-    label: "Helium",
+    label: "Live Without You",
     value: "304",
   },
   {
-    label: "Saturday Night",
+    label: "CoolAs",
     value: "305",
   },
   {
-    label: "Eighteen",
+    label: "Mirror, Mirror",
     value: "306",
   },
 ];

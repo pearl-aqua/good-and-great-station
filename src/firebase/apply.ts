@@ -157,9 +157,10 @@ export const updateEmployeeData = async ({
   employeeData: EmployeeDataType;
   applyNumber: string;
 }) => {
+  const applyInfo = await getApplyInfo({ applyNumber });
   const applyRef = doc(store, "g_apply", applyNumber);
 
-  await setDoc(applyRef, applyData);
+  await setDoc(applyRef, { ...applyInfo, ...employeeData });
 
   await updateDoc(totalResultRef, {
     age: increment(1),
