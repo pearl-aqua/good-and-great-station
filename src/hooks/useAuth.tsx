@@ -5,7 +5,8 @@ import userStore from "@/lib/store/user";
 import { useEffect } from "react";
 
 export default function useAuth() {
-  const { userId, setUserId, setApplyNumber } = userStore();
+  const { userId, setUserId, setApplyNumber, setCardSubmit, setName } =
+    userStore();
   const localId =
     typeof window !== "undefined" && window.localStorage.getItem("gas_id");
   const localEmail =
@@ -19,8 +20,9 @@ export default function useAuth() {
       email: email || "",
     });
 
-    const { applyNumber } = userInfoResult;
+    const { applyNumber, cardSubmit } = userInfoResult;
     setApplyNumber(applyNumber);
+    setCardSubmit(cardSubmit);
   };
 
   useEffect(() => {

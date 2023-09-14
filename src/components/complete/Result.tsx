@@ -19,9 +19,10 @@ interface Props {
     list?: ListType[];
     title: string;
   };
+  total?: number;
 }
 
-export default function Result({ data }: Props) {
+export default function Result({ data, total }: Props) {
   const [showMore, setShowMore] = useState<boolean>(false);
   const { title, list } = data;
 
@@ -29,8 +30,11 @@ export default function Result({ data }: Props) {
 
   return (
     <Card className="w-[320px]">
-      <CardHeader>
+      <CardHeader className="flex flex-row w-full items-center justify-between">
         <CardDescription>{title}</CardDescription>
+        {total && (
+          <div className="text-xs text-zinc-400">{`(총 ${total}명)`}</div>
+        )}
       </CardHeader>
       {list ? (
         <>

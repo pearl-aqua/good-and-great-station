@@ -125,6 +125,35 @@ export const getHahaResult = async () => {
   }
 };
 
+export const getAgeResult = async () => {
+  const ageResult = await getDoc(ageResultRef);
+  const ageData = ageResult.data();
+
+  if (ageData) {
+    const sortAge = sortArr(ageData);
+    return sortAge;
+  }
+};
+
+export const getNewSongsResult = async () => {
+  const newSongsResult = await getDoc(newSongsResultRef);
+  const newSongsData = newSongsResult.data();
+
+  if (newSongsData) {
+    const newSongsArr = sortArr(newSongsData);
+    return newSongsArr;
+  }
+};
+
+export const getMbtiResult = async () => {
+  const mbtiResult = await getDoc(mbtiResultRef);
+  const mbtiData = mbtiResult.data();
+
+  if (mbtiData) {
+    return mbtiData;
+  }
+};
+
 export const getResult = async () => {
   const totalResult = await getDoc(totalResultRef);
   const yearResult = await getYearResult();
@@ -140,6 +169,20 @@ export const getResult = async () => {
   };
 };
 
+export const getResultTwo = async () => {
+  const totalResult = await getDoc(totalResultRef);
+  const ageResult = await getAgeResult();
+  const newSongsResult = await getNewSongsResult();
+  const mbtiResult = await getMbtiResult();
+
+  return {
+    totalResult: totalResult.data(),
+    ageResult,
+    newSongsResult,
+    mbtiResult,
+  };
+};
+
 export const getApplyInfo = async ({
   applyNumber,
 }: {
@@ -151,12 +194,18 @@ export const getApplyInfo = async ({
 };
 
 export const updateEmployeeData = async ({
+  userId,
   employeeData,
   applyNumber,
 }: {
+  userId: string;
   employeeData: EmployeeDataType;
   applyNumber: string;
 }) => {
+  const userRef = doc(store, "g_user", userId);
+
+  await updateDoc(userRef, { cardSubmit: true });
+
   const applyInfo = await getApplyInfo({ applyNumber });
   const applyRef = doc(store, "g_apply", applyNumber);
 

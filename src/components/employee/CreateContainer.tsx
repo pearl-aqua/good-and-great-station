@@ -11,7 +11,14 @@ import {
 import { findLabel } from "@/lib/convert";
 import { Label } from "@/components/ui/label";
 import Typo from "../typo/Typo";
-import { CardContent, CardFooter } from "../ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 import SelectButton from "../custom/SelectButton";
 import {
   Select,
@@ -23,16 +30,29 @@ import {
 import employeeStore from "@/lib/store/employee";
 import AlertModal from "../alert/AlertModal";
 import userStore from "@/lib/store/user";
-import { updateEmployeeData } from "@/firebase/apply";
+import { getApplyInfo, updateEmployeeData } from "@/firebase/apply";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function EmployeeCreateContainer({
-  applyInfoResult,
-  applyNumber,
-}: any) {
+export default function EmployeeCreateContainer({ setIsSubmit }: any) {
+  const [userName, setUserName] = useState<string>("");
+
   const confirmText = "제출 하시겠습니까? 제출 이후에는 수정이 불가능합니다.";
-  // const { userId } = userStore();
-  const userId = "Pqqu9oQabQdLRHzdT0bWkJOWsII3";
-  // const { name } = applyInfoResult;
+  const { userId, applyNumber } = userStore();
+
+  const getData = async () => {
+    if (applyNumber) {
+      const { name } = await getApplyInfo({ applyNumber });
+      console.log(name);
+      setUserName(name);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, [applyNumber]);
+
+  const router = useRouter();
 
   const {
     age,
@@ -60,8 +80,9 @@ export default function EmployeeCreateContainer({
 
   const handleSubmit = () => {
     console.log(userId, "uee");
-    if (userId) {
+    if (userId && applyNumber) {
       updateEmployeeData({
+        userId,
         applyNumber,
         employeeData: {
           age,
@@ -69,21 +90,21 @@ export default function EmployeeCreateContainer({
           mbti: [eOption, nOption, tOption, jOption],
         },
       });
+      setIsSubmit(true);
     }
   };
   return (
-    <>
+    <Card>
+      <CardHeader>
+        <CardTitle>Little&Freaks 직원 카드</CardTitle>
+        <CardDescription>아래 내용을 작성해주세요.</CardDescription>
+      </CardHeader>
       <CardContent className="flex flex-col gap-1">
         <div className="flex w-full justify-between border-b">
           <div className="w-1/2">
             <Label className="font-bold text-zinc-400">이름</Label>
-            <Typo.TitleLabel>d</Typo.TitleLabel>
+            <Typo.TitleLabel>{userName || "-"}</Typo.TitleLabel>
           </div>
-
-          {/* <div className="w-1/4">
-            <Label className="font-bold text-zinc-400">입덕 시기</Label>
-            <Typo.TitleLabel>{findLabel(year, yearData)}</Typo.TitleLabel>
-          </div> */}
         </div>
       </CardContent>
       <CardContent className="flex flex-col gap-2">
@@ -194,6 +215,6 @@ export default function EmployeeCreateContainer({
           onConfirm={handleSubmit}
         />
       </CardFooter>
-    </>
+    </Card>
   );
 }

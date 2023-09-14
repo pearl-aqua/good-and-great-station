@@ -93,7 +93,7 @@ export default function ResultContainer() {
           variant="link"
           onClick={() => router.push("/")}
         >
-          지원 공고 돌아가기
+          홈으로
         </Button>
         <Button
           className="text-zinc-400"

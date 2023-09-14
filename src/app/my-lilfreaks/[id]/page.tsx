@@ -1,6 +1,9 @@
+import Image from "next/image";
 import { getApplyInfo } from "@/firebase/apply";
-import MyButton from "@/components/my/Button";
 import ApplyCard from "@/components/apply/ApplyCard";
+import MyButtonTwo from "@/components/my/ButtonTwo";
+import EmployeeCard from "@/components/employee/EmployeeCard";
+import logo from "@/image/logo-lf.png";
 
 export default async function MyApplyPage(props: { params: { id: string } }) {
   const {
@@ -15,10 +18,21 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
   return (
     <div
       id="capture_area"
-      className="sm:max-w-full lg:max-w-[450px] lg:px-2 bg-white sm:max-h-screen overflow-auto "
+      className="flex flex-col sm:max-w-full lg:max-w-[450px] lg:px-2 bg-white sm:max-h-screen overflow-auto gap-3"
     >
+      <div className="flex flex-row justify-between items-center mb-2">
+        <div className="font-bold text-zinc-500">Little&Freaks 사원 정보</div>
+        <Image
+          src={logo}
+          alt="logo"
+          width={60}
+          height={60}
+          placeholder="blur"
+        />
+      </div>
       <ApplyCard applyInfoResult={applyInfoResult} />
-      <MyButton url={shareUI} userId={userId} />
+      {/* <EmployeeCard applyInfoResult={applyInfoResult} /> */}
+      <MyButtonTwo url={shareUI} userId={userId} />
     </div>
   );
 }

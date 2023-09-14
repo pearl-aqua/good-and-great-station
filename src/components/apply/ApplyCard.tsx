@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import Typo from "@/components/typo/Typo";
@@ -12,7 +11,6 @@ import {
   motiveData,
   yearData,
 } from "@/constants/index";
-import logo from "@/image/logo-lf.png";
 
 export default function ApplyCard({ applyInfoResult }: any) {
   const { name, year, songs, character, motiveOption, myText, motiveText } =
@@ -20,17 +18,8 @@ export default function ApplyCard({ applyInfoResult }: any) {
 
   return (
     <Card className="px-2">
-      <CardHeader className="flex flex-row justify-between items-center mb-2">
-        <CardTitle className="text-zinc-500">
-          Little&Freaks 입사 지원서
-        </CardTitle>
-        <Image
-          src={logo}
-          alt="logo"
-          width={60}
-          height={60}
-          placeholder="blur"
-        />
+      <CardHeader className="flex flex-row justify-between items-center">
+        <CardTitle className="text-zinc-500">입사 지원서</CardTitle>
       </CardHeader>
       <CardContent className="sm:max-w-full lg:max-w-[450px] gab-2">
         <div className="flex flex-col gap-4">
@@ -61,8 +50,10 @@ export default function ApplyCard({ applyInfoResult }: any) {
             {motiveText && <Typo.DecsText>{motiveText}</Typo.DecsText>}
           </div>
 
-          <div className="flex flex-col pb-4 border-b gap-2">
-            <Label className="font-bold text-zinc-400">조아하는 노래</Label>
+          <div className="flex flex-col pb-4 border-b gap-3">
+            <Label className="font-bold text-zinc-400">
+              Good & Great 이전 앨범 중 좋아하는 노래
+            </Label>
             <div className="flex flex-wrap w-full gap-1.5">
               {filterOption(songs, [...album1, ...album1_1, ...album2]).map(
                 ({ label, value }) => (

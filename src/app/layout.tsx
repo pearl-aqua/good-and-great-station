@@ -59,7 +59,7 @@ export default function RootLayout({
           </Link>
         </div>
 
-        <div className="container mx-auto pt-10 pb-14 text-zinc-600 sm:w-[360px] lg:w-full">
+        <div className="container mx-auto pt-10 pb-14 text-zinc-600 w-full">
           {children}
         </div>
         <Footer />
