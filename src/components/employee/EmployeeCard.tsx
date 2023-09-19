@@ -36,18 +36,24 @@ export default function EmployeeCard({ applyInfoResult }: any) {
           </div>
         </div>
 
-        <div className="flex justify-between border-b mt-3">
-          <div className="w-1/2">
-            <Label className="font-bold text-zinc-400">나이</Label>
-            <Typo.TitleLabel>{findLabel(age, ageData)}</Typo.TitleLabel>
+        {(age || mbti.length > 0) && (
+          <div className="flex justify-between border-b mt-3">
+            {age && (
+              <div className="w-1/2">
+                <Label className="font-bold text-zinc-400">나이</Label>
+                <Typo.TitleLabel>{findLabel(age, ageData)}</Typo.TitleLabel>
+              </div>
+            )}
+            {mbti.length > 0 && (
+              <div className="w-[68px]">
+                <Label className="font-bold text-zinc-400">MBTI</Label>
+                <Typo.TitleLabel>
+                  {filterOption(mbti, mbtiData).map(({ label }) => label)}
+                </Typo.TitleLabel>
+              </div>
+            )}
           </div>
-          <div className="w-[68px]">
-            <Label className="font-bold text-zinc-400">MBTI</Label>
-            <Typo.TitleLabel>
-              {filterOption(mbti, mbtiData).map(({ label }) => label)}
-            </Typo.TitleLabel>
-          </div>
-        </div>
+        )}
       </CardContent>
     </Card>
   );

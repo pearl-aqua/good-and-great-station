@@ -17,15 +17,17 @@ interface Props {
     title: string;
     best: string;
   };
+  total: number;
 }
 
-export default function ResultMbti({ data }: Props) {
+export default function ResultMbti({ data, total }: Props) {
   const { title, best, list } = data;
 
   return (
     <Card className="w-[320px]">
-      <CardHeader>
+      <CardHeader className="flex flex-row w-full items-center justify-between">
         <CardDescription>{title}</CardDescription>
+        <div className="text-xs text-zinc-400">{`(총 ${total || 0}표)`}</div>
       </CardHeader>
       {list ? (
         <>

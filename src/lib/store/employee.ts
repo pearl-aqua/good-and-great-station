@@ -14,6 +14,12 @@ interface StateType {
   jOption: string;
   setJOption: (jOption: string) => void;
   destroy: () => void;
+  title: string;
+  setTitle: (title: string) => void;
+  english: string;
+  setEnglish: (english: string) => void;
+  albumPackage: string;
+  setAlbumPackage: (albumPackage: string) => void;
 }
 
 const employeeStore = create<StateType>((set, get) => ({
@@ -29,6 +35,12 @@ const employeeStore = create<StateType>((set, get) => ({
   setTOption: (tOption) => set({ tOption }),
   jOption: "",
   setJOption: (jOption) => set({ jOption }),
+  title: "",
+  setTitle: (title) => set({ title }),
+  english: "",
+  setEnglish: (english) => set({ english }),
+  albumPackage: "",
+  setAlbumPackage: (albumPackage) => set({ albumPackage }),
   destroy: () =>
     set({
       age: "",
@@ -37,6 +49,9 @@ const employeeStore = create<StateType>((set, get) => ({
       nOption: "",
       tOption: "",
       jOption: "",
+      title: "",
+      english: "",
+      albumPackage: "",
     }),
 }));
 

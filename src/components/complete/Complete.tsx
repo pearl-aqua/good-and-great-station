@@ -32,17 +32,21 @@ export default function Complete() {
         <CardTitle className="mb-1">지원이 완료되었습니다!</CardTitle>
         <div className="my-2">
           <CardDescription className="mb-1">
-            합격 여부는 지원서 보기에서 확인 가능합니다.
+            이제 입사 카드 작성하실 수 있습니다.
           </CardDescription>
           <CardDescription>
             지원 내용은 아래에서 확인 가능합니다.
           </CardDescription>
-          <CardDescription className="mb-1">
-            9/11 KEY의 미니앨범 Good & Great 즐겁게 즐겨주세요!
-          </CardDescription>
         </div>
       </CardHeader>
       <CardFooter className="justify-end">
+        <Button
+          variant="outline"
+          className="w-[160px]"
+          onClick={() => router.push(`/`)}
+        >
+          입사 카드 작성하기
+        </Button>
         <Button variant="outline" className="w-[160px]" onClick={onClick}>
           나의 지원서 보러가기
         </Button>

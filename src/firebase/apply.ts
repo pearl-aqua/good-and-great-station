@@ -19,6 +19,9 @@ const totalResultRef = doc(store, "g_apply_result", "total");
 const ageResultRef = doc(store, "g_apply_result", "age");
 const newSongsResultRef = doc(store, "g_apply_result", "newSongs");
 const mbtiResultRef = doc(store, "g_apply_result", "mbti");
+const titleResultRef = doc(store, "g_apply_result", "title");
+const englishResultRef = doc(store, "g_apply_result", "english");
+const albumPackageResultRef = doc(store, "g_apply_result", "albumPackage");
 
 export interface ApplyDataType {
   name: string;
@@ -35,6 +38,9 @@ export interface EmployeeDataType {
   age?: string;
   newSongs: string[];
   mbti?: string[];
+  title?: string;
+  english?: string;
+  albumPackage?: string;
 }
 
 interface Props {
@@ -135,6 +141,36 @@ export const getAgeResult = async () => {
   }
 };
 
+export const getTitleResult = async () => {
+  const ageResult = await getDoc(titleResultRef);
+  const ageData = ageResult.data();
+
+  if (ageData) {
+    const sortAge = sortArr(ageData);
+    return sortAge;
+  }
+};
+
+export const getEnglishResult = async () => {
+  const ageResult = await getDoc(englishResultRef);
+  const ageData = ageResult.data();
+
+  if (ageData) {
+    const sortAge = sortArr(ageData);
+    return sortAge;
+  }
+};
+
+export const getAlbumPackageResult = async () => {
+  const ageResult = await getDoc(albumPackageResultRef);
+  const ageData = ageResult.data();
+
+  if (ageData) {
+    const sortAge = sortArr(ageData);
+    return sortAge;
+  }
+};
+
 export const getNewSongsResult = async () => {
   const newSongsResult = await getDoc(newSongsResultRef);
   const newSongsData = newSongsResult.data();
@@ -174,12 +210,18 @@ export const getResultTwo = async () => {
   const ageResult = await getAgeResult();
   const newSongsResult = await getNewSongsResult();
   const mbtiResult = await getMbtiResult();
+  const titleResult = await getTitleResult();
+  const englishResult = await getEnglishResult();
+  const albumPackageResult = await getAlbumPackageResult();
 
   return {
     totalResult: totalResult.data(),
     ageResult,
     newSongsResult,
     mbtiResult,
+    titleResult,
+    englishResult,
+    albumPackageResult,
   };
 };
 
@@ -197,30 +239,79 @@ export const updateEmployeeData = async ({
   userId,
   employeeData,
   applyNumber,
+  noApply,
 }: {
   userId: string;
   employeeData: EmployeeDataType;
   applyNumber: string;
+  noApply?: boolean;
 }) => {
   const userRef = doc(store, "g_user", userId);
 
-  await updateDoc(userRef, { cardSubmit: true });
+  const userUpdate: any = {
+    cardSubmit: true,
+  };
+
+  if (noApply) {
+    userUpdate.applyNumber = applyNumber;
+    userUpdate.noApply = true;
+  }
+
+  await updateDoc(userRef, userUpdate);
 
   const applyInfo = await getApplyInfo({ applyNumber });
   const applyRef = doc(store, "g_apply", applyNumber);
 
-  await setDoc(applyRef, { ...applyInfo, ...employeeData });
+  await setDoc(applyRef, { ...applyInfo, ...employeeData, cardSubmit: true });
 
-  await updateDoc(totalResultRef, {
-    age: increment(1),
-    newSongs: increment(employeeData.newSongs.length),
-    mbti: increment(1),
+  const updateResult: any = {
     newTotal: increment(1),
-  });
+    newSongs: increment(employeeData.newSongs.length),
+  };
+
+  if (employeeData.age) {
+    updateResult.age = increment(1);
+  }
+
+  if (employeeData.title) {
+    updateResult.title = increment(1);
+  }
+
+  if (employeeData.english) {
+    updateResult.english = increment(1);
+  }
+
+  if (employeeData.albumPackage) {
+    updateResult.albumPackage = increment(1);
+  }
+
+  if ((employeeData.mbti || []).length > 0) {
+    updateResult.mbti = increment(1);
+  }
+
+  await updateDoc(totalResultRef, updateResult);
 
   if (employeeData.age) {
     await updateDoc(ageResultRef, {
       [employeeData.age]: increment(1),
+    });
+  }
+
+  if (employeeData.title) {
+    await updateDoc(titleResultRef, {
+      [employeeData.title]: increment(1),
+    });
+  }
+
+  if (employeeData.english) {
+    await updateDoc(englishResultRef, {
+      [employeeData.english]: increment(1),
+    });
+  }
+
+  if (employeeData.albumPackage) {
+    await updateDoc(albumPackageResultRef, {
+      [employeeData.albumPackage]: increment(1),
     });
   }
 
@@ -230,9 +321,10 @@ export const updateEmployeeData = async ({
   });
   await updateDoc(newSongsResultRef, updateNewSongsData);
 
-  if (employeeData.mbti) {
+  if ((employeeData.mbti || []).length > 0) {
     const updateMbtiData = {} as any;
-    employeeData.mbti.forEach((el: any) => {
+    console.log(updateMbtiData, "updateMbti...Data");
+    employeeData.mbti?.forEach((el: any) => {
       updateMbtiData[el] = increment(1);
     });
     await updateDoc(mbtiResultRef, updateMbtiData);

@@ -18,7 +18,7 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
   return (
     <div
       id="capture_area"
-      className="flex flex-col sm:max-w-full lg:max-w-[450px] lg:px-2 bg-white sm:max-h-screen overflow-auto gap-3"
+      className="flex flex-col sm:max-w-full lg:max-w-[450px] lg:px-2 bg-white gap-3"
     >
       <div className="flex flex-row justify-between items-center mb-2">
         <div className="font-bold text-zinc-500">Little&Freaks 사원 정보</div>

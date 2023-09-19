@@ -20,10 +20,11 @@ interface Props {
     title: string;
   };
   total?: number;
+  show?: boolean;
 }
 
-export default function Result({ data, total }: Props) {
-  const [showMore, setShowMore] = useState<boolean>(false);
+export default function Result({ data, total, show = false }: Props) {
+  const [showMore, setShowMore] = useState<boolean>(show);
   const { title, list } = data;
 
   const sliceList = !showMore ? list?.slice(1, 4) : list?.slice(1, list.length);
@@ -33,7 +34,7 @@ export default function Result({ data, total }: Props) {
       <CardHeader className="flex flex-row w-full items-center justify-between">
         <CardDescription>{title}</CardDescription>
         {total && (
-          <div className="text-xs text-zinc-400">{`(총 ${total}명)`}</div>
+          <div className="text-xs text-zinc-400">{`(총 ${total || 0}표)`}</div>
         )}
       </CardHeader>
       {list ? (
@@ -54,25 +55,27 @@ export default function Result({ data, total }: Props) {
         </div>
       )}
 
-      <CardFooter className="flex w-full justify-end">
-        {!showMore ? (
-          <Button
-            className="p-0 text-zinc-500"
-            variant="link"
-            onClick={() => setShowMore(true)}
-          >
-            더보기
-          </Button>
-        ) : (
-          <Button
-            className="p-0 text-zinc-500"
-            variant="link"
-            onClick={() => setShowMore(false)}
-          >
-            덜보기
-          </Button>
-        )}
-      </CardFooter>
+      {!show && (
+        <CardFooter className="flex w-full justify-end">
+          {!showMore ? (
+            <Button
+              className="p-0 text-zinc-500"
+              variant="link"
+              onClick={() => setShowMore(true)}
+            >
+              더보기
+            </Button>
+          ) : (
+            <Button
+              className="p-0 text-zinc-500"
+              variant="link"
+              onClick={() => setShowMore(false)}
+            >
+              덜보기
+            </Button>
+          )}
+        </CardFooter>
+      )}
     </Card>
   );
 }

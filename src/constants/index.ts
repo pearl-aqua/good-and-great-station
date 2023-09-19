@@ -441,3 +441,68 @@ export const mbti_j = [
     value: "2008",
   },
 ];
+
+export const titleData = [
+  {
+    label: "센 척 안 해",
+    value: "401",
+  },
+  {
+    label: "I Wanna Be",
+    value: "402",
+  },
+  {
+    label: "BAD LOVE",
+    value: "403",
+  },
+  {
+    label: "가솔린",
+    value: "404",
+  },
+  {
+    label: "Killer",
+    value: "405",
+  },
+  {
+    label: "Good & Great",
+    value: "406",
+  },
+];
+
+export const englishData = [
+  {
+    label: "Image",
+    value: "501",
+  },
+  {
+    label: "Helium",
+    value: "502",
+  },
+  {
+    label: "Another Life",
+    value: "503",
+  },
+  {
+    label: "CoolAs",
+    value: "504",
+  },
+];
+
+export const album_package = [
+  {
+    label: "BAD LOVE",
+    value: "601",
+  },
+  {
+    label: "GASOLINE",
+    value: "602",
+  },
+  {
+    label: "KILLER",
+    value: "603",
+  },
+  {
+    label: "GOOD & GREAT",
+    value: "604",
+  },
+];

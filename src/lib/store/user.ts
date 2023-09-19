@@ -9,6 +9,8 @@ interface StateType {
   setApplyNumber: (applyNumber: string) => void;
   cardSubmit: boolean;
   setCardSubmit: (cardSubmit: boolean) => void;
+  noApply: boolean;
+  setNoApply: (noApply: boolean) => void;
 }
 
 const userStore = create<StateType>((set, get) => ({
@@ -20,6 +22,8 @@ const userStore = create<StateType>((set, get) => ({
   setApplyNumber: (applyNumber) => set({ applyNumber }),
   cardSubmit: false,
   setCardSubmit: (cardSubmit) => set({ cardSubmit }),
+  noApply: false,
+  setNoApply: (noApply) => set({ noApply }),
 }));
 
 export default userStore;

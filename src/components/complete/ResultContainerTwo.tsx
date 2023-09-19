@@ -2,7 +2,14 @@
 import Result from "./Result";
 import Typo from "../typo/Typo";
 import { Button } from "../ui/button";
-import { album2_1, ListType, ageData } from "@/constants/index";
+import {
+  album2_1,
+  ListType,
+  ageData,
+  album_package,
+  titleData,
+  englishData,
+} from "@/constants/index";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
 import { useEffect, useState } from "react";
@@ -29,7 +36,7 @@ const getConvertData = (
 };
 
 const percent = (value: number, total: number) => {
-  return `${((value / total) * 100).toFixed(1)}%`;
+  return ((value / total) * 100).toFixed(1);
 };
 
 const convertMbti = (result: any, total: number) => {
@@ -104,16 +111,43 @@ export default function ResultContainerTwo() {
     const result = await getResultTwo();
     setData(result);
   };
+
+  const { userId, applyNumber, cardSubmit } = userStore();
+
   useEffect(() => {
     getData();
-  }, []);
-
-  const { applyNumber } = userStore();
+  }, [cardSubmit, applyNumber]);
 
   const router = useRouter();
-  const { ageResult, newSongsResult, mbtiResult, totalResult } = data;
+  const {
+    ageResult,
+    newSongsResult,
+    mbtiResult,
+    titleResult,
+    englishResult,
+    albumPackageResult,
+    totalResult,
+  } = data;
 
   const convertAgeData = getConvertData(ageData, ageResult, totalResult?.age);
+  const convertTitleData = getConvertData(
+    titleData,
+    titleResult,
+    totalResult?.title
+  );
+
+  const convertEnglishData = getConvertData(
+    englishData,
+    englishResult,
+    totalResult?.english
+  );
+
+  const convertAlbumPackageData = getConvertData(
+    album_package,
+    albumPackageResult,
+    totalResult?.albumPackage
+  );
+
   const convertNewSongsData = getConvertData(
     album2_1,
     newSongsResult,
@@ -124,15 +158,54 @@ export default function ResultContainerTwo() {
 
   return (
     <div className="flex flex-col items-center w-full gap-4">
-      <div className="mb-4 flex flex-col items-center">
-        <Typo.H2>직원 현황</Typo.H2>
+      <div className="mb-3 flex flex-col items-center">
+        <Typo.H2>Little&Freaks 직원 현황</Typo.H2>
+        {!userId && (
+          <div className="flex flex-col justify-center mt-4">
+            <div className="text-xs text-zinc-400">
+              투표를 위해서는 로그인이 필요합니다
+            </div>
+            <Button
+              className="text-zinc-400"
+              variant="link"
+              onClick={() => router.push("/login")}
+            >
+              로그인 하기
+            </Button>
+          </div>
+        )}
+        {userId && !applyNumber && (
+          <Button
+            className="text-zinc-400"
+            variant="link"
+            onClick={() => router.push("/employee-card")}
+          >
+            투표 하기
+          </Button>
+        )}
       </div>
       <Result
         data={{
           title: "Good & Great에서 좋아하는 노래",
           list: convertNewSongsData,
         }}
-        total={totalResult?.age}
+        total={totalResult?.newSongs}
+        show={true}
+      />
+      <Result
+        data={{ title: "나이", list: convertTitleData }}
+        total={totalResult?.title}
+        show={true}
+      />
+      <Result
+        data={{ title: "나이", list: convertEnglishData }}
+        total={totalResult?.english}
+        show={true}
+      />
+      <Result
+        data={{ title: "나이", list: convertAlbumPackageData }}
+        total={totalResult?.albumPackage}
+        show={true}
       />
       <ResultMbti
         data={{
@@ -144,24 +217,9 @@ export default function ResultContainerTwo() {
       />
       <Result
         data={{ title: "나이", list: convertAgeData }}
-        total={totalResult?.newSongs}
+        total={totalResult?.age}
+        show={true}
       />
-      {/* <div>
-        <Button
-          className="text-zinc-400"
-          variant="link"
-          onClick={() => router.push("/card-result")}
-        >
-          입사 지원 현황 보러가기
-        </Button>
-        <Button
-          className="text-zinc-400"
-          variant="link"
-          onClick={() => router.push(`/my-lilfreaks/${applyNumber}`)}
-        >
-          나의 정보 보기
-        </Button>
-      </div> */}
     </div>
   );
 }

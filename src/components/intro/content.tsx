@@ -45,13 +45,14 @@ export default function IntroContent() {
             나의 지원서 보러가기
           </Button>
         ) : (
-          <Button
-            variant="outline"
-            className="w-1/2"
-            onClick={handleButtonClick}
-          >
-            입사 지원 하기
-          </Button>
+          <></>
+          // <Button
+          //   variant="outline"
+          //   className="w-1/2"
+          //   onClick={handleButtonClick}
+          // >
+          //   입사 지원 하기
+          // </Button>
         )}
         <Button
           variant="outline"
