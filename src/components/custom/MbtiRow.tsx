@@ -15,7 +15,7 @@ export default function MbtiRow({
   const highValue = high === "left" ? data[0].value : data[1].value;
   const hightWidth = `w-${Math.round(highValue * 2)}p`;
   const highLeft = high === "left" ? "justify-start" : "justify-end";
-  console.log(hightWidth, highLeft);
+
   return (
     <div className="flex items-center w-full">
       <div className="flex items-end justify-between w-full pb-2 mb-2">

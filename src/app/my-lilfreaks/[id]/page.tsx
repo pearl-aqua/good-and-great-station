@@ -31,7 +31,7 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
         />
       </div>
       <ApplyCard applyInfoResult={applyInfoResult} />
-      {/* <EmployeeCard applyInfoResult={applyInfoResult} /> */}
+      <EmployeeCard applyInfoResult={applyInfoResult} />
       <MyButtonTwo url={shareUI} userId={userId} />
     </div>
   );

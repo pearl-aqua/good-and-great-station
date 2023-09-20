@@ -3,7 +3,13 @@ import { Label } from "@/components/ui/label";
 import Typo from "@/components/typo/Typo";
 import SelectButton from "@/components/custom/SelectButton";
 import { filterOption, findLabel } from "@/lib/convert";
-import { album2_1, ageData } from "@/constants/index";
+import {
+  album2_1,
+  ageData,
+  album_package,
+  englishData,
+  titleData,
+} from "@/constants/index";
 
 const mbtiData = [
   { label: "E", value: "2001" },
@@ -17,7 +23,7 @@ const mbtiData = [
 ];
 
 export default function EmployeeCard({ applyInfoResult }: any) {
-  const { age, newSongs, mbti } = applyInfoResult;
+  const { age, newSongs, mbti, title, english, albumPackage } = applyInfoResult;
 
   return (
     <Card className="px-2">
@@ -36,6 +42,32 @@ export default function EmployeeCard({ applyInfoResult }: any) {
           </div>
         </div>
 
+        {title && (
+          <div className=" border-b mt-3 ">
+            <Label className="font-bold text-zinc-400">
+              가장 좋아하는 타이틀곡
+            </Label>
+            <Typo.TitleLabel>{findLabel(title, titleData)}</Typo.TitleLabel>
+          </div>
+        )}
+        {english && (
+          <div className=" border-b mt-3">
+            <Label className="font-bold text-zinc-400">
+              가장 좋아하는 영어곡
+            </Label>
+            <Typo.TitleLabel>{findLabel(english, englishData)}</Typo.TitleLabel>
+          </div>
+        )}
+        {albumPackage && (
+          <div className=" border-b mt-3">
+            <Label className="font-bold text-zinc-400">
+              가장 마음에 들었던 앨범 패키지
+            </Label>
+            <Typo.TitleLabel>
+              {findLabel(albumPackage, album_package)}
+            </Typo.TitleLabel>
+          </div>
+        )}
         {(age || mbti.length > 0) && (
           <div className="flex justify-between border-b mt-3">
             {age && (

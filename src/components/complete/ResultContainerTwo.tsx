@@ -106,9 +106,10 @@ const convertBestMbti = (result: any) => {
 
 export default function ResultContainerTwo() {
   const [data, setData] = useState<any>({});
-  useAuth();
+  // useAuth();
   const getData = async () => {
     const result = await getResultTwo();
+    console.log(result, "result");
     setData(result);
   };
 
@@ -160,6 +161,7 @@ export default function ResultContainerTwo() {
     <div className="flex flex-col items-center w-full gap-4">
       <div className="mb-3 flex flex-col items-center">
         <Typo.H2>Little&Freaks 직원 현황</Typo.H2>
+        <div className="text-xs text-zinc-400">투표기간: 9/20~9/23</div>
         {!userId && (
           <div className="flex flex-col justify-center mt-4">
             <div className="text-xs text-zinc-400">
@@ -193,17 +195,20 @@ export default function ResultContainerTwo() {
         show={true}
       />
       <Result
-        data={{ title: "나이", list: convertTitleData }}
+        data={{ title: "가장 좋아하는 타이틀곡", list: convertTitleData }}
         total={totalResult?.title}
         show={true}
       />
       <Result
-        data={{ title: "나이", list: convertEnglishData }}
+        data={{ title: "가장 좋아하는 영어곡", list: convertEnglishData }}
         total={totalResult?.english}
         show={true}
       />
       <Result
-        data={{ title: "나이", list: convertAlbumPackageData }}
+        data={{
+          title: "가장 마음에 들었던 앨범 패키지",
+          list: convertAlbumPackageData,
+        }}
         total={totalResult?.albumPackage}
         show={true}
       />

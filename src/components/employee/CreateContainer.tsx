@@ -49,20 +49,21 @@ export default function EmployeeCreateContainer({ setIsSubmit }: any) {
     setCardSubmit,
     setApplyNumber,
     setNoApply,
+    name,
   } = userStore();
 
-  const getData = async () => {
-    if (applyNumber && !cardSubmit) {
-      const result = await getApplyInfo({ applyNumber });
-      if (result?.name) {
-        setUserName(result?.name);
-      }
-    }
-  };
+  // const getData = async () => {
+  //   if (applyNumber && !cardSubmit) {
+  //     const result = await getApplyInfo({ applyNumber });
+  //     if (result?.name) {
+  //       setUserName(result?.name);
+  //     }
+  //   }
+  // };
 
-  useEffect(() => {
-    getData();
-  }, [applyNumber]);
+  // useEffect(() => {
+  //   getData();
+  // }, [applyNumber]);
 
   const router = useRouter();
 
@@ -96,7 +97,7 @@ export default function EmployeeCreateContainer({ setIsSubmit }: any) {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (newSongs.length < 1) {
       alert("Good & Great에서 좋아하는 노래를 선택해주세요.");
       return;
@@ -110,7 +111,7 @@ export default function EmployeeCreateContainer({ setIsSubmit }: any) {
     }
 
     if (userId && applyNumber) {
-      updateEmployeeData({
+      await updateEmployeeData({
         userId,
         applyNumber,
         employeeData: {
@@ -124,9 +125,8 @@ export default function EmployeeCreateContainer({ setIsSubmit }: any) {
         },
       });
       setCardSubmit(true);
-      router.push("/");
     } else if (userId && !applyNumber) {
-      updateEmployeeData({
+      await updateEmployeeData({
         userId,
         applyNumber: Date.now().toString(),
         employeeData: {
@@ -154,36 +154,7 @@ export default function EmployeeCreateContainer({ setIsSubmit }: any) {
           <CardDescription>아래 내용을 작성해주세요.</CardDescription>
         )}
       </CardHeader>
-      <CardContent className="flex flex-col gap-1">
-        {applyNumber && (
-          <div className="flex w-full justify-between border-b">
-            <div className="w-1/2">
-              <Label className="font-bold text-zinc-400">이름</Label>
-              <Typo.TitleLabel>{userName || "-"}</Typo.TitleLabel>
-            </div>
-          </div>
-        )}
-      </CardContent>
-      <CardContent className="flex flex-col gap-2">
-        <Label className="font-bold text-zinc-400 mb-2">나이(선택사항)</Label>
-        <div className="pb-4 border-b">
-          <Select
-            onValueChange={(e) => setAge(e)}
-            defaultValue={age || undefined}
-          >
-            <SelectTrigger className="w-[180px] text-zinc-600">
-              <SelectValue placeholder="선택해주세요" />
-            </SelectTrigger>
-            <SelectContent>
-              {ageData.map(({ label, value }) => (
-                <SelectItem key={value} value={value}>
-                  {label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </CardContent>
+
       <CardContent className="">
         <Label className="text-zinc-400">
           Good & Great에서 좋아하는 노래를 선택해주세요.(2곡까지 선택 가능)
@@ -201,40 +172,64 @@ export default function EmployeeCreateContainer({ setIsSubmit }: any) {
         </div>
       </CardContent>
       <CardContent className="flex flex-col gap-4">
-        <Label htmlFor="mess">가장 좋아하는 타이틀곡은?</Label>
-        <RadioGroup onValueChange={setTitle} defaultValue={title}>
-          {titleData.map(({ label, value }) => (
-            <div key={value} className="flex gap-1.5 leading-none">
-              <RadioGroupItem id={value} value={value} />
-              <Label htmlFor={value}>{label}</Label>
-            </div>
-          ))}
-        </RadioGroup>
+        <Label className=" text-zinc-400">
+          가장 좋아하는 타이틀곡은? (선택사항)
+        </Label>
+        <div className="pb-4 border-b">
+          <RadioGroup onValueChange={setTitle} defaultValue={title}>
+            {titleData.map(({ label, value }) => (
+              <div
+                key={value}
+                className="flex gap-1.5 leading-none text-zinc-600"
+              >
+                <RadioGroupItem id={value} value={value} />
+                <Label htmlFor={value}>{label}</Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </div>
       </CardContent>
       <CardContent className="flex flex-col gap-4">
-        <Label htmlFor="mess">가장 좋아하는 영어곡은?</Label>
-        <RadioGroup onValueChange={setEnglish} defaultValue={english}>
-          {englishData.map(({ label, value }) => (
-            <div key={value} className="flex gap-1.5 leading-none">
-              <RadioGroupItem id={value} value={value} />
-              <Label htmlFor={value}>{label}</Label>
-            </div>
-          ))}
-        </RadioGroup>
+        <Label className=" text-zinc-400">
+          가장 좋아하는 영어곡은? (선택사항)
+        </Label>
+        <div className="pb-4 border-b">
+          <RadioGroup onValueChange={setEnglish} defaultValue={english}>
+            {englishData.map(({ label, value }) => (
+              <div
+                key={value}
+                className="flex gap-1.5 leading-none text-zinc-600"
+              >
+                <RadioGroupItem id={value} value={value} />
+                <Label htmlFor={value}>{label}</Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </div>
       </CardContent>
       <CardContent className="flex flex-col gap-4">
-        <Label htmlFor="mess">가장 마음에 들었던 앨범 패키지는?</Label>
-        <RadioGroup onValueChange={setAlbumPackage} defaultValue={albumPackage}>
-          {album_package.map(({ label, value }) => (
-            <div key={value} className="flex gap-1.5 leading-none">
-              <RadioGroupItem id={value} value={value} />
-              <Label htmlFor={value}>{label}</Label>
-            </div>
-          ))}
-        </RadioGroup>
+        <Label className=" text-zinc-400">
+          가장 마음에 들었던 앨범 패키지는? (선택사항)
+        </Label>
+        <div className="pb-4 border-b">
+          <RadioGroup
+            onValueChange={setAlbumPackage}
+            defaultValue={albumPackage}
+          >
+            {album_package.map(({ label, value }) => (
+              <div
+                key={value}
+                className="flex gap-1.5 leading-none text-zinc-600"
+              >
+                <RadioGroupItem id={value} value={value} />
+                <Label htmlFor={value}>{label}</Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </div>
       </CardContent>
       <CardContent className="">
-        <Label className=" text-zinc-400">MBTI(선택사항)</Label>
+        <Label className=" text-zinc-400">MBTI (선택사항)</Label>
         <div className="flex flex-wrap gap-2 py-4 border-b">
           <Select
             onValueChange={(e) => setEOption(e)}
@@ -290,6 +285,26 @@ export default function EmployeeCreateContainer({ setIsSubmit }: any) {
             </SelectTrigger>
             <SelectContent>
               {mbti_j.map(({ label, value }) => (
+                <SelectItem key={value} value={value}>
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </CardContent>
+      <CardContent className="flex flex-col gap-2">
+        <Label className="font-bold text-zinc-400 mb-2">나이 (선택사항)</Label>
+        <div className="pb-4 border-b">
+          <Select
+            onValueChange={(e) => setAge(e)}
+            defaultValue={age || undefined}
+          >
+            <SelectTrigger className="w-[180px] text-zinc-600">
+              <SelectValue placeholder="선택해주세요" />
+            </SelectTrigger>
+            <SelectContent>
+              {ageData.map(({ label, value }) => (
                 <SelectItem key={value} value={value}>
                   {label}
                 </SelectItem>

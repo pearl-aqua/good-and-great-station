@@ -4,8 +4,8 @@ import IntroContentTwo from "@/components/intro/content2";
 export default function Home() {
   return (
     <main>
-      <IntroContent />
-      {/* <IntroContentTwo /> */}
+      {/* <IntroContent /> */}
+      <IntroContentTwo />
     </main>
   );
 }
