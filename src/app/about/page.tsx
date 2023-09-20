@@ -46,7 +46,7 @@ export default function AboutPage() {
               감사하게 생각하고 있습니다. 정말 감사드립니다!!
             </div>
             <div className="flex w-full">
-              결과들이 꽤 흥미로워서 재미있게 보았습니다. 릴프릭들의 성향을
+              투표 결과가 흥미로워서 재미있게 보았습니다. 릴프릭들의 성향을
               조금이라도 더 알게 되어 매번 즐거운 작업이 되는 것 같아요.
             </div>
             <div className="flex w-full">
