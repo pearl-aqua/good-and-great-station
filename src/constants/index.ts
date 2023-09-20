@@ -472,7 +472,7 @@ export const titleData = [
 
 export const englishData = [
   {
-    label: "Image",
+    label: "Imagine",
     value: "501",
   },
   {
