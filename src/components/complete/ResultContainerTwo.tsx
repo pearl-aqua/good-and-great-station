@@ -109,7 +109,6 @@ export default function ResultContainerTwo() {
   // useAuth();
   const getData = async () => {
     const result = await getResultTwo();
-    console.log(result, "result");
     setData(result);
   };
 

@@ -323,7 +323,7 @@ export const updateEmployeeData = async ({
 
   if ((employeeData.mbti || []).length > 0) {
     const updateMbtiData = {} as any;
-    console.log(updateMbtiData, "updateMbti...Data");
+
     employeeData.mbti?.forEach((el: any) => {
       updateMbtiData[el] = increment(1);
     });
