@@ -44,48 +44,48 @@ const convertMbti = (result: any, total: number) => {
     const eData = [
       {
         label: "E",
-        value: percent(result["2001"], total),
+        value: percent(result["2001"], result["2001"] + result["2002"]),
         high: result["2001"] >= result["2002"],
       },
       {
         label: "I",
-        value: percent(result["2002"], total),
+        value: percent(result["2002"], result["2001"] + result["2002"]),
         high: result["2001"] < result["2002"],
       },
     ];
     const nData = [
       {
         label: "N",
-        value: percent(result["2003"], total),
+        value: percent(result["2003"], result["2003"] + result["2004"]),
         high: result["2003"] >= result["2004"],
       },
       {
         label: "S",
-        value: percent(result["2004"], total),
+        value: percent(result["2004"], result["2003"] + result["2004"]),
         high: result["2003"] < result["2004"],
       },
     ];
     const tData = [
       {
         label: "T",
-        value: percent(result["2005"], total),
+        value: percent(result["2005"], result["2005"] + result["2006"]),
         high: result["2005"] >= result["2006"],
       },
       {
         label: "F",
-        value: percent(result["2006"], total),
+        value: percent(result["2006"], result["2005"] + result["2006"]),
         high: result["2005"] < result["2006"],
       },
     ];
     const jData = [
       {
         label: "J",
-        value: percent(result["2007"], total),
+        value: percent(result["2007"], result["2007"] + result["2008"]),
         high: result["2007"] >= result["2008"],
       },
       {
         label: "P",
-        value: percent(result["2008"], total),
+        value: percent(result["2008"], result["2007"] + result["2008"]),
         high: result["2007"] < result["2008"],
       },
     ];
