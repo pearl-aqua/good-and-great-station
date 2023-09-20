@@ -1,19 +1,9 @@
-interface Props {
-  label: string | number;
-  value: number;
-  high: boolean;
-}
+import { ListType } from "@/constants/index";
 
-export default function MbtiRow({
-  data,
-  total,
-}: {
-  data: Props[];
-  total: number;
-}) {
+export default function MbtiRow({ data }: { data: ListType[] }) {
   const high = data[0].high ? "left" : "right";
   const highValue = high === "left" ? data[0].value : data[1].value;
-  const hightWidth = `w-${Math.round(highValue * 2)}p`;
+  const hightWidth = `w-${Math.round(+highValue * 2)}p`;
   const highLeft = high === "left" ? "justify-start" : "justify-end";
 
   return (

@@ -51,6 +51,8 @@ export const getUserInfo = async ({
       id,
       email,
       applyNumber: "",
+      cardSubmit: false,
+      noApply: false,
     };
     await setDoc(doc(store, "g_user", id), userData);
     return userData;

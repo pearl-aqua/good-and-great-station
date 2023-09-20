@@ -215,7 +215,7 @@ export default function ResultContainerTwo() {
         data={{
           title: "MBTI",
           list: convertMbtiData,
-          best: convertBestMbti(mbtiResult),
+          best: convertBestMbti(mbtiResult) || "",
         }}
         total={totalResult?.mbti}
       />

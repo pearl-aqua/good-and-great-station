@@ -338,6 +338,7 @@ export const hahaData = [
 export interface ListType {
   label: string;
   value: string;
+  high?: boolean;
 }
 
 export const ageData = [
