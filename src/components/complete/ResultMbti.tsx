@@ -22,7 +22,7 @@ interface Props {
 
 export default function ResultMbti({ data, total }: Props) {
   const { title, best, list } = data;
-  console.log(data, "data");
+
   return (
     <Card className="w-[320px]">
       <CardHeader className="flex flex-row w-full items-center justify-between">

@@ -161,7 +161,7 @@ export default function ResultContainerTwo() {
       <div className="mb-3 flex flex-col items-center">
         <Typo.H2>Little&Freaks 직원 현황</Typo.H2>
         <div className="text-xs text-zinc-400">투표기간: 9/20~9/23</div>
-        {!userId && (
+        {/* {!userId && (
           <div className="flex flex-col justify-center mt-4">
             <div className="text-xs text-zinc-400">
               투표를 위해서는 로그인이 필요합니다
@@ -174,8 +174,8 @@ export default function ResultContainerTwo() {
               로그인 하기
             </Button>
           </div>
-        )}
-        {userId && !applyNumber && (
+        )} */}
+        {/* {userId && !applyNumber && (
           <Button
             className="text-zinc-400"
             variant="link"
@@ -183,7 +183,7 @@ export default function ResultContainerTwo() {
           >
             투표 하기
           </Button>
-        )}
+        )} */}
       </div>
       <Result
         data={{
