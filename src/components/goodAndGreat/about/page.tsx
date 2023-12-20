@@ -1,4 +1,4 @@
-import ApplyCard from "@/components/apply/ApplyCard";
+import ApplyCard from "@/components/goodAndGreat/apply/ApplyCard";
 import ButtonHome from "@/components/my/ButtonHome";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 

@@ -13,7 +13,7 @@ import {
 } from "@/constants/index";
 import { findLabel } from "@/lib/convert";
 import { Label } from "@/components/ui/label";
-import Typo from "../typo/Typo";
+import Typo from "../../typo/Typo";
 import {
   Card,
   CardContent,
@@ -21,7 +21,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card";
+} from "../../ui/card";
 import SelectButton from "../custom/SelectButton";
 import {
   Select,
@@ -31,7 +31,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import employeeStore from "@/lib/store/employee";
-import AlertModal from "../alert/AlertModal";
+import AlertModal from "../../alert/AlertModal";
 import userStore from "@/lib/store/user";
 import { getApplyInfo, updateEmployeeData } from "@/firebase/apply";
 import { useRouter } from "next/navigation";

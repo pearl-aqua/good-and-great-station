@@ -12,8 +12,8 @@ import { updateMemo } from "@/firebase/memo";
 import userStore from "@/lib/store/user";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import ButtonHome from "../my/ButtonHome";
-import { Button } from "../ui/button";
+import ButtonHome from "../../my/ButtonHome";
+import { Button } from "../../ui/button";
 
 export default function BugReportContainer() {
   const [text, setText] = useState<string>("");

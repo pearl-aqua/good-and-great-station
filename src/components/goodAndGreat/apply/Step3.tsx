@@ -9,7 +9,7 @@ import answerStore from "@/lib/store/answers";
 import { applyData, getYearResult } from "@/firebase/apply";
 import userStore from "@/lib/store/user";
 import { useRouter } from "next/navigation";
-import AlertModal from "../alert/AlertModal";
+import AlertModal from "../../alert/AlertModal";
 import { useState } from "react";
 
 interface Props {

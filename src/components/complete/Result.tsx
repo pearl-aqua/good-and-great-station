@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Typo from "../typo/Typo";
-import ResultRow from "../custom/ResultRow";
+import ResultRow from "../goodAndGreat/custom/ResultRow";
 import { useState } from "react";
 import { ListType } from "@/constants/index";
 import BeatLoader from "react-spinners/BeatLoader";

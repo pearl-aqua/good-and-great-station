@@ -1,7 +1,7 @@
 import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import Typo from "@/components/typo/Typo";
-import SelectButton from "@/components/custom/SelectButton";
+import SelectButton from "@/components/goodAndGreat/custom/SelectButton";
 import { filterOption, findLabel } from "@/lib/convert";
 import {
   album2_1,

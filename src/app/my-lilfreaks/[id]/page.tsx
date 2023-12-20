@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { getApplyInfo } from "@/firebase/apply";
-import ApplyCard from "@/components/apply/ApplyCard";
+import ApplyCard from "@/components/goodAndGreat/apply/ApplyCard";
 import MyButtonTwo from "@/components/my/ButtonTwo";
-import EmployeeCard from "@/components/employee/EmployeeCard";
+import EmployeeCard from "@/components/goodAndGreat/employee/EmployeeCard";
 import logo from "@/image/logo-lf.png";
 
 export default async function MyApplyPage(props: { params: { id: string } }) {

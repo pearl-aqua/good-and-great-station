@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { yearData } from "@/constants/index";
 import answerStore from "@/lib/store/answers";
-import AlertModal from "../alert/AlertModal";
+import AlertModal from "../../alert/AlertModal";
 import Router from "next/router";
 import { useRouter } from "next/navigation";
 

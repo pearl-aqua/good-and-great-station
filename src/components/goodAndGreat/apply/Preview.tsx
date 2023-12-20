@@ -11,7 +11,7 @@ import {
 import { Label } from "@/components/ui/label";
 import answerStore from "@/lib/store/answers";
 import SelectButton from "../custom/SelectButton";
-import Typo from "../typo/Typo";
+import Typo from "../../typo/Typo";
 import Image from "next/image";
 import logo from "@/image/logo-lf.png";
 

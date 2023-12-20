@@ -3,6 +3,16 @@ interface TypoProps {
   children: React.ReactNode;
 }
 
+function MainTitle({ color, children }: TypoProps) {
+  return (
+    <h1 className={`text-6xl font-bold text-balance ${color}`}>{children}</h1>
+  );
+}
+
+function SubTitle({ children }: TypoProps) {
+  return <div className="text-5xl font-bold text-zinc-400">{children}</div>;
+}
+
 function H1({ children }: TypoProps) {
   return <h1 className="text-2xl font-bold mb-2">{children}</h1>;
 }
@@ -47,5 +57,7 @@ Typo.DecsText = DecsText;
 Typo.ListText = ListText;
 Typo.Label = Label;
 Typo.TitleLabel = TitleLabel;
+Typo.MainTitle = MainTitle;
+Typo.SubTitle = SubTitle;
 
 export default Typo;
