@@ -9,7 +9,7 @@ import {
 import Typo from "../typo/Typo";
 import { ListType } from "@/constants/index";
 import BeatLoader from "react-spinners/BeatLoader";
-import MbtiRow from "../custom/MbtiRow";
+import MbtiRow from "../goodAndGreat/custom/MbtiRow";
 
 interface Props {
   data: {

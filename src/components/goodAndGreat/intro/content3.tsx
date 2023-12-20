@@ -8,7 +8,7 @@ import { introTwo } from "@/constants/intro";
 import userStore from "@/lib/store/user";
 import useAuth from "@/hooks/useAuth";
 import EmployeeContainer from "@/components/goodAndGreat/employee/CreateContainer";
-import ResultContainerTwo from "../complete/ResultContainerTwo";
+import ResultContainerTwo from "../../complete/ResultContainerTwo";
 import BeatLoader from "react-spinners/BeatLoader";
 
 export default function IntroContentTwo() {
