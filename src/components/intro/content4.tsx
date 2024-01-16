@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Typo from "../typo/Typo";
 import MemoInput from "../memo/MemoInput";
+import Poll from "../poll/Poll";
 
 const keyDay = new Date(2024, 0, 27, 18);
 const title = "KEYLAND";
@@ -46,7 +47,7 @@ export default function Home() {
     diffSec: "",
   });
 
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   setInterval(() => setInnerText(diffTime()), 1000);
 
@@ -68,6 +69,7 @@ export default function Home() {
           <Typo.SubTitle>{innerText.diffSec}</Typo.SubTitle>
         </div>
       </div>
+      {/* <Poll /> */}
 
       {/* <MemoInput /> */}
     </div>

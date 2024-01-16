@@ -339,6 +339,7 @@ export interface ListType {
   label: string;
   value: string;
   high?: boolean;
+  count?: number;
 }
 
 export const ageData = [

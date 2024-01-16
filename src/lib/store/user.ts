@@ -11,6 +11,8 @@ interface StateType {
   setCardSubmit: (cardSubmit: boolean) => void;
   noApply: boolean;
   setNoApply: (noApply: boolean) => void;
+  answers: Record<string, string>;
+  setAnswers: (answers: Record<string, string>) => void;
 }
 
 const userStore = create<StateType>((set, get) => ({
@@ -24,6 +26,8 @@ const userStore = create<StateType>((set, get) => ({
   setCardSubmit: (cardSubmit) => set({ cardSubmit }),
   noApply: false,
   setNoApply: (noApply) => set({ noApply }),
+  answers: {},
+  setAnswers: (answers) => set({ answers }),
 }));
 
 export default userStore;
