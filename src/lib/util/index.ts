@@ -2,11 +2,10 @@ export const getSendText = (
   question: string,
   selectOption: string,
   percent: string
-) => `[ 2024 KEYLAND ON:AND ON ]
+) => `2024 KEYLAND ON:AND ON🔑
 
-Q. ${question} 
-[${selectOption}] 이다
-💎 ${percent}의 릴프릭이 같은 선택을 하였습니다.
+Q. ${question} [${selectOption}] 이다
+💎 ${percent}의 릴프릭이 같은 답변을 하였습니다.
 
 `;
 
