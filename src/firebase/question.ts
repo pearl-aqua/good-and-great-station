@@ -1,4 +1,9 @@
-import { setDocument, updateDocument, updateFieldCount } from "./commons";
+import {
+  setDocument,
+  sortArr,
+  updateDocument,
+  updateFieldCount,
+} from "./commons";
 import { doc, getDoc } from "firebase/firestore";
 import { store } from "./index";
 
@@ -117,6 +122,10 @@ export const getResult = async ({ questionId }: { questionId: string }) => {
       count: resultList[el],
       label: optionList[el],
     }));
+    valueCountOptions?.sort((a, b) => {
+      return (b.count || 0) - (a.count || 0);
+    });
+
     return {
       data: { title: question.text, list: valueCountOptions },
       total: totalCount?.total,

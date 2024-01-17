@@ -2,6 +2,8 @@ import { getUserInfo } from "@/firebase/login";
 import userStore from "@/lib/store/user";
 import { useEffect } from "react";
 
+const questionArr = ["60001", "60002", "60003", "60004"];
+
 export default function useNewAuth() {
   const { userId, setUserId, setAnswers } = userStore();
   const localId =
@@ -16,15 +18,16 @@ export default function useNewAuth() {
       id,
       email: email || "",
     });
-    const result = userInfoResult;
-    console.log(result, "set");
+    const result: any = userInfoResult;
     if (result?.id) {
       setUserId(result.id);
     }
     const myAnswer: Record<string, string> = {};
-    if (result["6001"]) {
-      myAnswer["6001"] = result["6001"];
-    }
+
+    questionArr.forEach((el) => {
+      if (result[el]) myAnswer[el] = result[el];
+    });
+
     setAnswers(myAnswer);
   };
 

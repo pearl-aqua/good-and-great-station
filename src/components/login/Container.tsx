@@ -9,11 +9,8 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import googleLogo from "@/image/google-logo.svg";
-import { getUserInfo, popupLogin } from "@/firebase/login";
+import { popupLogin } from "@/firebase/login";
 import { useRouter } from "next/navigation";
-import userStore from "@/lib/store/user";
-import { getApplyInfo } from "@/firebase/apply";
-import answerStore from "@/lib/store/answers";
 import { useState } from "react";
 
 const descData = [
@@ -24,8 +21,6 @@ const descData = [
 
 export default function LoginContainer() {
   const [loading, isLoading] = useState<boolean>(false);
-  const { setApplyNumber } = userStore();
-  const { setInfo } = answerStore();
   const router = useRouter();
 
   const handleClickLogin = async () => {
@@ -45,7 +40,7 @@ export default function LoginContainer() {
       <CardHeader>
         {/* <CardTitle>Login</CardTitle> */}
         <CardDescription>
-          중복 지원을 방지하기 위해 구글 로그인을 사용하고 있습니다.
+          중복 투표를 방지하기 위해 구글 로그인을 사용하고 있습니다.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -60,7 +55,7 @@ export default function LoginContainer() {
 
       <CardFooter>
         {loading ? (
-          <>로그인 중</>
+          <div className="text-sm">로그인 중</div>
         ) : (
           <>
             <button

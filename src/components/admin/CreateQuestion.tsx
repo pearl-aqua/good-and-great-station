@@ -1,3 +1,5 @@
+"use client";
+
 import { CardContent, CardFooter, CardDescription } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
@@ -5,13 +7,21 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createQuestion } from "@/firebase/question";
-
-const fourArray = Array(4).fill({ optionId: "", optionText: "" });
+import { songsData } from "@/constants/index";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function CreateQuestion() {
   const [text, setText] = useState<string>("");
   const [subText, setSubText] = useState<string>("");
   const [questionId, setQuestionId] = useState<string>();
+  const [albumOption, setAlbumOption] = useState<boolean>(false);
+
+  const albums = songsData.map(({ label, value }) => ({
+    optionId: value,
+    optionText: label,
+  }));
+
+  const fourArray = Array(2).fill({ optionId: "", optionText: "" });
 
   const [options, setOptions] =
     useState<{ optionId: string; optionText: string }[]>(fourArray);
@@ -24,7 +34,7 @@ export default function CreateQuestion() {
         docName: questionId,
         text,
         subText,
-        options,
+        options: albumOption ? albums : options,
       });
     }
   };
@@ -54,6 +64,13 @@ export default function CreateQuestion() {
           value={subText}
           onChange={(e) => setSubText(e.target.value)}
         />
+      </CardContent>
+      <CardContent>
+        <Checkbox
+          checked={albumOption}
+          onCheckedChange={() => setAlbumOption(!albumOption)}
+        />{" "}
+        albums
       </CardContent>
       <CardContent className="flex flex-col gap-2">
         {options.map(({ optionId, optionText }, inx) => {

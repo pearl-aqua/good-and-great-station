@@ -9,6 +9,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { updateMemo } from "@/firebase/memo";
 import userStore from "@/lib/store/user";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "../ui/button";
@@ -31,20 +32,42 @@ export default function MemoInput() {
     router.push("/");
   };
   return (
-    <>
-      - 키랜드 전에 만들면 좋을 페이지에 대한 의견 받습니다.
-      <div className="flex flex-col sm:max-w-full lg:max-w-[450px]">
-        <Textarea
-          className="w-full h-[80px]"
-          placeholder="300자 이내로 작성해주세요"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-
-        <Button variant="outline" onClick={handleClickButton}>
-          등록
+    <div className="flex flex-col justify-center items-center gap-4">
+      <Card className="w-[320px]">
+        <CardHeader>투표 내용 모집</CardHeader>
+        <CardContent>
+          <CardDescription>
+            - 키랜드 전에 투표하고 싶은 항목이 있으면 남겨주세요.
+          </CardDescription>
+          <CardDescription>
+            - 반영할 수 있는 투표 항목이 있으면 반영해 보겠습니다.
+          </CardDescription>
+          <CardDescription>
+            - 질문과 객관식 답변을 모두 써주셔야 적용 가능합니다.
+          </CardDescription>
+          <CardDescription>
+            - 그 외 자유로이 남겨주고 싶은 것이 있으면 남겨주셔도 됩니다.
+          </CardDescription>
+        </CardContent>
+        <CardContent>
+          <Textarea
+            className="w-full h-[200px]"
+            placeholder="500자 이내로 작성해주세요"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+        </CardContent>
+        <CardFooter className="flex justify-end">
+          <Button variant="outline" onClick={handleClickButton}>
+            등록
+          </Button>
+        </CardFooter>
+      </Card>
+      <Link href={"/"}>
+        <Button variant="link" className="text-zinc-400">
+          뒤로 가기
         </Button>
-      </div>
-    </>
+      </Link>
+    </div>
   );
 }

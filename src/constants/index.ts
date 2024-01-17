@@ -172,145 +172,143 @@ export const motiveData = [
 export const album1 = [
   {
     label: "I Wanna Be",
-    value: "01",
+    value: "1001",
   },
   {
     label: "Show Me",
-    value: "02",
+    value: "1002",
   },
   {
     label: "센 척 안 해",
-    value: "03",
+    value: "1003",
   },
   {
     label: "Good Good",
-    value: "04",
+    value: "1004",
   },
   {
     label: "Honest",
-    value: "05",
+    value: "1005",
   },
   {
     label: "Forever Yours",
-    value: "06",
+    value: "1006",
   },
   {
     label: "Imagine",
-    value: "07",
+    value: "1007",
   },
   {
     label: "Chemicals",
-    value: "08",
+    value: "1008",
   },
   {
     label: "I Will Fight",
-    value: "09",
+    value: "1009",
   },
   {
     label: "Easy To Love",
-    value: "10",
+    value: "1010",
   },
   {
     label: "미워",
-    value: "11",
+    value: "1011",
   },
   {
     label: "This Life",
-    value: "12",
+    value: "1012",
   },
   {
     label: "Cold",
-    value: "13",
+    value: "1013",
   },
 ];
 
 export const album1_1 = [
   {
     label: "BAD LOVE",
-    value: "101",
+    value: "1101",
   },
   {
     label: "Yellow Tape",
-    value: "102",
+    value: "1102",
   },
   {
     label: "Hate that…",
-    value: "103",
+    value: "1103",
   },
   {
     label: "Helium",
-    value: "104",
+    value: "1104",
   },
   {
     label: "Saturday Night",
-    value: "105",
+    value: "1105",
   },
   {
     label: "Eighteen",
-    value: "106",
+    value: "1106",
   },
 ];
 
 export const album2 = [
   {
     label: "Killer",
-    value: "201",
+    value: "1201",
   },
   {
     label: "Heartless",
-    value: "202",
+    value: "1202",
   },
   {
     label: "가솔린",
-    value: "203",
+    value: "1203",
   },
   {
     label: "Bound",
-    value: "204",
+    value: "1204",
   },
   {
     label: "Villain",
-    value: "205",
+    value: "1205",
   },
   {
     label: "Easy",
-    value: "206",
+    value: "1206",
   },
   {
     label: "Burn",
-    value: "207",
+    value: "1207",
   },
   {
     label: "Guilty Pleasure",
-    value: "208",
+    value: "1208",
   },
   {
     label: "G.O.A.T",
-    value: "209",
+    value: "1209",
   },
   {
     label: "I Can’t Sleep",
-    value: "210",
+    value: "1210",
   },
   {
     label: "Ain’t Gonna Dance",
-    value: "211",
+    value: "1211",
   },
   {
     label: "Another Life",
-    value: "212",
+    value: "1212",
   },
   {
     label: "Delight",
-    value: "213",
+    value: "1213",
   },
   {
     label: "Proud",
-    value: "214",
+    value: "1214",
   },
 ];
-
-export const songsData = [...album1, ...album1_1, ...album2];
 
 export const hahaData = [
   {
@@ -376,27 +374,27 @@ export const ageData = [
 export const album2_1 = [
   {
     label: "Good & Great",
-    value: "301",
+    value: "1301",
   },
   {
     label: "Can't Say Goodbye",
-    value: "302",
+    value: "1302",
   },
   {
     label: "Intoxicating",
-    value: "303",
+    value: "1303",
   },
   {
     label: "Live Without You",
-    value: "304",
+    value: "1304",
   },
   {
     label: "CoolAs",
-    value: "305",
+    value: "1305",
   },
   {
     label: "Mirror, Mirror",
-    value: "306",
+    value: "1306",
   },
 ];
 
@@ -508,3 +506,5 @@ export const album_package = [
     value: "604",
   },
 ];
+
+export const songsData = [...album1, ...album1_1, ...album2, ...album2_1];

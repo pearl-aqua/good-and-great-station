@@ -3,12 +3,18 @@ import { getResult } from "@/firebase/question";
 import Result from "../complete/Result";
 import userStore from "@/lib/store/user";
 
-export default function ViewResult() {
-  const { userId, answers } = userStore();
+export default function ViewResult({
+  questionId,
+  isSubmitId,
+}: {
+  questionId: string;
+  isSubmitId: string;
+}) {
+  const { answers } = userStore();
   const [result, setResult] = useState<any>({});
 
   const getList = async () => {
-    const resultData = await getResult({ questionId: "6001" });
+    const resultData = await getResult({ questionId });
     setResult(resultData);
   };
 
@@ -20,8 +26,8 @@ export default function ViewResult() {
     <Result
       data={result.data}
       total={result.total}
-      show={true}
-      myValue={answers["6001"]}
+      show={questionId !== "60001"}
+      myValue={answers[questionId] || isSubmitId}
     />
   );
 }

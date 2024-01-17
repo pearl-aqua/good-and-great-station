@@ -1,20 +1,23 @@
+"use client";
+
 import useNewAuth from "@/hooks/useNewAuth";
 import userStore from "@/lib/store/user";
 import { useState } from "react";
 import ViewQuestion from "./ViewQuestion";
 import ViewResult from "./ViewResult";
 
-export default function Poll() {
+export default function Poll({ questionId }: { questionId: string }) {
   const { answers } = userStore();
-  const [isSubmit, setIsSubmit] = useState<boolean>(false);
+  const [isSubmitId, setIsSubmitId] = useState<string>("");
 
   useNewAuth();
+
   return (
     <>
-      {isSubmit || answers["6001"] ? (
-        <ViewResult />
+      {isSubmitId || answers[questionId] ? (
+        <ViewResult questionId={questionId} isSubmitId={isSubmitId} />
       ) : (
-        <ViewQuestion setIsSubmit={setIsSubmit} />
+        <ViewQuestion setIsSubmit={setIsSubmitId} questionId={questionId} />
       )}
     </>
   );
