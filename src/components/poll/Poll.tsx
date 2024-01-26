@@ -12,13 +12,15 @@ export default function Poll({ questionId }: { questionId: string }) {
 
   useNewAuth();
 
-  return (
-    <>
-      {isSubmitId || answers[questionId] ? (
-        <ViewResult questionId={questionId} isSubmitId={isSubmitId} />
-      ) : (
-        <ViewQuestion setIsSubmit={setIsSubmitId} questionId={questionId} />
-      )}
-    </>
-  );
+  return <ViewResult questionId={questionId} isSubmitId={isSubmitId} />;
+
+  // return (
+  //   <>
+  //     {isSubmitId || answers[questionId] ? (
+  //       <ViewResult questionId={questionId} isSubmitId={isSubmitId} />
+  //     ) : (
+  //       <ViewQuestion setIsSubmit={setIsSubmitId} questionId={questionId} />
+  //     )}
+  //   </>
+  // );
 }

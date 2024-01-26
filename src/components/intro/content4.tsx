@@ -1,5 +1,4 @@
 import Typo from "../typo/Typo";
-import Timer from "../timer/Timer";
 import PollContainer from "../poll/PollContainer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -13,7 +12,6 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center gap-0.5">
         <Typo.MainTitle color="text-blue-700">{title}</Typo.MainTitle>
         <Typo.MainTitle color="text-blue-700">{subTitle}</Typo.MainTitle>
-        <Timer />
       </div>
 
       <PollContainer />
