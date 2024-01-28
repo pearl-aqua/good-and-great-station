@@ -38,7 +38,7 @@ function ListText({ children }: TypoProps) {
 }
 
 function TitleLabel({ children }: TypoProps) {
-  return <div className="text-lg font-bold mb-2 text-zinc-600">{children}</div>;
+  return <div className="text-lg font-bold">{children}</div>;
 }
 
 function Label({ children }: TypoProps) {

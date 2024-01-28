@@ -1,6 +1,6 @@
 import Poll from "./Poll";
 
-const questionArr = ["60001", "60002", "60003", "60004"];
+const questionArr = ["60005", "60006"];
 
 export default function PollContainer() {
   return (

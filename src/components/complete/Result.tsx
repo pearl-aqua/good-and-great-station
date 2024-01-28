@@ -96,7 +96,7 @@ export default function Result({ data, total, show = false, myValue }: Props) {
                   덜보기
                 </Button>
               ))}
-            {myValue && (
+            {/* {myValue && (
               <Button
                 className="p-0 text-blue-500"
                 variant="link"
@@ -104,7 +104,7 @@ export default function Result({ data, total, show = false, myValue }: Props) {
               >
                 공유하기
               </Button>
-            )}
+            )} */}
           </CardFooter>
         </>
       )}

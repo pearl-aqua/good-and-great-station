@@ -3,6 +3,7 @@ import {
   sortArr,
   updateDocument,
   updateFieldCount,
+  updateMultiFieldCount,
 } from "./commons";
 import { doc, getDoc } from "firebase/firestore";
 import { store } from "./index";
@@ -103,6 +104,34 @@ export const saveAnswer = async ({
     collectionName: "g_user",
     docName: userId,
     data: { [questionId]: optionId },
+  });
+};
+
+export const saveAnswers = async ({
+  questionId,
+  optionsId,
+  userId,
+}: {
+  questionId: string;
+  optionsId: string[];
+  userId: string;
+}) => {
+  updateMultiFieldCount({
+    collectionName: "g_result",
+    docName: questionId,
+    fieldNames: optionsId,
+  });
+
+  updateFieldCount({
+    collectionName: "g_total",
+    docName: questionId,
+    fieldName: "total",
+    count: optionsId.length,
+  });
+  updateDocument({
+    collectionName: "g_user",
+    docName: userId,
+    data: { [questionId]: optionsId },
   });
 };
 

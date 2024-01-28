@@ -2,6 +2,7 @@ import Typo from "../typo/Typo";
 import PollContainer from "../poll/PollContainer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import ResultContainer from "../poll/ResultContainer";
 
 const title = "KEYLAND";
 const subTitle = "ON: AND ON";
@@ -15,6 +16,13 @@ export default function Home() {
       </div>
 
       <PollContainer />
+      <Typo.TitleLabel color="text-blue-700">
+        키랜드 영원히 ON: AND ON
+      </Typo.TitleLabel>
+      <Typo.TitleLabel color="text-blue-700">
+        키와 함께한 모든 순간 Good & Great
+      </Typo.TitleLabel>
+      <ResultContainer />
 
       <Link href={"/memo"}>
         <Button className="mt-5 text-zinc-300" variant="link">

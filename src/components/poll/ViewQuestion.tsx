@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
-import { getQuestion, saveAnswer } from "@/firebase/question";
+import { getQuestion, saveAnswer, saveAnswers } from "@/firebase/question";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import BeatLoader from "react-spinners/BeatLoader";
 import userStore from "@/lib/store/user";
@@ -26,6 +26,7 @@ export default function ViewQuestion({
   const router = useRouter();
   const [result, setResult] = useState<any>(null);
   const [answer, setAnswer] = useState<string>("");
+  const [answers, setAnswers] = useState<string[]>([]);
 
   const getList = async () => {
     const resultData = await getQuestion({ questionId });
@@ -36,14 +37,34 @@ export default function ViewQuestion({
     getList();
   }, []);
 
+  const handleClickSong = (value: string) => {
+    if (answers.includes(value)) {
+      const newOptions = answers.filter((el) => el !== value);
+      setAnswers(newOptions);
+    } else if (answers.length < 6) {
+      setAnswers([...answers, value]);
+    } else {
+      alert("6개까지 선택 가능합니다.");
+    }
+  };
+
   const saveQuestion = async () => {
     if (userId) {
-      saveAnswer({
-        questionId,
-        optionId: answer,
-        userId,
-      });
-      setIsSubmit(answer);
+      if (questionId !== "60006") {
+        saveAnswer({
+          questionId,
+          optionId: answer,
+          userId,
+        });
+      } else if (questionId === "60006") {
+        saveAnswers({
+          questionId,
+          optionsId: answers,
+          userId,
+        });
+      }
+
+      setIsSubmit("true");
     } else {
       const isConfirm = confirm(
         "투표를 위해 로그인이 필요합니다. 로그인 페이지로 이동합니다."
@@ -62,7 +83,7 @@ export default function ViewQuestion({
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        {result && questionId !== "60001" && (
+        {result && questionId !== "60006" && (
           <RadioGroup
             onValueChange={setAnswer}
             defaultValue={answer}
@@ -85,14 +106,14 @@ export default function ViewQuestion({
             )}
           </RadioGroup>
         )}
-        {result && questionId === "60001" && (
+        {result && questionId === "60006" && (
           <div className="flex flex-wrap gap-1.5">
             {result.options?.map(
               ({ label, value }: { label: string; value: string }) => (
                 <SelectButton
                   key={value}
-                  onClick={() => setAnswer(value)}
-                  isSelected={answer.includes(value)}
+                  onClick={() => handleClickSong(value)}
+                  isSelected={answers.includes(value)}
                 >
                   {label}
                 </SelectButton>
@@ -112,7 +133,10 @@ export default function ViewQuestion({
           <Button
             className="border-blue-500 hover:bg-blue-50 text-blue-700 hover:text-blue-700 disabled:text-gray-400 disabled:border-gray-400"
             variant="outline"
-            disabled={!answer}
+            disabled={
+              (questionId !== "60006" && !answer) ||
+              (questionId === "60006" && answers.length === 0)
+            }
             onClick={saveQuestion}
           >
             제출
