@@ -7,7 +7,7 @@ export default function ResultContainer() {
   return (
     <>
       {questionArr.map((el) => (
-        <ViewResult questionId={el} isSubmitId={""} />
+        <ViewResult key={el} questionId={el} isSubmitId={""} />
       ))}
     </>
   );
