@@ -51,7 +51,7 @@ export default function Result({ data, total, show = false, myValue }: Props) {
       {list.length > 0 && (
         <>
           <CardHeader className="flex flex-row w-full items-center justify-between pt-7">
-            <CardDescription className="w-[210px]">{title}</CardDescription>
+            <CardDescription className="w-[200px]">{title}</CardDescription>
             {total && (
               <div className="text-xs text-zinc-400">{`(총 ${
                 total || 0

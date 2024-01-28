@@ -16,7 +16,7 @@ export default function Home() {
       </div>
 
       <PollContainer />
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center my-6">
         <div className="text-lg font-bold text-blue-700">
           키랜드 영원히 ON: AND ON
         </div>
