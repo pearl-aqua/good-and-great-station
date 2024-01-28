@@ -16,12 +16,14 @@ export default function Home() {
       </div>
 
       <PollContainer />
-      <Typo.TitleLabel color="text-blue-700">
-        키랜드 영원히 ON: AND ON
-      </Typo.TitleLabel>
-      <Typo.TitleLabel color="text-blue-700">
-        키와 함께한 모든 순간 Good & Great
-      </Typo.TitleLabel>
+      <div className="flex flex-col justify-center items-center">
+        <div className="text-lg font-bold text-blue-700">
+          키랜드 영원히 ON: AND ON
+        </div>
+        <div className="text-lg font-bold text-blue-700">
+          키와 함께한 모든 순간 Good & Great
+        </div>
+      </div>
       <ResultContainer />
 
       <Link href={"/memo"}>
