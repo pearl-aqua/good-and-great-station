@@ -15,22 +15,14 @@ export default function Home() {
         <Typo.MainTitle color="text-blue-700">{subTitle}</Typo.MainTitle>
       </div>
 
-      <PollContainer />
-      <div className="flex flex-col justify-center items-center my-6">
-        <div className="text-lg font-bold text-blue-700">
-          키랜드 영원히 ON: AND ON
-        </div>
-        <div className="text-lg font-bold text-blue-700">
-          키와 함께한 모든 순간 Good & Great
-        </div>
-      </div>
+      {/* <PollContainer /> */}
       <ResultContainer />
 
-      <Link href={"/memo"}>
+      {/* <Link href={"/memo"}>
         <Button className="mt-5 text-zinc-300" variant="link">
           키랜드 관련 투표하고 싶은 항목이 있으시다면
         </Button>
-      </Link>
+      </Link> */}
     </div>
   );
 }

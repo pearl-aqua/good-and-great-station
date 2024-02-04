@@ -26,7 +26,7 @@ export default function ViewResult({
     <Result
       data={result.data}
       total={result.total}
-      show={!(questionId === "60001")}
+      show={!(questionId === "60001" || questionId === "60006")}
       myValue={answers[questionId] || isSubmitId}
     />
   );
