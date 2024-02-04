@@ -25,10 +25,24 @@ interface Props {
   myValue?: string;
 }
 
+const getOptionWidth = (count: number) => {
+  if (!count) {
+    return 0;
+  }
+
+  const widthNum = Math.round((count / 100) * 270);
+
+  return widthNum;
+};
+
 const url = "little-and-freaks.vercel.app";
 
-const covertPercent = (count: number, totalNum: number) => {
+const covertPercentString = (count: number, totalNum: number) => {
   return `${((count / totalNum) * 100).toFixed(1)}%`;
+};
+
+const covertPercentNumber = (count: number, totalNum: number) => {
+  return ((count / totalNum) * 100).toFixed(1);
 };
 
 export default function Result({ data, total, show = false, myValue }: Props) {
@@ -43,11 +57,11 @@ export default function Result({ data, total, show = false, myValue }: Props) {
   const sendText = getSendText(
     title,
     myOption?.label || "",
-    covertPercent(myOption?.count || 0, total || 0)
+    covertPercentString(myOption?.count || 0, total || 0)
   );
 
   return (
-    <Card className="w-[320px] minn-h-[260px]">
+    <Card className="w-[320px]">
       {list.length > 0 && (
         <>
           <CardHeader className="flex flex-row w-full items-center justify-between pt-7">
@@ -58,20 +72,35 @@ export default function Result({ data, total, show = false, myValue }: Props) {
               }표)`}</div>
             )}
           </CardHeader>
-          <CardContent className="flex justify-between items-end text-blue-800">
-            <Typo.Title>{list[0]?.label}</Typo.Title>
-            <Typo.BodyText color="text-blue-500">
-              {list[0]?.count && total && covertPercent(list[0]?.count, total)}
-            </Typo.BodyText>
-          </CardContent>
+          <div className="relative flex flex-col w-full">
+            <CardContent className="w-full flex justify-between items-end text-blue-800 z-10">
+              <Typo.Title>{list[0]?.label}</Typo.Title>
+              <Typo.BodyText color="text-blue-500">
+                {list[0]?.count &&
+                  total &&
+                  covertPercentString(list[0]?.count, total)}
+              </Typo.BodyText>
+            </CardContent>
+            <div
+              className={`absolute top-2 right-6 bg-gray-200 h-5 z-0`}
+              style={{
+                width: getOptionWidth(
+                  +covertPercentNumber(list[0]?.count || 0, total || 0)
+                ),
+              }}
+            ></div>
+          </div>
+
           <CardContent className="pb-2">
-            {sliceList?.map(({ label, count }) => (
-              <ResultRow
-                key={label}
-                label={label}
-                value={covertPercent(count || 0, total || 0)}
-              />
-            ))}
+            {sliceList
+              ?.filter(({ count }) => count)
+              .map(({ label, count }) => (
+                <ResultRow
+                  key={label}
+                  label={label}
+                  value={covertPercentNumber(count || 0, total || 0)}
+                />
+              ))}
           </CardContent>
           <CardFooter
             className={`flex w-full pb-4 ${
