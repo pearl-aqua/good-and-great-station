@@ -70,7 +70,12 @@ export default function HistoryContainer() {
   return (
     <div className="flex flex-col items-center w-full gap-4">
       {list.map(({ data, title, fieldName }) => (
-        <HistoryResult listData={data} title={title} fieldName={fieldName} />
+        <HistoryResult
+          key={title}
+          listData={data}
+          title={title}
+          fieldName={fieldName}
+        />
       ))}
 
       <div>
