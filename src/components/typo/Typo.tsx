@@ -9,8 +9,12 @@ function MainTitle({ color, children }: TypoProps) {
   );
 }
 
-function SubTitle({ children }: TypoProps) {
-  return <div className="text-5xl font-bold text-zinc-400">{children}</div>;
+function SubTitle({ color, children }: TypoProps) {
+  return <div className={`text-5xl font-bold ${color}`}>{children}</div>;
+}
+
+function HeadTitle({ color, children }: TypoProps) {
+  return <div className={`text-4xl font-bold ${color}`}>{children}</div>;
 }
 
 function H1({ children }: TypoProps) {
@@ -59,5 +63,6 @@ Typo.Label = Label;
 Typo.TitleLabel = TitleLabel;
 Typo.MainTitle = MainTitle;
 Typo.SubTitle = SubTitle;
+Typo.HeadTitle = HeadTitle;
 
 export default Typo;

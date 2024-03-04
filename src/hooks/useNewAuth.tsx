@@ -1,8 +1,7 @@
+import { questionArr } from "@/components/poll/PollContainer";
 import { getUserInfo } from "@/firebase/login";
 import userStore from "@/lib/store/user";
 import { useEffect } from "react";
-
-const questionArr = ["60005", "60006"];
 
 export default function useNewAuth() {
   const { userId, setUserId, setAnswers } = userStore();

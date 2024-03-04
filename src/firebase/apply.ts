@@ -91,6 +91,25 @@ export const applyData = async ({ userId, applyData, applyNumber }: Props) => {
   await updateDoc(songsResultRef, updateSongData);
 };
 
+export const getGnGResult = async ({ field }: { field: string }) => {
+  const result = await getDoc(doc(store, "g_apply_result", field));
+  const data = result.data();
+
+  if (data) {
+    const dataArr = sortArr(data);
+    return dataArr;
+  }
+};
+
+export const getGnGTotal = async ({ field }: { field: string }) => {
+  const result = await getDoc(totalResultRef);
+  const data = result.data();
+
+  if (data) {
+    return data[field];
+  }
+};
+
 export const getYearResult = async () => {
   const yearResult = await getDoc(yearResultRef);
   const yearData = yearResult.data();

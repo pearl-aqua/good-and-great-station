@@ -1,7 +1,9 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { getResult } from "@/firebase/question";
-import Result from "../complete/Result";
 import userStore from "@/lib/store/user";
+import Result from "../result/Result";
 
 export default function ViewResult({
   questionId,
@@ -15,7 +17,15 @@ export default function ViewResult({
 
   const getList = async () => {
     const resultData = await getResult({ questionId });
-    setResult(resultData);
+    if (questionId === "60001") {
+      const filterZero = resultData?.data?.list.filter(({ count }) => count);
+      setResult({
+        ...resultData,
+        data: { ...resultData?.data, list: filterZero },
+      });
+    } else {
+      setResult(resultData);
+    }
   };
 
   useEffect(() => {

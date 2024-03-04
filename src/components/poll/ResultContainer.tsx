@@ -1,7 +1,7 @@
 "use client";
 import ViewResult from "./ViewResult";
 
-const questionArr = ["60005", "60006", "60001", "60002", "60003", "60004"];
+const questionArr = ["70001", "70002", "70003"];
 
 export default function ResultContainer() {
   return (

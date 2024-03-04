@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import topbar from "../image/topbar-lf-2024.png";
+import topbar from "../image/topbar-lf.jpg";
+import Nav from "@/components/nav/nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   description: "Little&Freaks",
   openGraph: {
     title: "Little&Freaks",
-    description: "2024 KEYLAND ON: AND ON",
+    description: "2024 Little&Freaks",
     siteName: "Little&Freaks",
     images: [
       {
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Little&Freaks",
-    description: "2024 KEYLAND ON: AND ON",
+    description: "2024 Little&Freaks",
     images: [
       {
         url: "https://little-and-freaks.vercel.app/lf-144.png",
@@ -57,8 +58,11 @@ export default function RootLayout({
             />
           </Link>
         </div>
+        <div className="py-4">
+          <Nav />
+        </div>
 
-        <div className="container mx-auto pt-10 pb-14 text-zinc-600 w-full">
+        <div className="container mx-auto pt-5 pb-14 text-zinc-600 w-full">
           {children}
         </div>
       </body>
