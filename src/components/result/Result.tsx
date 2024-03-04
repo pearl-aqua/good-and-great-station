@@ -60,6 +60,9 @@ export default function Result({ data, total, show = false, myValue }: Props) {
     covertPercentString(myOption?.count || 0, total || 0)
   );
 
+  const labelText =
+    list[0]?.value === myValue ? `${list[0]?.label} ✔️` : list[0]?.label;
+
   return (
     <Card className="w-[320px] pb-4">
       {list.length > 0 && (
@@ -74,7 +77,7 @@ export default function Result({ data, total, show = false, myValue }: Props) {
           </CardHeader>
           <div className="relative flex flex-col w-full">
             <CardContent className="w-full flex justify-between items-end text-zinc-800 z-10">
-              <Typo.Title>{list[0]?.label}</Typo.Title>
+              <Typo.Title>{labelText}</Typo.Title>
               <Typo.BodyText color="text-zinc-400">
                 {list[0]?.count &&
                   total &&
@@ -92,11 +95,12 @@ export default function Result({ data, total, show = false, myValue }: Props) {
           </div>
 
           <CardContent className="pb-2">
-            {sliceList?.map(({ label, count }) => (
+            {sliceList?.map(({ label, count, value }) => (
               <ResultRow
                 key={label}
                 label={label}
                 value={covertPercentNumber(count || 0, total || 0)}
+                select={value === myValue}
               />
             ))}
           </CardContent>
