@@ -22,7 +22,7 @@ function H1({ children }: TypoProps) {
 }
 
 function H2({ children }: TypoProps) {
-  return <h2 className="text-xl font-bold mb-2">{children}</h2>;
+  return <h2 className="text-xl font-bold">{children}</h2>;
 }
 
 function Title({ children }: TypoProps) {
