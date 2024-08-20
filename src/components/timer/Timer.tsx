@@ -49,16 +49,24 @@ export default function Timer() {
   return (
     <div className="flex gap-2 h-20">
       <div className="w-16 flex justify-center">
-        <Typo.HeadTitle>{innerText.diffDay}</Typo.HeadTitle>
+        <Typo.HeadTitle>
+          {innerText.diffDay ? innerText.diffDay : "*"}
+        </Typo.HeadTitle>
       </div>
       <div className="w-16 flex justify-center">
-        <Typo.HeadTitle>{innerText.diffHour}</Typo.HeadTitle>
+        <Typo.HeadTitle>
+          {innerText.diffHour ? innerText.diffHour : "*"}
+        </Typo.HeadTitle>
       </div>
       <div className="w-16 flex justify-center">
-        <Typo.HeadTitle>{innerText.diffMin}</Typo.HeadTitle>
+        <Typo.HeadTitle>
+          {innerText.diffMin ? innerText.diffMin : "*"}
+        </Typo.HeadTitle>
       </div>
       <div className="w-16 flex justify-center">
-        <Typo.HeadTitle>{innerText.diffSec}</Typo.HeadTitle>
+        <Typo.HeadTitle>
+          {innerText.diffSec ? innerText.diffSec : "*"}
+        </Typo.HeadTitle>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const subTitle = "RETURNS";
 const date = "2024.03";
 
 export default function ResultContainer() {
-  useNewAuth();
+  // useNewAuth();
   return (
     <div className="flex flex-col justify-center items-center gap-4">
       <div className="flex flex-col justify-center items-center">
