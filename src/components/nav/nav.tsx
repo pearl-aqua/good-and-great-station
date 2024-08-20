@@ -5,9 +5,9 @@ import Link from "next/link";
 export default function Nav() {
   return (
     <div className="flex w-full justify-center items-center gap-1">
-      <Link href={"/"}>
+      <Link href={"/2024-crime-scene"}>
         <Button className="text-zinc-300" variant="link">
-          Home
+          Crime Scene
         </Button>
       </Link>
       <Link href={"/2024-on-and-on"}>

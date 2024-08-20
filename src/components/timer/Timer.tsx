@@ -3,9 +3,12 @@
 import { useState } from "react";
 import Typo from "../typo/Typo";
 
+// const onAndOnInSeoulDate = new Date(2024, 0, 27, 18);
+const onAndOnSharpDate = new Date(2024, 8, 14, 18);
+
 const diffTime = () => {
   const nowDay = new Date();
-  const keyDay = new Date(2024, 0, 27, 18);
+  const keyDay = onAndOnSharpDate;
 
   const diff = keyDay.getTime() - nowDay.getTime();
 
@@ -46,16 +49,16 @@ export default function Timer() {
   return (
     <div className="flex gap-2 h-20">
       <div className="w-16 flex justify-center">
-        <Typo.SubTitle>{innerText.diffDay}</Typo.SubTitle>
-      </div>
-      <div className="w-16 flex justify-start">
-        <Typo.SubTitle>{innerText.diffHour}</Typo.SubTitle>
+        <Typo.HeadTitle>{innerText.diffDay}</Typo.HeadTitle>
       </div>
       <div className="w-16 flex justify-center">
-        <Typo.SubTitle>{innerText.diffMin}</Typo.SubTitle>
+        <Typo.HeadTitle>{innerText.diffHour}</Typo.HeadTitle>
       </div>
       <div className="w-16 flex justify-center">
-        <Typo.SubTitle>{innerText.diffSec}</Typo.SubTitle>
+        <Typo.HeadTitle>{innerText.diffMin}</Typo.HeadTitle>
+      </div>
+      <div className="w-16 flex justify-center">
+        <Typo.HeadTitle>{innerText.diffSec}</Typo.HeadTitle>
       </div>
     </div>
   );
