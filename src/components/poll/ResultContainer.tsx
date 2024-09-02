@@ -1,18 +1,25 @@
 "use client";
-import useNewAuth from "@/hooks/useNewAuth";
+// import useNewAuth from "@/hooks/useNewAuth";
 import Typo from "../typo/Typo";
 import ViewResult from "./ViewResult";
 
-const questionArr = ["70001", "70002", "70003"];
-const title = "크라임씬";
-const subTitle = "RETURNS";
-const date = "2024.03";
-
-export default function ResultContainer() {
+export default function ResultContainer({
+  title,
+  subTitle,
+  date,
+  questionArr,
+  color,
+}: {
+  title: string;
+  subTitle: string;
+  date: string;
+  questionArr: string[];
+  color?: string;
+}) {
   // useNewAuth();
   return (
     <div className="flex flex-col justify-center items-center gap-4">
-      <div className="flex flex-col justify-center items-center">
+      <div className={`flex flex-col justify-center items-center ${color}`}>
         <Typo.HeadTitle>{title}</Typo.HeadTitle>
         <Typo.H2>{subTitle}</Typo.H2>
         <Typo.BodyText>{date}</Typo.BodyText>
