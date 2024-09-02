@@ -1,7 +1,7 @@
 "use client";
 import Result from "./Result";
-import Typo from "../typo/Typo";
-import { Button } from "../ui/button";
+import Typo from "../../typo/Typo";
+import { Button } from "../../ui/button";
 import {
   album2_1,
   ListType,

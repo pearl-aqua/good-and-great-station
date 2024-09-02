@@ -62,9 +62,7 @@ export default function RootLayout({
           <Nav />
         </div>
 
-        <div className="container mx-auto pt-5 pb-14 text-zinc-600 w-full">
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );

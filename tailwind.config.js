@@ -1,24 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-const getCustomWidth = () => {
-  const arr = [];
-  for (let i = 1; i <= 220; i++) {
-    arr.push(i);
-  }
-  return arr.reduce((acc, i) => {
-    acc[`${i}p`] = `${i / 16}rem`;
-    return acc;
-  }, {});
-};
-
-const getSafeList = () => {
-  const arr = [];
-  for (let i = 1; i <= 320; i++) {
-    arr.push(`w-${i}p`);
-  }
-  return arr;
-};
-
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -27,7 +8,6 @@ module.exports = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
-  safelist: [...getSafeList()],
   theme: {
     container: {
       center: true,
@@ -95,7 +75,6 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-      width: { ...getCustomWidth() },
     },
   },
   plugins: [require("tailwindcss-animate")],

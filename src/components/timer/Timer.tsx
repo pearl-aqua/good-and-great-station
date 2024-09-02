@@ -5,10 +5,11 @@ import Typo from "../typo/Typo";
 
 // const onAndOnInSeoulDate = new Date(2024, 0, 27, 18);
 const onAndOnSharpDate = new Date(2024, 8, 14, 18);
+const pleasureShopDate = new Date(2024, 8, 23, 18);
 
 const diffTime = () => {
   const nowDay = new Date();
-  const keyDay = onAndOnSharpDate;
+  const keyDay = pleasureShopDate;
 
   const diff = keyDay.getTime() - nowDay.getTime();
 

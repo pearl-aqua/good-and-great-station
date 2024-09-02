@@ -6,10 +6,10 @@ import {
   CardDescription,
   CardHeader,
 } from "@/components/ui/card";
-import Typo from "../typo/Typo";
+import Typo from "../../typo/Typo";
 import { ListType } from "@/constants/index";
 import BeatLoader from "react-spinners/BeatLoader";
-import MbtiRow from "../goodAndGreat/custom/MbtiRow";
+import MbtiRow from "../custom/MbtiRow";
 
 interface Props {
   data: {
