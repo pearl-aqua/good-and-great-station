@@ -1,10 +1,10 @@
 import Poll from "./Poll";
 import Typo from "@/components/typo/Typo";
 
-export const questionArr = ["70001", "70002", "70003"];
+export const questionArr = ["80001", "80002", "80003", "80004", "80005"];
 
-const title = "크라임씬";
-const subTitle = "RETURNS";
+const title = "";
+const subTitle = "";
 
 export default function PollContainer() {
   return (
