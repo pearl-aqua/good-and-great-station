@@ -77,16 +77,6 @@ export default function HistoryContainer() {
           fieldName={fieldName}
         />
       ))}
-
-      <div>
-        <Button
-          className="text-zinc-400"
-          variant="link"
-          onClick={() => router.push("/")}
-        >
-          홈으로
-        </Button>
-      </div>
     </div>
   );
 }

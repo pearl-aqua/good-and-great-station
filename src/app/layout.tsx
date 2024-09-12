@@ -58,11 +58,11 @@ export default function RootLayout({
             />
           </Link>
         </div>
+
+        {children}
         <div className="py-4">
           <Nav />
         </div>
-
-        {children}
       </body>
     </html>
   );

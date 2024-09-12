@@ -23,6 +23,7 @@ interface Props {
   total?: number;
   show?: boolean;
   myValue?: string;
+  showLink?: boolean;
 }
 
 const getOptionWidth = (count: number) => {
@@ -45,8 +46,14 @@ const covertPercentNumber = (count: number, totalNum: number) => {
   return ((count / totalNum) * 100).toFixed(1);
 };
 
-export default function Result({ data, total, show = false, myValue }: Props) {
-  const [showMore, setShowMore] = useState<boolean>(show);
+export default function Result({
+  data,
+  total,
+  myValue,
+  showLink = false,
+}: Props) {
+  const [showMore, setShowMore] = useState<boolean>(false);
+
   const { title, list = [] } = data || {};
 
   const myOption: ListType | undefined = list?.find(
@@ -54,6 +61,7 @@ export default function Result({ data, total, show = false, myValue }: Props) {
   );
 
   const sliceList = !showMore ? list?.slice(1, 8) : list?.slice(1, list.length);
+  const seeShowMore = list.length > 8;
   const sendText = getSendText(
     title,
     myOption?.label || "",
@@ -104,36 +112,39 @@ export default function Result({ data, total, show = false, myValue }: Props) {
               />
             ))}
           </CardContent>
-          {list.length > 8 && (
-            <CardFooter className={`flex w-full justify-end py-0`}>
-              {!showMore ? (
-                <Button
-                  className="p-0 text-zinc-400"
-                  variant="link"
-                  onClick={() => setShowMore(true)}
-                >
-                  더보기
-                </Button>
-              ) : (
-                <Button
-                  className="p-0 text-zinc-400"
-                  variant="link"
-                  onClick={() => setShowMore(false)}
-                >
-                  덜보기
-                </Button>
-              )}
-              {/* {myValue && (
+
+          <CardFooter className={`flex w-full justify-between py-0`}>
+            {showLink && myValue && (
               <Button
-                className="p-0 text-blue-500"
+                className="p-0 text-blue-300"
                 variant="link"
                 onClick={() => clickShareButton(sendText, url)}
               >
                 공유하기
               </Button>
-            )} */}
-            </CardFooter>
-          )}
+            )}
+            {seeShowMore && (
+              <>
+                {!showMore ? (
+                  <Button
+                    className="p-0 text-zinc-400"
+                    variant="link"
+                    onClick={() => setShowMore(true)}
+                  >
+                    더보기
+                  </Button>
+                ) : (
+                  <Button
+                    className="p-0 text-zinc-400"
+                    variant="link"
+                    onClick={() => setShowMore(false)}
+                  >
+                    덜보기
+                  </Button>
+                )}
+              </>
+            )}
+          </CardFooter>
         </>
       )}
       {!list.length && (

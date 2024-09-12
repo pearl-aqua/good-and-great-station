@@ -11,6 +11,7 @@ import { getQuestion, saveAnswer, saveAnswers } from "@/firebase/question";
 import userStore from "@/lib/store/user";
 import SingleQuestion from "../question/SingleQuestion";
 import MultiQuestion from "../question/MultiQuestion";
+import Typo from "../typo/Typo";
 
 export default function ViewQuestion({
   setIsSubmit,
@@ -40,7 +41,7 @@ export default function ViewQuestion({
         userId,
       });
 
-      setIsSubmit("true");
+      setIsSubmit(answer);
     } else {
       const isConfirm = confirm(
         "투표를 위해 로그인이 필요합니다. 로그인 페이지로 이동합니다."
@@ -73,9 +74,9 @@ export default function ViewQuestion({
   return (
     <Card className="w-[320px]">
       <CardHeader className="flex flex-row w-full items-center justify-between pt-8">
-        <CardDescription className="text-zinc-700 font-bold">
+        <Typo.BodyText color="text-zinc-700 font-bold">
           {result?.text}
-        </CardDescription>
+        </Typo.BodyText>
       </CardHeader>
       {result && questionId !== "60006" && (
         <SingleQuestion result={result} saveQuestion={saveSingleQuestion} />

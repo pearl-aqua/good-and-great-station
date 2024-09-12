@@ -15,7 +15,7 @@ export default function Poll({ questionId }: { questionId: string }) {
   return (
     <>
       {isSubmitId || answers[questionId] ? (
-        <ViewResult questionId={questionId} isSubmitId={isSubmitId} />
+        <ViewResult questionId={questionId} isSubmitId={isSubmitId} showLink />
       ) : (
         <ViewQuestion setIsSubmit={setIsSubmitId} questionId={questionId} />
       )}

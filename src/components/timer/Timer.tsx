@@ -9,7 +9,7 @@ const pleasureShopDate = new Date(2024, 8, 23, 18);
 
 const diffTime = () => {
   const nowDay = new Date();
-  const keyDay = pleasureShopDate;
+  const keyDay = onAndOnSharpDate;
 
   const diff = keyDay.getTime() - nowDay.getTime();
 
@@ -48,26 +48,18 @@ export default function Timer() {
   setInterval(() => setInnerText(diffTime()), 1000);
 
   return (
-    <div className="flex gap-2 h-20">
-      <div className="w-16 flex justify-center">
-        <Typo.HeadTitle>
-          {innerText.diffDay ? innerText.diffDay : "*"}
-        </Typo.HeadTitle>
+    <div className="flex gap-2">
+      <div className="w-8 flex justify-center">
+        <Typo.H2>{innerText.diffDay ? innerText.diffDay : "*"}</Typo.H2>
       </div>
-      <div className="w-16 flex justify-center">
-        <Typo.HeadTitle>
-          {innerText.diffHour ? innerText.diffHour : "*"}
-        </Typo.HeadTitle>
+      <div className="w-8 flex justify-center">
+        <Typo.H2>{innerText.diffHour ? innerText.diffHour : "*"}</Typo.H2>
       </div>
-      <div className="w-16 flex justify-center">
-        <Typo.HeadTitle>
-          {innerText.diffMin ? innerText.diffMin : "*"}
-        </Typo.HeadTitle>
+      <div className="w-8 flex justify-center">
+        <Typo.H2>{innerText.diffMin ? innerText.diffMin : "*"}</Typo.H2>
       </div>
-      <div className="w-16 flex justify-center">
-        <Typo.HeadTitle>
-          {innerText.diffSec ? innerText.diffSec : "*"}
-        </Typo.HeadTitle>
+      <div className="w-8 flex justify-center">
+        <Typo.H2>{innerText.diffSec ? innerText.diffSec : "*"}</Typo.H2>
       </div>
     </div>
   );
