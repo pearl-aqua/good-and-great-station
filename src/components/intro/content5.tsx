@@ -6,7 +6,7 @@ import Typo from "../typo/Typo";
 
 // const title = "Pleasure Shop";
 const title = "KEYLAND";
-const title1 = "ON AND ON #";
+const title1 = "ON : AND ON <#>";
 
 export default function Home() {
   return (

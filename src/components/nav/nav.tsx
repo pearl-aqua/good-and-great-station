@@ -10,7 +10,7 @@ export default function Nav() {
         <Typo.DecsText>지금 투표 보기</Typo.DecsText>
         <Link href={"/"}>
           <Button className="text-zinc-300" variant="outline">
-            2024 ON AND ON &#35;
+            2024 ON : AND ON &lt;&#35;&gt;
           </Button>
         </Link>
       </div>
