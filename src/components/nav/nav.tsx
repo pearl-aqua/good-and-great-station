@@ -39,7 +39,7 @@ export default function Nav() {
               window.open("https://gas-station-theta.vercel.app", "_blank")
             }
           >
-            2022 Kibum's Day
+            2022 Kibum&apos;s Day
           </Button>
         </div>
       </div>
