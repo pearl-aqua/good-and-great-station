@@ -1,7 +1,5 @@
-import PhoneNumber from "../pleasureShop/phone";
 import PollContainer from "../poll/PollContainer";
 import Timer from "../timer/Timer";
-import TwitterContent from "../twitter/TwitterContent";
 import Typo from "../typo/Typo";
 
 // const title = "Pleasure Shop";
