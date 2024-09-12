@@ -84,8 +84,8 @@ export default function Result({
             )}
           </CardHeader>
           <div className="relative flex flex-col w-full">
-            <CardContent className="w-full flex justify-between items-end text-zinc-800 z-10">
-              <Typo.Title>{labelText}</Typo.Title>
+            <CardContent className="w-full flex justify-between items-end text-zinc-800 z-10 pb-4">
+              <div className="text-lg font-bold">{labelText}</div>
               <Typo.BodyText color="text-zinc-400">
                 {list[0]?.count &&
                   total &&
