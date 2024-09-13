@@ -78,10 +78,10 @@ export default function ViewQuestion({
           {result?.text}
         </Typo.BodyText>
       </CardHeader>
-      {result && questionId !== "60006" && (
+      {result && questionId !== "90005" && (
         <SingleQuestion result={result} saveQuestion={saveSingleQuestion} />
       )}
-      {result && questionId === "60006" && (
+      {result && questionId === "90005" && (
         <MultiQuestion result={result} saveQuestion={saveMultiQuestion} />
       )}
 

@@ -1,10 +1,13 @@
 import PollContainer from "../poll/PollContainer";
+import ResultContainer from "../poll/ResultContainer";
 import Timer from "../timer/Timer";
 import Typo from "../typo/Typo";
 
 // const title = "Pleasure Shop";
 const title = "KEYLAND";
 const title1 = "ON : AND ON <#>";
+
+const questionArr = ["90001", "90002", "90003"];
 
 export default function Home() {
   return (
@@ -17,9 +20,15 @@ export default function Home() {
 
         <Timer />
       </div>
+      <ResultContainer
+        title={""}
+        subTitle={""}
+        date={""}
+        questionArr={questionArr}
+      />
 
       {/* <PhoneNumber /> */}
-      <PollContainer />
+      {/* <PollContainer /> */}
       {/* <TwitterContent /> */}
     </div>
   );
