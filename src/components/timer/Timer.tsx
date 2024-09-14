@@ -9,7 +9,7 @@ const pleasureShopDate = new Date(2024, 8, 23, 18);
 
 const diffTime = () => {
   const nowDay = new Date();
-  const keyDay = onAndOnSharpDate;
+  const keyDay = pleasureShopDate;
 
   const diff = keyDay.getTime() - nowDay.getTime();
 
