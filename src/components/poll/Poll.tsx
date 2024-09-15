@@ -8,7 +8,7 @@ import ViewResult from "./ViewResult";
 
 export default function Poll({ questionId }: { questionId: string }) {
   const { answers } = userStore();
-  const [isSubmitId, setIsSubmitId] = useState<string>("");
+  const [isSubmitId, setIsSubmitId] = useState<string[]>([]);
 
   useNewAuth();
 

@@ -20,6 +20,7 @@ export default function Home() {
 
         <Timer />
       </div>
+      <PollContainer />
       <ResultContainer
         title={""}
         subTitle={""}
@@ -28,7 +29,7 @@ export default function Home() {
       />
 
       {/* <PhoneNumber /> */}
-      {/* <PollContainer /> */}
+
       {/* <TwitterContent /> */}
     </div>
   );

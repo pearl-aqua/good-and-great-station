@@ -25,7 +25,7 @@ export default function ResultContainer({
         <Typo.BodyText>{date}</Typo.BodyText>
       </div>
       {questionArr.map((el) => (
-        <ViewResult key={el} questionId={el} isSubmitId={""} />
+        <ViewResult key={el} questionId={el} isSubmitId={[]} />
       ))}
     </div>
   );

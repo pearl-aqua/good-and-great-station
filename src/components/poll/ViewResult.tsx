@@ -13,7 +13,7 @@ export default function ViewResult({
   showLink,
 }: {
   questionId: string;
-  isSubmitId: string;
+  isSubmitId: string[];
   showLink?: boolean;
 }) {
   const { answers } = userStore();
@@ -21,6 +21,7 @@ export default function ViewResult({
 
   const getList = async () => {
     const resultData = await getResult({ questionId });
+
     if (longOptionList.includes(questionId)) {
       const filterZero = resultData?.data?.list.filter(({ count }) => count);
       setResult({
@@ -36,11 +37,20 @@ export default function ViewResult({
     getList();
   }, []);
 
+  const getMyValue = () => {
+    const myAnswers = answers[questionId];
+    if (typeof myAnswers === "string") {
+      return [myAnswers];
+    } else {
+      return myAnswers;
+    }
+  };
+
   return (
     <Result
       data={result.data}
       total={result.total}
-      myValue={answers[questionId] || isSubmitId}
+      myValue={getMyValue() || isSubmitId}
       showLink={showLink}
     />
   );

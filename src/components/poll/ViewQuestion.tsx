@@ -13,11 +13,18 @@ import SingleQuestion from "../question/SingleQuestion";
 import MultiQuestion from "../question/MultiQuestion";
 import Typo from "../typo/Typo";
 
+const multiQuestion = ["90005", "90006"];
+
+const options = {
+  "90005": 6,
+  "90006": 2,
+};
+
 export default function ViewQuestion({
   setIsSubmit,
   questionId,
 }: {
-  setIsSubmit: (submitId: string) => void;
+  setIsSubmit: (submitId: string[]) => void;
   questionId: string;
 }) {
   const { userId } = userStore();
@@ -41,7 +48,7 @@ export default function ViewQuestion({
         userId,
       });
 
-      setIsSubmit(answer);
+      setIsSubmit([answer]);
     } else {
       const isConfirm = confirm(
         "투표를 위해 로그인이 필요합니다. 로그인 페이지로 이동합니다."
@@ -60,7 +67,7 @@ export default function ViewQuestion({
         userId,
       });
 
-      setIsSubmit("true");
+      setIsSubmit(answers);
     } else {
       const isConfirm = confirm(
         "투표를 위해 로그인이 필요합니다. 로그인 페이지로 이동합니다."
@@ -78,11 +85,15 @@ export default function ViewQuestion({
           {result?.text}
         </Typo.BodyText>
       </CardHeader>
-      {result && questionId !== "90005" && (
+      {result && !multiQuestion.includes(questionId) && (
         <SingleQuestion result={result} saveQuestion={saveSingleQuestion} />
       )}
-      {result && questionId === "90005" && (
-        <MultiQuestion result={result} saveQuestion={saveMultiQuestion} />
+      {result && multiQuestion.includes(questionId) && (
+        <MultiQuestion
+          result={result}
+          saveQuestion={saveMultiQuestion}
+          selectNum={options[questionId]}
+        />
       )}
 
       {!result && (

@@ -22,7 +22,7 @@ interface Props {
   };
   total?: number;
   show?: boolean;
-  myValue?: string;
+  myValue?: string[];
   showLink?: boolean;
 }
 
@@ -56,20 +56,20 @@ export default function Result({
 
   const { title, list = [] } = data || {};
 
-  const myOption: ListType | undefined = list?.find(
-    ({ value }) => value === myValue
+  const myOption: ListType[] | undefined = list?.filter(({ value }) =>
+    myValue?.includes(value)
   );
 
   const sliceList = !showMore ? list?.slice(1, 8) : list?.slice(1, list.length);
   const seeShowMore = list.length > 8;
   const sendText = getSendText(
     title,
-    myOption?.label || "",
-    covertPercentString(myOption?.count || 0, total || 0)
+    myOption?.map(({ label }) => label) || ""
   );
 
-  const labelText =
-    list[0]?.value === myValue ? `${list[0]?.label} ✔️` : list[0]?.label;
+  const labelText = myValue?.includes(list[0]?.value)
+    ? `${list[0]?.label} ✔️`
+    : list[0]?.label;
 
   return (
     <Card className="w-[320px] pb-4">
@@ -108,7 +108,7 @@ export default function Result({
                 key={label}
                 label={label}
                 value={covertPercentNumber(count || 0, total || 0)}
-                select={value === myValue}
+                select={myValue?.includes(value)}
               />
             ))}
           </CardContent>

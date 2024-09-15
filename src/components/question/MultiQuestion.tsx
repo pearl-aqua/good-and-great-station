@@ -8,19 +8,24 @@ import SelectButton from "./SelectButton";
 interface Props {
   result: any;
   saveQuestion: any;
+  selectNum: number;
 }
 
-export default function MultiQuestion({ result, saveQuestion }: Props) {
+export default function MultiQuestion({
+  result,
+  saveQuestion,
+  selectNum,
+}: Props) {
   const [answers, setAnswers] = useState<string[]>([]);
 
   const handleClickSong = (value: string) => {
     if (answers.includes(value)) {
       const newOptions = answers.filter((el) => el !== value);
       setAnswers(newOptions);
-    } else if (answers.length < 6) {
+    } else if (answers.length < selectNum) {
       setAnswers([...answers, value]);
     } else {
-      alert("6개까지 선택 가능합니다.");
+      alert(`${selectNum}개까지 선택 가능합니다.`);
     }
   };
 
