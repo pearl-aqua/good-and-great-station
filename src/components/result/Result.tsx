@@ -11,7 +11,11 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ListType } from "@/constants/index";
-import { clickShareButton, getSendText } from "@/lib/util/index";
+import {
+  clickShareButton,
+  getSendText,
+  getSendTextTwo,
+} from "@/lib/util/index";
 import Typo from "../typo/Typo";
 import ResultRow from "./ResultRow";
 
@@ -62,7 +66,7 @@ export default function Result({
 
   const sliceList = !showMore ? list?.slice(1, 8) : list?.slice(1, list.length);
   const seeShowMore = list.length > 8;
-  const sendText = getSendText(
+  const sendText = getSendTextTwo(
     title,
     myOption?.map(({ label }) => label) || ""
   );

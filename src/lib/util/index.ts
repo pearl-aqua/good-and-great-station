@@ -1,4 +1,8 @@
-export const getSendText = (question: string, selectOption: string[]) => `
+export const getSendText = (
+  question: string,
+  selectOption: string,
+  percent?: string
+) => `
 
 Q. ${question} 
 A. 나의 답변: [${selectOption}]
@@ -14,3 +18,10 @@ export const clickShareButton = (sendText: string, url: string) => {
     )}&url=${encodeURI(url)}`
   );
 };
+
+export const getSendTextTwo = (question: string, selectOption: string[]) => `
+
+Q. ${question} 
+A. 나의 답변: [${selectOption}]
+
+`;
