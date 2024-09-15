@@ -16,8 +16,8 @@ import Typo from "../typo/Typo";
 const multiQuestion = ["90005", "90006"];
 
 const options = {
-  "90005": 6,
-  "90006": 2,
+  [multiQuestion[0]]: 6,
+  [multiQuestion[1]]: 2,
 };
 
 export default function ViewQuestion({
