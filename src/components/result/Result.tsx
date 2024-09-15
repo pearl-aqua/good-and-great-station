@@ -118,7 +118,7 @@ export default function Result({
           </CardContent>
 
           <CardFooter className={`flex w-full justify-between py-0`}>
-            {showLink && myValue && (
+            {showLink && myValue?.length && (
               <Button
                 className="p-0 text-blue-300"
                 variant="link"
