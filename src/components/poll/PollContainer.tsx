@@ -1,7 +1,7 @@
 import Poll from "./Poll";
 import Typo from "@/components/typo/Typo";
 
-export const questionArr = ["90004", "90005", "90006"];
+export const questionArr = ["80006", "80001", "80002", "80003", "80004"];
 
 const title = "";
 const subTitle = "";

@@ -21,7 +21,7 @@ export default function Home() {
         <Timer />
       </div>
       <Typo.H1>Coming Soon</Typo.H1>
-      {/* <PollContainer /> */}
+      <PollContainer />
       {/* <ResultContainer
         title={""}
         subTitle={""}

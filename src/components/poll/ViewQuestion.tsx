@@ -85,7 +85,8 @@ export default function ViewQuestion({
           {result?.text}
         </Typo.BodyText>
       </CardHeader>
-      {result && !multiQuestion.includes(questionId) && (
+
+      {/* {result && !multiQuestion.includes(questionId) && (
         <SingleQuestion result={result} saveQuestion={saveSingleQuestion} />
       )}
       {result && multiQuestion.includes(questionId) && (
@@ -102,7 +103,7 @@ export default function ViewQuestion({
             <BeatLoader size={12} color="#bfdbfe" />
           </div>
         </CardContent>
-      )}
+      )} */}
     </Card>
   );
 }
