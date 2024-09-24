@@ -14,13 +14,13 @@ export default function Home() {
     <div className="flex flex-col justify-center items-center gap-4 mb-8">
       <div className="flex flex-col items-center gap-1 text-zinc-400">
         <div className="flex flex-col items-center">
-          <Typo.H2>{title}</Typo.H2>
+          <Typo.HeadTitle>{title}</Typo.HeadTitle>
           {/* <Typo.H2>{title1}</Typo.H2> */}
         </div>
 
-        <Timer />
+        {/* <Timer /> */}
       </div>
-      <Typo.H1>Coming Soon</Typo.H1>
+
       <PollContainer />
       {/* <ResultContainer
         title={""}

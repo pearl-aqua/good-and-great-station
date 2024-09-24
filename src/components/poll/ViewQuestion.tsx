@@ -13,11 +13,10 @@ import SingleQuestion from "../question/SingleQuestion";
 import MultiQuestion from "../question/MultiQuestion";
 import Typo from "../typo/Typo";
 
-const multiQuestion = ["90005", "90006"];
+const multiQuestion = ["80006"];
 
 const options = {
-  [multiQuestion[0]]: 6,
-  [multiQuestion[1]]: 2,
+  [multiQuestion[0]]: 2,
 };
 
 export default function ViewQuestion({
@@ -86,7 +85,7 @@ export default function ViewQuestion({
         </Typo.BodyText>
       </CardHeader>
 
-      {/* {result && !multiQuestion.includes(questionId) && (
+      {result && !multiQuestion.includes(questionId) && (
         <SingleQuestion result={result} saveQuestion={saveSingleQuestion} />
       )}
       {result && multiQuestion.includes(questionId) && (
@@ -103,7 +102,7 @@ export default function ViewQuestion({
             <BeatLoader size={12} color="#bfdbfe" />
           </div>
         </CardContent>
-      )} */}
+      )}
     </Card>
   );
 }

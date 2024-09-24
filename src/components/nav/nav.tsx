@@ -6,9 +6,14 @@ import Typo from "../typo/Typo";
 export default function Nav() {
   return (
     <div className="container mx-auto flex flex-col w-full max-w-[400px] justify-center items-center gap-6 my-6">
-      {/* <div className="flex flex-col items-center gap-1">
+      <div className="flex flex-col items-center gap-1">
         <Typo.DecsText>지금 투표 보기</Typo.DecsText>
-      </div> */}
+        <Link href={"/"}>
+          <Button className="text-zinc-300" variant="outline">
+            Pleasure Shop
+          </Button>
+        </Link>
+      </div>
       <div className="flex flex-col items-center gap-1">
         <Typo.DecsText>이전 투표 보기</Typo.DecsText>
 
