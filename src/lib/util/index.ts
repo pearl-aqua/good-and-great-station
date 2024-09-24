@@ -9,7 +9,7 @@ A. 나의 답변: [${selectOption}]
 
 `;
 
-const titleText = "2024+KEYLAND+ON+%3A+AND+ON+%3C%23%3E";
+const titleText = "KEY Pleasure Shop";
 
 export const clickShareButton = (sendText: string, url: string) => {
   window.open(
