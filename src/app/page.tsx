@@ -6,7 +6,7 @@ import Typo from "@/components/typo/Typo";
 // const title = "ON: ADN ON";
 // const title1 = "#";
 const banner =
-  ">> 이곳에 기쁨 투표 드려요 >> 기쁨 투표 하시면 환영합니다 >> 이곳에 기쁨 투표 드려요 >> ";
+  ">> 이곳에 기쁨 투표 드려요 >> 기쁨 투표 하시면 환영합니다 >> 이곳에 기쁨 투표 드려요 >> 기쁨 투표 하시면 환영합니다 >>";
 
 export default function Home() {
   return (
