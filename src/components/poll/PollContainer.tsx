@@ -3,6 +3,7 @@ import Typo from "@/components/typo/Typo";
 
 export const questionArr = [
   "80006",
+  "80007",
   "80001",
   "80002",
   "80004",
