@@ -14,8 +14,8 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center mt-[1px] gap-2 text-zinc-700">
         {/* <Typo.SubTitle>{title2}</Typo.SubTitle>
         <div className={`text-8xl font-bold`}>{title3}</div> */}
-        <div className="w-full max-w-[400px] h-8 bg-black text-white p-1 overflow-hidden">
-          <div className="animate-marquee text-clip whitespace-nowrap">
+        <div className="w-full max-w-[400px] h-9 bg-black text-white p-1 overflow-hidden">
+          <div className="animate-marquee text-clip whitespace-nowrap text-lg">
             {banner}
           </div>
         </div>
