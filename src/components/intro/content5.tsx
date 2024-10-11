@@ -7,7 +7,15 @@ const title = "Pleasure Shop";
 // const title = "KEYLAND";
 const title1 = "Welcome to the polls";
 
-// const questionArr = ["80006"];
+const questionArr = [
+  "80006",
+  "80007",
+  "80001",
+  "80002",
+  "80004",
+  "80003",
+  "80005",
+];
 
 export default function Home() {
   return (
@@ -21,13 +29,13 @@ export default function Home() {
         {/* <Timer /> */}
       </div>
 
-      <PollContainer />
-      {/* <ResultContainer
+      {/* <PollContainer /> */}
+      <ResultContainer
         title={""}
         subTitle={""}
         date={""}
         questionArr={questionArr}
-      /> */}
+      />
 
       {/* <PhoneNumber /> */}
 
