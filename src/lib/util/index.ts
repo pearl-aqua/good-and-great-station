@@ -13,7 +13,7 @@ const titleText = "";
 
 export const clickShareButton = (sendText: string, url: string) => {
   window.open(
-    `https://twitter.com/intent/tweet?text=${titleText}+${encodeURI(
+    `https://twitter.com/intent/tweet?text=${encodeURI(
       sendText
     )}&url=${encodeURI(url)}`
   );
