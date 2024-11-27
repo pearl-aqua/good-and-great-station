@@ -97,7 +97,7 @@ export default function Result({
               </Typo.BodyText>
             </CardContent>
             <div
-              className={`absolute top-2 right-6 bg-gray-100 h-5 z-0`}
+              className={`absolute top-6 right-6 bg-gray-100 h-2 z-0`}
               style={{
                 width: getOptionWidth(
                   +covertPercentNumber(list[0]?.count || 0, total || 0)

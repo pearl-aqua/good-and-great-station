@@ -25,7 +25,7 @@ export default function ResultRow({
         <div className="text-zinc-400">{`${value}%`}</div>
       </div>
       <div
-        className={`absolute right-0 bg-gray-100 h-5 z-0`}
+        className={`absolute right-0 bottom-2 bg-gray-100 h-2 z-0`}
         style={{ width: getOptionWidth(+value) }}
       ></div>
     </div>
