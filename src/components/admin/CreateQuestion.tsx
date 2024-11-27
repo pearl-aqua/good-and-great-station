@@ -21,7 +21,7 @@ export default function CreateQuestion() {
     optionText: label,
   }));
 
-  const fourArray = Array(4).fill({ optionId: "", optionText: "" });
+  const fourArray = Array(9).fill({ optionId: "", optionText: "" });
 
   const [options, setOptions] =
     useState<{ optionId: string; optionText: string }[]>(fourArray);

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { getApplyInfo } from "@/firebase/apply";
-import ApplyCard from "@/components/goodAndGreat/apply/ApplyCard";
-import MyButtonTwo from "@/components/my/ButtonTwo";
-import EmployeeCard from "@/components/goodAndGreat/employee/EmployeeCard";
+
 import logo from "@/image/logo-lf.png";
+import ApplyCard from "@/components/good/ApplyCard";
+import EmployeeCard from "@/components/good/EmployeeCard";
+import ButtonHome from "@/components/button/ButtonHome";
 
 export default async function MyApplyPage(props: { params: { id: string } }) {
   const {
@@ -32,7 +33,7 @@ export default async function MyApplyPage(props: { params: { id: string } }) {
       </div>
       <ApplyCard applyInfoResult={applyInfoResult} />
       <EmployeeCard applyInfoResult={applyInfoResult} />
-      <MyButtonTwo url={shareUI} userId={userId} />
+      <ButtonHome />
     </div>
   );
 }

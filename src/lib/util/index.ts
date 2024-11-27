@@ -9,7 +9,7 @@ A. 나의 답변: [${selectOption}]
 
 `;
 
-const titleText = "KEY Pleasure Shop";
+const titleText = "CALL BACK & Mean: of my first";
 
 export const clickShareButton = (sendText: string, url: string) => {
   window.open(
@@ -22,6 +22,6 @@ export const clickShareButton = (sendText: string, url: string) => {
 export const getSendTextTwo = (question: string, selectOption: string[]) => `
 
 Q. ${question} 
-A. 나의 답변: [${selectOption}]
+A. ${selectOption}
 
 `;

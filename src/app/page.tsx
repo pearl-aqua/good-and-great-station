@@ -1,4 +1,5 @@
 import IntroContentFive from "@/components/intro/content5";
+import RootLayout from "@/components/layout/index";
 import Typo from "@/components/typo/Typo";
 
 // const title = "Pleasure Shop";
@@ -10,18 +11,20 @@ const banner =
 
 export default function Home() {
   return (
-    <main>
-      <div className="flex flex-col justify-center items-center mt-[1px] gap-2 text-zinc-700">
-        {/* <Typo.SubTitle>{title2}</Typo.SubTitle>
+    <RootLayout>
+      <main>
+        <div className="flex flex-col justify-center items-center mt-[1px] gap-2 text-zinc-700">
+          {/* <Typo.SubTitle>{title2}</Typo.SubTitle>
         <div className={`text-8xl font-bold`}>{title3}</div> */}
-        <div className="w-full max-w-[400px] h-9 bg-black text-white p-1 overflow-hidden">
-          <div className="animate-marquee text-clip whitespace-nowrap text-lg">
-            {banner}
+          <div className="w-full max-w-[400px] h-9 bg-black text-white p-1 overflow-hidden">
+            <div className="animate-marquee text-clip whitespace-nowrap text-lg">
+              {banner}
+            </div>
           </div>
-        </div>
 
-        <IntroContentFive />
-      </div>
-    </main>
+          <IntroContentFive />
+        </div>
+      </main>
+    </RootLayout>
   );
 }

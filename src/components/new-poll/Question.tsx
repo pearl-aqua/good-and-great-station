@@ -13,13 +13,13 @@ import SingleQuestion from "../question/SingleQuestion";
 import MultiQuestion from "../question/MultiQuestion";
 import Typo from "../typo/Typo";
 
-const multiQuestion = ["99002"];
+const multiQuestion = ["80006"];
 
 const options = {
-  [multiQuestion[0]]: 3,
+  [multiQuestion[0]]: 2,
 };
 
-export default function ViewQuestion({
+export default function Question({
   setIsSubmit,
   questionId,
 }: {

@@ -1,10 +1,8 @@
-import PollContainer from "../poll/PollContainer";
 import ResultContainer from "../poll/ResultContainer";
-import Timer from "../timer/Timer";
+
 import Typo from "../typo/Typo";
 
 const title = "Pleasure Shop";
-// const title = "KEYLAND";
 const title1 = "Welcome to the polls";
 
 const questionArr = [
@@ -36,10 +34,6 @@ export default function Home() {
         date={""}
         questionArr={questionArr}
       />
-
-      {/* <PhoneNumber /> */}
-
-      {/* <TwitterContent /> */}
     </div>
   );
 }

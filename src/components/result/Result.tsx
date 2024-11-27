@@ -40,7 +40,7 @@ const getOptionWidth = (count: number) => {
   return widthNum;
 };
 
-const url = "little-and-freaks.vercel.app";
+const url = "little-and-freaks.vercel.app/minho/call-back";
 
 const covertPercentString = (count: number, totalNum: number) => {
   return `${((count / totalNum) * 100).toFixed(1)}%`;
