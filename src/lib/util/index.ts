@@ -3,7 +3,6 @@ export const getSendText = (
   selectOption: string,
   percent?: string
 ) => `
-
 Q. ${question} 
 A. 나의 답변: [${selectOption}]
 
