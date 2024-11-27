@@ -9,7 +9,7 @@ A. 나의 답변: [${selectOption}]
 
 `;
 
-const titleText = "MEAN: of my first";
+const titleText = "";
 
 export const clickShareButton = (sendText: string, url: string) => {
   window.open(
