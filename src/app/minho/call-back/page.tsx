@@ -1,20 +1,20 @@
-import PollContainer from "@/components/poll/PollContainer";
-import Typo from "@/components/typo/Typo";
+import ResultContainer from "@/components/poll/ResultContainer";
 
+const questionArr = ["99001", "99002"];
 const title = "Call Back";
-const title1 = "이건 내 진심의 고백";
+const subTitle = "";
+const date = "2024.11";
 
 export default function CallbackPage() {
   return (
-    <div className="flex flex-col justify-center items-center gap-4 my-8">
-      <div className="flex flex-col items-center gap-1 text-zinc-400">
-        <div className="flex flex-col items-center">
-          <Typo.HeadTitle>{title}</Typo.HeadTitle>
-          <Typo.BodyText>{title1}</Typo.BodyText>
-        </div>
-      </div>
-
-      <PollContainer />
+    <div className="flex flex-col justify-center items-center gap-4 p-8">
+      <ResultContainer
+        title={title}
+        subTitle={subTitle}
+        date={date}
+        questionArr={questionArr}
+        color="text-zinc-600"
+      />
     </div>
   );
 }

@@ -29,7 +29,7 @@ export default function LoginContainer() {
 
       await popupLogin();
 
-      router.push("/minho/call-back");
+      router.push("/");
       isLoading(false);
     } catch (error) {
       console.log(error);
